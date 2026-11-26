@@ -45,4 +45,5 @@ jobs:
         working-directory: apps/mac
         env:
           TACIE_SKIP_ENGINE: "1"
+          TACIE_TEST_RETRY: "1"
         run: ./scripts/test.sh

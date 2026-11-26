@@ -221,7 +221,9 @@ final class ShadowSttTests: XCTestCase {
     }
 
     func testNoKeepaliveWhileAudioFlows() async throws {
-        let (s, socket) = make(keepalive: .milliseconds(80))
+        // 0.4 s: audio every 20 ms must keep it quiet even when a slow CI runner stretches those sleeps (0.08 s sent one
+        // on GitHub's macOS runner, 2026-11-26)
+        let (s, socket) = make(keepalive: .milliseconds(400))
         s.start(streamMs: 0)
         for _ in 0..<6 {
             s.feed([0])
