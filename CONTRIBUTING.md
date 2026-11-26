@@ -19,6 +19,20 @@ cd apps/mac && ./scripts/build.sh && ./scripts/test.sh    # app (build once befo
 Keep your change in the style of the code around it. The engine is Rust, the app Swift (SwiftUI and AppKit). Please
 add tests for changes in behavior.
 
+## Commit messages
+
+Titles follow [Conventional Commits](https://www.conventionalcommits.org): `type(scope): what changed`, in the
+imperative, 72 characters at most. Types are `feat`, `fix`, `build`, `ci`, `docs`, `chore`, `test`, `refactor` and
+`perf`; the scope is the part you touched (`mac`, `engine`, `shared`). Put the why and the details in the body, after a
+blank line:
+
+```
+fix(engine): keep the overview when the to-do list cannot be read
+
+A small on-device model sometimes repeats a to-do until the reply is cut
+off. The summary is still good, so it is kept.
+```
+
 ## Sign your commits (DCO)
 
 Every commit needs a `Signed-off-by` line, which says you wrote the change or have the right to submit it under the MIT
