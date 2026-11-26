@@ -1,0 +1,32 @@
+name: Bug
+description: Something does not work as it should
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen again
+  - type: input
+    id: version
+    attributes:
+      label: Tacie version or commit
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac model
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log lines
+      description: From ~/Library/Logs/tacie-open/app.log (tacie-open-dev for a Debug build). The log leaves out questions and answers, but check it and remove anything private first.
+      render: text

@@ -1,0 +1,117 @@
+{
+ "provider": "typesafe",
+ "model": "jev-latest",
+ "input_tokens": 1234,
+ "passage_chars": 900,
+ "calls": {
+  "gate": {
+   "context": [
+    "가: 안녕"
+   ],
+   "line": "나: 포트 어디서 바꿔요?"
+  },
+  "rerank": {
+   "context": [],
+   "line": "나: 포트",
+   "passages": [
+    "p0 글",
+    "p1 글"
+   ]
+  },
+  "decide_long": {
+   "state": {
+    "recent_conversation": "(start of meeting)",
+    "current_utterance": "나: 긴 문맥"
+   },
+   "questions": {
+    "lookup": {
+     "type": "noul",
+     "instructions": "Is this long?",
+     "criteria": {
+      "true": "It is long.",
+      "false": "It is short."
+     }
+    }
+   }
+  }
+ },
+ "gate": {
+  "requests": [
+   {
+    "url": "https://api.typesafe.ai/v1/systemone",
+    "raw": "{\"model\": \"jev-latest\", \"state\": {\"recent_conversation\": \"\\uac00: \\uc548\\ub155\", \"current_utterance\": \"\\ub098: \\ud3ec\\ud2b8 \\uc5b4\\ub514\\uc11c \\ubc14\\uafd4\\uc694?\"}, \"questions\": {\"lookup\": {\"type\": \"noul\", \"instructions\": \"Does the current utterance need a lookup in our company's code or documents? The lines are a live speech-recognition transcript, so punctuation is unreliable: a question often ends with a period or with no mark at all. Judge from the wording (question endings such as -\\uc694?/-\\ub098\\uc694/-\\uae4c/-\\uc8e0/-\\uc5b4\\uc694, question words such as \\uc5b4\\ub514/\\ubb50/\\uc5bc\\ub9c8/\\uc65c/\\uc5b8\\uc81c/\\uc5b4\\ub5bb\\uac8c), not from punctuation.\", \"criteria\": {\"true\": \"The current utterance asks for a fact that is written down in this company's own source code or internal documents: how our product behaves, where something is implemented, a rule, limit, default or setting, a design decision or its reason, a team process or convention. Showing the matching passage would help now. This holds even when the speaker asks a colleague in the room, as long as the answer is such a fact. So is asking how something works or what to do (~\\ud558\\uba74 \\ub418\\ub098\\uc694?, ~\\ud558\\uba74 \\uc548 \\ub3fc\\uc694?, ~\\ud574\\uc57c \\ub3fc\\uc694?), even when it sounds like asking for permission. So is asking what the team already decided and wrote down: which company, vendor or tool was chosen, when something was set to happen, who was assigned to it, a number that was set, or why.\", \"false\": \"No lookup in company material is needed: small talk, opinions, feelings, planning a schedule or handing out work right now, status of someone's own work, rhetorical questions, questions about the outside world or news of other companies, questions whose answer is the listeners' consent, opinion or a decision being made right now, not a fact that could be written down (\\uc774\\ub807\\uac8c \\ud574\\ub3c4 \\ub418\\ub294 \\uac70\\uc8e0?, \\uc774\\uac70 \\uc5c6\\uc560\\ub3c4 \\ub418\\uc8e0?, ~\\ud558\\ub294 \\uac8c \\ub0ab\\uc9c0 \\uc54a\\uc744\\uae4c\\uc694?), worries or thinking aloud (~\\ud560\\uae4c \\ubd10, ~\\ud574\\uc57c \\ub418\\ub294 \\uac74\\uac00 \\uc2f6\\uace0), half-finished fragments, statements that ask nothing, or answers to someone else's question.\"}}, \"source\": {\"type\": \"choice\", \"instructions\": \"Where would the answer to the current utterance be found?\", \"criteria\": {\"code\": \"The answer lives in source code: behavior, conditions, limits, values, where it is implemented.\", \"docs\": \"The answer lives in written documents: decisions and their reasons, plans, specs, processes, conventions.\", \"none\": \"No lookup is needed.\"}}, \"end\": {\"type\": \"noul\", \"instructions\": \"Is the speaker ending this meeting now?\", \"criteria\": {\"true\": \"The speaker is closing this meeting right now: saying it is over, wrapping up, thanking everyone for their time, or saying goodbye to the group (\\uc624\\ub298\\uc740 \\uc5ec\\uae30\\uae4c\\uc9c0, \\ud68c\\uc758 \\ub9c8\\uce58\\uaca0\\uc2b5\\ub2c8\\ub2e4, \\uc218\\uace0\\ud558\\uc168\\uc2b5\\ub2c8\\ub2e4, \\ud68c\\uc758 \\uc885\\ub8cc).\", \"false\": \"The meeting goes on: ending a topic or a task, something ending later or in the past, planning the next meeting, a question, or any other talk.\"}}}}",
+    "headers": [
+     "Authorization",
+     "Content-Type"
+    ]
+   }
+  ],
+  "result": {
+   "p_lookup": 0.25,
+   "source": {
+    "code": 0.333333,
+    "docs": 0.333333,
+    "none": 0.333333
+   },
+   "p_end": 0.25,
+   "usage": {
+    "input_tokens": 1234,
+    "cost": 5.1828e-05
+   }
+  }
+ },
+ "rerank": {
+  "requests": [
+   {
+    "url": "https://api.typesafe.ai/v1/systemone",
+    "raw": "{\"model\": \"jev-latest\", \"state\": {\"recent_conversation\": \"(no earlier messages)\", \"current_message\": \"\\ub098: \\ud3ec\\ud2b8\", \"passages\": {\"p0\": \"p0 \\uae00\", \"p1\": \"p1 \\uae00\"}}, \"questions\": {\"p0\": {\"type\": \"noul\", \"instructions\": \"Does passage p0 answer what the current message asks (using the earlier messages for context), or show where it is decided?\", \"criteria\": {\"true\": \"Passage p0 contains the answer or the exact place it is decided.\", \"false\": \"Passage p0 is unrelated or only mentions the topic.\"}}, \"p1\": {\"type\": \"noul\", \"instructions\": \"Does passage p1 answer what the current message asks (using the earlier messages for context), or show where it is decided?\", \"criteria\": {\"true\": \"Passage p1 contains the answer or the exact place it is decided.\", \"false\": \"Passage p1 is unrelated or only mentions the topic.\"}}}}",
+    "headers": [
+     "Authorization",
+     "Content-Type"
+    ]
+   }
+  ],
+  "result": {
+   "p": [
+    0.25,
+    0.25
+   ],
+   "usage": {
+    "input_tokens": 1234,
+    "cost": 5.1828e-05
+   }
+  }
+ },
+ "decide_long": {
+  "requests": [
+   {
+    "url": "https://api.typesafe.ai/v1/systemone",
+    "raw": "{\"model\": \"jev-latest\", \"state\": {\"recent_conversation\": \"(start of meeting)\", \"current_utterance\": \"\\ub098: \\uae34 \\ubb38\\ub9e5\"}, \"questions\": {\"lookup\": {\"type\": \"noul\", \"instructions\": \"Is this long?\", \"criteria\": {\"true\": \"It is long.\", \"false\": \"It is short.\"}}}}",
+    "headers": [
+     "Authorization",
+     "Content-Type"
+    ]
+   },
+   {
+    "url": "https://api.typesafe.ai/v1/systemone",
+    "raw": "{\"model\": \"jev-latest\", \"state\": {\"recent_conversation\": \"(start of meeting)\", \"current_utterance\": \"\\ub098: \\uae34 \\ubb38\\ub9e5\"}, \"questions\": {\"lookup\": {\"type\": \"noul\", \"instructions\": \"Is this long?\", \"criteria\": {\"true\": \"It is long.\", \"false\": \"It is short.\"}}}}",
+    "headers": [
+     "Authorization",
+     "Content-Type",
+     "TypeSafe-Danger-Zone-Long-Context"
+    ]
+   }
+  ],
+  "result": {
+   "answers": {
+    "lookup": {
+     "noul": 0.25
+    }
+   },
+   "usage": {
+    "input_tokens": 1234,
+    "cost": 5.1828e-05
+   }
+  }
+ }
+}

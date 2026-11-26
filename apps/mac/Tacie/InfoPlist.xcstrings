@@ -1,0 +1,73 @@
+{
+  "sourceLanguage": "ko",
+  "version": "1.0",
+  "strings": {
+    "CFBundleDisplayName": {
+      "shouldTranslate": false
+    },
+    "NSCalendarsFullAccessUsageDescription": {
+      "localizations": {
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "회의를 시작할 때 지금 열리는 일정의 제목과 초대된 사람 이름을 채우려고 캘린더를 읽어요."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tacie reads your calendar to fill in the meeting title and the names of its invitees."
+          }
+        }
+      }
+    },
+    "NSMicrophoneUsageDescription": {
+      "localizations": {
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "회의 중 질문을 알아듣고 근거 파일을 찾기 위해 마이크를 써요."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tacie uses the microphone to catch questions during meetings and find their sources."
+          }
+        }
+      }
+    },
+    "NSAppleEventsUsageDescription": {
+      "localizations": {
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "회의를 듣는 동안 재생 중인 Music·Spotify를 멈췄다가 회의가 끝나면 다시 틀어요."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tacie pauses Music or Spotify while it listens to a meeting, and plays them again when it ends."
+          }
+        }
+      }
+    },
+    "NSAudioCaptureUsageDescription": {
+      "localizations": {
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "원격 회의에서 상대가 하는 말을 받아쓰려고 회의 앱 소리를 들어요. 화면은 보지 않아요."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tacie listens to meeting app audio to transcribe what others say in remote meetings. It doesn't capture your screen."
+          }
+        }
+      }
+    }
+  }
+}

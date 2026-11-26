@@ -1,0 +1,17 @@
+[package]
+name = "tacie-index"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+tacie-embed = { path = "../tacie-embed" }
+rusqlite = { version = "0.41", features = ["bundled"] }
+sha2 = "0.10"
+hex = "0.4"
+
+[dev-dependencies]
+crc32fast = "1"
+tempfile = "3"

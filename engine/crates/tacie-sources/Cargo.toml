@@ -1,0 +1,47 @@
+[package]
+name = "tacie-sources"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+# Exposes the test fakes (FakeGitHub, FakeSlack). This crate's own tests always turn it on through the dev-dependency below.
+testing = []
+
+[dependencies]
+anyhow = "1"
+# Blob replies (base64 JSON) of the fake GitHub (`testing`).
+base64 = "0.22"
+# Line hashes for content-defined chunk boundaries (Python `hashlib.blake2b(digest_size=8)`).
+blake2 = "0.10"
+# Unpacks tarballs (gzip). The fake GitHub makes its tarballs with the same crate.
+flate2 = "1"
+# Times (the ISO text of Python `time.strftime`/`datetime.strptime`). No time zone database.
+chrono = { version = "0.4", default-features = false, features = ["now"] }
+# Query values in GitHub REST URLs (a crate reqwest's url already uses).
+form_urlencoded = "1"
+hex = "0.4"
+# The named reference table of Python `html.unescape` (Slack text). slack.rs follows Python for the other rules.
+htmlize = { version = "1.1", features = ["unescape"] }
+# Encodes path segments (branch names) in GitHub REST URLs.
+percent-encoding = "2"
+regex = "1"
+# Text of Word, PowerPoint and Excel files (extract.rs), without running another program.
+office_oxide = { version = "0.1.17", default-features = false }
+# Text of PDF files (extract.rs). Of the crates compared, only this one kept Korean word spacing.
+pdf_oxide = { version = "0.3.78", default-features = false }
+# The Slack Web API (Python `requests`). The refresh thread is a std thread, so it uses blocking.
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls", "system-proxy"] }
+rustix = { version = "1", features = ["fs"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+# git blob SHAs (`sha1("blob {len}\0" + bytes)`).
+sha1 = "0.10"
+sha2 = "0.10"
+tacie-index = { path = "../tacie-index" }
+# Reads tarball entries (without unpacking to disk).
+tar = { version = "0.4", default-features = false }
+wait-timeout = "0.2"
+
+[dev-dependencies]
+tacie-sources = { path = ".", features = ["testing"] }
+tempfile = "3"

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- The DMG window's background (640 × 400 points), "불빛 길" (2026-10-26, issue #8): white paper turning faintly
+     grey toward the foot, four warm lights brightening from the app toward 응용 프로그램, the guidance in Korean with English under it
+     (2026-11-01).
+     The lights are the only warmth, as on the island. render-background.mjs renders it at 1× and 2× into
+     background.tiff. Finder draws the two icons and their names on top: the app at (180, 196), 응용 프로그램
+     at (460, 196), 128 pt icons; nothing here sits under them. -->
+<style>
+  :root { --ink3: rgba(11, 11, 12, .58); --light: #ffc654; --light-core: #fff6d8;
+    --ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Apple SD Gothic Neo", sans-serif; }
+  html, body { margin: 0; width: 640px; height: 400px; overflow: hidden; }
+  body { position: relative; font-family: var(--ui); background: linear-gradient(#ffffff 0%, #ffffff 45%, #f5f5f3 100%); }
+  .trail { position: absolute; left: 320px; top: 196px; translate: -50% -50%; display: flex; gap: 12px; align-items: center; }
+  .dot { width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle closest-side, var(--light-core) 0, var(--light) 18%, var(--light) 26%, transparent 28%),
+                radial-gradient(circle closest-side, rgb(255 198 84 / .7) 0, rgb(255 198 84 / .3) 45%, rgb(255 198 84 / 0) 100%); }
+  .copy { position: absolute; left: 0; right: 0; top: 326px; margin: 0; text-align: center; font-size: 13px; font-weight: 500; letter-spacing: -.01em; color: var(--ink3); line-height: 1.5; }
+  .copy span { display: block; font-size: 12px; font-weight: 400; letter-spacing: 0; }
+</style>
+</head>
+<body>
+  <div class="trail"><span class="dot" style="opacity:.35"></span><span class="dot" style="opacity:.6"></span><span class="dot" style="opacity:.85"></span><span class="dot"></span></div>
+  <p class="copy">Tacie를 응용 프로그램 폴더로 끌어 놓으세요<span lang="en">Drag Tacie into the Applications folder</span></p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- the hardened runtime blocks the microphone unless the app asks for it here (the TCC prompt still asks the user) -->
+	<key>com.apple.security.device.audio-input</key>
+	<true/>
+	<!-- the hardened runtime blocks calendar reads unless asked for here (docs/35 3-2; the TCC prompt still asks) -->
+	<key>com.apple.security.personal-information.calendars</key>
+	<true/>
+	<!-- Pause music sends Apple events to Music and Spotify (docs/35 6-2); macOS asks once per app -->
+	<key>com.apple.security.automation.apple-events</key>
+	<true/>
+</dict>
+</plist>

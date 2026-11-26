@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# pull requests from forks get no secrets (never pull_request_target)
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      # the app needs Xcode 26 (macOS 26 SDK); pick the newest one the runner has
+      - name: Xcode
+        run: |
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_26*.app | sort -V | tail -1)"
+          xcodebuild -version
+      - name: Tools
+        run: |
+          brew install xcodegen cmake
+          xcodebuild -downloadComponent MetalToolchain
+          rustup show
+      # the engine's dependencies and build output (debug for its tests, release for the app) carry over between runs;
+      # without it each run compiled everything twice from scratch (about 30 minutes on the macOS runner, 2026-11-26)
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: engine -> target
+          cache-on-failure: true
+      - name: Engine tests
+        working-directory: engine
+        run: cargo test --workspace
+      # the app's tests need the app's code built, not its engine: the release engine build is left out here (it took
+      # about 16 minutes on the macOS runner); the engine is tested above
+      - name: App build (open-source edition, without the engine)
+        working-directory: apps/mac
+        env:
+          TACIE_SKIP_ENGINE: "1"
+        run: ./scripts/build.sh
+      - name: App tests
+        working-directory: apps/mac
+        env:
+          TACIE_SKIP_ENGINE: "1"
+        run: ./scripts/test.sh

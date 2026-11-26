@@ -1,0 +1,9 @@
+{
+ "repo": "",
+ "commit": "sample",
+ "scope": "sample",
+ "embed": {
+  "model": "BAAI/bge-m3",
+  "tokens": 512
+ }
+}

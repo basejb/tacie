@@ -1,0 +1,18 @@
+[
+ {"id": 3001, "pull_request_url": "https://api.github.com/repos/o/n/pulls/2", "user": {"login": "mina-k", "type": "User"},
+  "path": "apps/web/src/mail/Tab.tsx", "line": 12, "original_line": 12,
+  "created_at": "2026-10-05T10:00:00Z", "updated_at": "2026-10-05T10:00:00Z",
+  "body": "여기서 토큰을 다시 읽어요?", "html_url": "https://github.com/o/n/pull/2#discussion_r3001"},
+ {"id": 3002, "pull_request_url": "https://api.github.com/repos/o/n/pulls/2", "user": {"login": "jun-h", "type": "User"},
+  "path": "apps/web/src/mail/Tab.tsx", "line": null, "original_line": 9,
+  "created_at": "2026-10-05T11:00:00Z", "updated_at": "2026-10-05T11:00:00Z",
+  "body": "네, 만료되면요.", "html_url": "https://github.com/o/n/pull/2#discussion_r3002"},
+ {"id": 3003, "pull_request_url": "https://api.github.com/repos/o/n/pulls/2", "user": {"login": "copilot[bot]", "type": "Bot"},
+  "path": "apps/web/src/mail/Tab.tsx", "line": 3, "original_line": 3,
+  "created_at": "2026-10-05T10:30:00Z", "updated_at": "2026-10-05T10:30:00Z",
+  "body": "Consider a constant here.", "html_url": "https://github.com/o/n/pull/2#discussion_r3003"},
+ {"id": 3004, "pull_request_url": "https://api.github.com/repos/o/n/pulls/5", "user": {"login": "sora-p", "type": "User"},
+  "path": "apps/api/src/pay/retry.ts", "line": null, "original_line": null,
+  "created_at": "2026-10-10T07:00:00Z", "updated_at": "2026-10-10T07:00:00Z",
+  "body": "기본값은 3이에요?", "html_url": "https://github.com/o/n/pull/5#discussion_r3004"}
+]

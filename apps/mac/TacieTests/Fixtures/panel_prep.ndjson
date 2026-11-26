@@ -1,0 +1,5 @@
+{"step":"meetings","ids":["m1","m2"]}
+{"step":"related","ids":["m0"]}
+{"step":"sources","count":3}
+{"step":"writing"}
+{"done":{"advice":"가격 결정부터 이야기하세요.","open":[{"meeting_id":"m1","index":2,"kind":"open_question","text":"가격은 어떻게 할까요","owner":null,"due":null,"also":["m2"]}],"todos":[{"meeting_id":"m2","index":0,"kind":"commitment","text":"견적서 보내기","owner":"화자 1","due":"금요일까지"}],"sources":[{"id":"c1","path":"docs/price.md","kind":"docs","source":"repo","byline":null,"url":null,"line_start":1,"line_end":5,"title":"가격 정책","snippet":"…","score":0.91,"github_url":null,"local_path":null,"chunk":7}],"meetings_read":3,"sources_read":3,"cost":0.01}}

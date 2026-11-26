@@ -1,0 +1,13 @@
+[env]
+# mlx-sys writes MLX's GPU kernels (mlx.metallib) here instead of ~/.mlx/lib/<hash>. The engine finds them through
+# this baked path when run from target/, and in the app at Contents/Resources/mlx.metallib
+# (apps/mac/scripts/build-engine.sh copies it there; tacie-embed gpu points MLX at it).
+MLX_RS_METAL_PATH = { value = "target/mlx", relative = true }
+# The app runs on macOS 14 (apps/mac project.yml). Without this, C/C++ build scripts (whisper.cpp's ggml through
+# cmake, MLX) target the SDK's own version (26.x) and the engine fails to load on older macOS. Terminal and Xcode
+# builds read the same value (build-engine.sh runs cargo under env -i, so Xcode's own value never reaches cargo).
+MACOSX_DEPLOYMENT_TARGET = "14.0"
+# ggml (whisper.cpp) builds with -mcpu=native unless SOURCE_DATE_EPOCH is set (ggml/CMakeLists.txt: GGML_NATIVE
+# defaults OFF for reproducible builds). A native build on an M2+ Mac emits i8mm instructions that crash an M1.
+# whisper-rs-sys forwards only WHISPER_*/CMAKE_* variables, so GGML_NATIVE itself cannot be set from here.
+SOURCE_DATE_EPOCH = "0"

@@ -1,0 +1,1805 @@
+//! Tensor positions in the bge-m3 ONNX `model.onnx_data`: (HF name, byte offset, shape). Written by
+//! `eval/gpu_layout.py`. Do not edit. Linear weights stay as in ONNX, [in, out].
+
+/// `model.onnx_data`의 크기예요. 다르면 다른 파일이라 GPU로 올리지 않아요.
+pub const DATA_BYTES: u64 = 2266820608;
+
+pub const TENSORS: [(&str, u64, &[i32]); 389] = [
+    ("embeddings.word_embeddings.weight", 0, &[250002, 1024]),
+    (
+        "embeddings.position_embeddings.weight",
+        1024008192,
+        &[8194, 1024],
+    ),
+    (
+        "embeddings.token_type_embeddings.weight",
+        1057570816,
+        &[1, 1024],
+    ),
+    ("embeddings.LayerNorm.weight", 1057574912, &[1024]),
+    ("embeddings.LayerNorm.bias", 1057579008, &[1024]),
+    (
+        "encoder.layer.0.attention.self.query.bias",
+        1057583104,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.attention.self.key.bias",
+        1057587200,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.attention.self.value.bias",
+        1057591296,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.attention.output.dense.bias",
+        1057595392,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.attention.output.LayerNorm.weight",
+        1057599488,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.attention.output.LayerNorm.bias",
+        1057603584,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.intermediate.dense.bias",
+        1057607680,
+        &[4096],
+    ),
+    ("encoder.layer.0.output.dense.bias", 1057624064, &[1024]),
+    (
+        "encoder.layer.0.output.LayerNorm.weight",
+        1057628160,
+        &[1024],
+    ),
+    ("encoder.layer.0.output.LayerNorm.bias", 1057632256, &[1024]),
+    (
+        "encoder.layer.1.attention.self.query.bias",
+        1057636352,
+        &[1024],
+    ),
+    (
+        "encoder.layer.1.attention.self.key.bias",
+        1057640448,
+        &[1024],
+    ),
+    (
+        "encoder.layer.1.attention.self.value.bias",
+        1057644544,
+        &[1024],
+    ),
+    (
+        "encoder.layer.1.attention.output.dense.bias",
+        1057648640,
+        &[1024],
+    ),
+    (
+        "encoder.layer.1.attention.output.LayerNorm.weight",
+        1057652736,
+        &[1024],
+    ),
+    (
+        "encoder.layer.1.attention.output.LayerNorm.bias",
+        1057656832,
+        &[1024],
+    ),
+    (
+        "encoder.layer.1.intermediate.dense.bias",
+        1057660928,
+        &[4096],
+    ),
+    ("encoder.layer.1.output.dense.bias", 1057677312, &[1024]),
+    (
+        "encoder.layer.1.output.LayerNorm.weight",
+        1057681408,
+        &[1024],
+    ),
+    ("encoder.layer.1.output.LayerNorm.bias", 1057685504, &[1024]),
+    (
+        "encoder.layer.2.attention.self.query.bias",
+        1057689600,
+        &[1024],
+    ),
+    (
+        "encoder.layer.2.attention.self.key.bias",
+        1057693696,
+        &[1024],
+    ),
+    (
+        "encoder.layer.2.attention.self.value.bias",
+        1057697792,
+        &[1024],
+    ),
+    (
+        "encoder.layer.2.attention.output.dense.bias",
+        1057701888,
+        &[1024],
+    ),
+    (
+        "encoder.layer.2.attention.output.LayerNorm.weight",
+        1057705984,
+        &[1024],
+    ),
+    (
+        "encoder.layer.2.attention.output.LayerNorm.bias",
+        1057710080,
+        &[1024],
+    ),
+    (
+        "encoder.layer.2.intermediate.dense.bias",
+        1057714176,
+        &[4096],
+    ),
+    ("encoder.layer.2.output.dense.bias", 1057730560, &[1024]),
+    (
+        "encoder.layer.2.output.LayerNorm.weight",
+        1057734656,
+        &[1024],
+    ),
+    ("encoder.layer.2.output.LayerNorm.bias", 1057738752, &[1024]),
+    (
+        "encoder.layer.3.attention.self.query.bias",
+        1057742848,
+        &[1024],
+    ),
+    (
+        "encoder.layer.3.attention.self.key.bias",
+        1057746944,
+        &[1024],
+    ),
+    (
+        "encoder.layer.3.attention.self.value.bias",
+        1057751040,
+        &[1024],
+    ),
+    (
+        "encoder.layer.3.attention.output.dense.bias",
+        1057755136,
+        &[1024],
+    ),
+    (
+        "encoder.layer.3.attention.output.LayerNorm.weight",
+        1057759232,
+        &[1024],
+    ),
+    (
+        "encoder.layer.3.attention.output.LayerNorm.bias",
+        1057763328,
+        &[1024],
+    ),
+    (
+        "encoder.layer.3.intermediate.dense.bias",
+        1057767424,
+        &[4096],
+    ),
+    ("encoder.layer.3.output.dense.bias", 1057783808, &[1024]),
+    (
+        "encoder.layer.3.output.LayerNorm.weight",
+        1057787904,
+        &[1024],
+    ),
+    ("encoder.layer.3.output.LayerNorm.bias", 1057792000, &[1024]),
+    (
+        "encoder.layer.4.attention.self.query.bias",
+        1057796096,
+        &[1024],
+    ),
+    (
+        "encoder.layer.4.attention.self.key.bias",
+        1057800192,
+        &[1024],
+    ),
+    (
+        "encoder.layer.4.attention.self.value.bias",
+        1057804288,
+        &[1024],
+    ),
+    (
+        "encoder.layer.4.attention.output.dense.bias",
+        1057808384,
+        &[1024],
+    ),
+    (
+        "encoder.layer.4.attention.output.LayerNorm.weight",
+        1057812480,
+        &[1024],
+    ),
+    (
+        "encoder.layer.4.attention.output.LayerNorm.bias",
+        1057816576,
+        &[1024],
+    ),
+    (
+        "encoder.layer.4.intermediate.dense.bias",
+        1057820672,
+        &[4096],
+    ),
+    ("encoder.layer.4.output.dense.bias", 1057837056, &[1024]),
+    (
+        "encoder.layer.4.output.LayerNorm.weight",
+        1057841152,
+        &[1024],
+    ),
+    ("encoder.layer.4.output.LayerNorm.bias", 1057845248, &[1024]),
+    (
+        "encoder.layer.5.attention.self.query.bias",
+        1057849344,
+        &[1024],
+    ),
+    (
+        "encoder.layer.5.attention.self.key.bias",
+        1057853440,
+        &[1024],
+    ),
+    (
+        "encoder.layer.5.attention.self.value.bias",
+        1057857536,
+        &[1024],
+    ),
+    (
+        "encoder.layer.5.attention.output.dense.bias",
+        1057861632,
+        &[1024],
+    ),
+    (
+        "encoder.layer.5.attention.output.LayerNorm.weight",
+        1057865728,
+        &[1024],
+    ),
+    (
+        "encoder.layer.5.attention.output.LayerNorm.bias",
+        1057869824,
+        &[1024],
+    ),
+    (
+        "encoder.layer.5.intermediate.dense.bias",
+        1057873920,
+        &[4096],
+    ),
+    ("encoder.layer.5.output.dense.bias", 1057890304, &[1024]),
+    (
+        "encoder.layer.5.output.LayerNorm.weight",
+        1057894400,
+        &[1024],
+    ),
+    ("encoder.layer.5.output.LayerNorm.bias", 1057898496, &[1024]),
+    (
+        "encoder.layer.6.attention.self.query.bias",
+        1057902592,
+        &[1024],
+    ),
+    (
+        "encoder.layer.6.attention.self.key.bias",
+        1057906688,
+        &[1024],
+    ),
+    (
+        "encoder.layer.6.attention.self.value.bias",
+        1057910784,
+        &[1024],
+    ),
+    (
+        "encoder.layer.6.attention.output.dense.bias",
+        1057914880,
+        &[1024],
+    ),
+    (
+        "encoder.layer.6.attention.output.LayerNorm.weight",
+        1057918976,
+        &[1024],
+    ),
+    (
+        "encoder.layer.6.attention.output.LayerNorm.bias",
+        1057923072,
+        &[1024],
+    ),
+    (
+        "encoder.layer.6.intermediate.dense.bias",
+        1057927168,
+        &[4096],
+    ),
+    ("encoder.layer.6.output.dense.bias", 1057943552, &[1024]),
+    (
+        "encoder.layer.6.output.LayerNorm.weight",
+        1057947648,
+        &[1024],
+    ),
+    ("encoder.layer.6.output.LayerNorm.bias", 1057951744, &[1024]),
+    (
+        "encoder.layer.7.attention.self.query.bias",
+        1057955840,
+        &[1024],
+    ),
+    (
+        "encoder.layer.7.attention.self.key.bias",
+        1057959936,
+        &[1024],
+    ),
+    (
+        "encoder.layer.7.attention.self.value.bias",
+        1057964032,
+        &[1024],
+    ),
+    (
+        "encoder.layer.7.attention.output.dense.bias",
+        1057968128,
+        &[1024],
+    ),
+    (
+        "encoder.layer.7.attention.output.LayerNorm.weight",
+        1057972224,
+        &[1024],
+    ),
+    (
+        "encoder.layer.7.attention.output.LayerNorm.bias",
+        1057976320,
+        &[1024],
+    ),
+    (
+        "encoder.layer.7.intermediate.dense.bias",
+        1057980416,
+        &[4096],
+    ),
+    ("encoder.layer.7.output.dense.bias", 1057996800, &[1024]),
+    (
+        "encoder.layer.7.output.LayerNorm.weight",
+        1058000896,
+        &[1024],
+    ),
+    ("encoder.layer.7.output.LayerNorm.bias", 1058004992, &[1024]),
+    (
+        "encoder.layer.8.attention.self.query.bias",
+        1058009088,
+        &[1024],
+    ),
+    (
+        "encoder.layer.8.attention.self.key.bias",
+        1058013184,
+        &[1024],
+    ),
+    (
+        "encoder.layer.8.attention.self.value.bias",
+        1058017280,
+        &[1024],
+    ),
+    (
+        "encoder.layer.8.attention.output.dense.bias",
+        1058021376,
+        &[1024],
+    ),
+    (
+        "encoder.layer.8.attention.output.LayerNorm.weight",
+        1058025472,
+        &[1024],
+    ),
+    (
+        "encoder.layer.8.attention.output.LayerNorm.bias",
+        1058029568,
+        &[1024],
+    ),
+    (
+        "encoder.layer.8.intermediate.dense.bias",
+        1058033664,
+        &[4096],
+    ),
+    ("encoder.layer.8.output.dense.bias", 1058050048, &[1024]),
+    (
+        "encoder.layer.8.output.LayerNorm.weight",
+        1058054144,
+        &[1024],
+    ),
+    ("encoder.layer.8.output.LayerNorm.bias", 1058058240, &[1024]),
+    (
+        "encoder.layer.9.attention.self.query.bias",
+        1058062336,
+        &[1024],
+    ),
+    (
+        "encoder.layer.9.attention.self.key.bias",
+        1058066432,
+        &[1024],
+    ),
+    (
+        "encoder.layer.9.attention.self.value.bias",
+        1058070528,
+        &[1024],
+    ),
+    (
+        "encoder.layer.9.attention.output.dense.bias",
+        1058074624,
+        &[1024],
+    ),
+    (
+        "encoder.layer.9.attention.output.LayerNorm.weight",
+        1058078720,
+        &[1024],
+    ),
+    (
+        "encoder.layer.9.attention.output.LayerNorm.bias",
+        1058082816,
+        &[1024],
+    ),
+    (
+        "encoder.layer.9.intermediate.dense.bias",
+        1058086912,
+        &[4096],
+    ),
+    ("encoder.layer.9.output.dense.bias", 1058103296, &[1024]),
+    (
+        "encoder.layer.9.output.LayerNorm.weight",
+        1058107392,
+        &[1024],
+    ),
+    ("encoder.layer.9.output.LayerNorm.bias", 1058111488, &[1024]),
+    (
+        "encoder.layer.10.attention.self.query.bias",
+        1058115584,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.attention.self.key.bias",
+        1058119680,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.attention.self.value.bias",
+        1058123776,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.attention.output.dense.bias",
+        1058127872,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.attention.output.LayerNorm.weight",
+        1058131968,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.attention.output.LayerNorm.bias",
+        1058136064,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.intermediate.dense.bias",
+        1058140160,
+        &[4096],
+    ),
+    ("encoder.layer.10.output.dense.bias", 1058156544, &[1024]),
+    (
+        "encoder.layer.10.output.LayerNorm.weight",
+        1058160640,
+        &[1024],
+    ),
+    (
+        "encoder.layer.10.output.LayerNorm.bias",
+        1058164736,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.attention.self.query.bias",
+        1058168832,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.attention.self.key.bias",
+        1058172928,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.attention.self.value.bias",
+        1058177024,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.attention.output.dense.bias",
+        1058181120,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.attention.output.LayerNorm.weight",
+        1058185216,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.attention.output.LayerNorm.bias",
+        1058189312,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.intermediate.dense.bias",
+        1058193408,
+        &[4096],
+    ),
+    ("encoder.layer.11.output.dense.bias", 1058209792, &[1024]),
+    (
+        "encoder.layer.11.output.LayerNorm.weight",
+        1058213888,
+        &[1024],
+    ),
+    (
+        "encoder.layer.11.output.LayerNorm.bias",
+        1058217984,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.attention.self.query.bias",
+        1058222080,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.attention.self.key.bias",
+        1058226176,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.attention.self.value.bias",
+        1058230272,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.attention.output.dense.bias",
+        1058234368,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.attention.output.LayerNorm.weight",
+        1058238464,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.attention.output.LayerNorm.bias",
+        1058242560,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.intermediate.dense.bias",
+        1058246656,
+        &[4096],
+    ),
+    ("encoder.layer.12.output.dense.bias", 1058263040, &[1024]),
+    (
+        "encoder.layer.12.output.LayerNorm.weight",
+        1058267136,
+        &[1024],
+    ),
+    (
+        "encoder.layer.12.output.LayerNorm.bias",
+        1058271232,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.attention.self.query.bias",
+        1058275328,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.attention.self.key.bias",
+        1058279424,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.attention.self.value.bias",
+        1058283520,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.attention.output.dense.bias",
+        1058287616,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.attention.output.LayerNorm.weight",
+        1058291712,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.attention.output.LayerNorm.bias",
+        1058295808,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.intermediate.dense.bias",
+        1058299904,
+        &[4096],
+    ),
+    ("encoder.layer.13.output.dense.bias", 1058316288, &[1024]),
+    (
+        "encoder.layer.13.output.LayerNorm.weight",
+        1058320384,
+        &[1024],
+    ),
+    (
+        "encoder.layer.13.output.LayerNorm.bias",
+        1058324480,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.attention.self.query.bias",
+        1058328576,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.attention.self.key.bias",
+        1058332672,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.attention.self.value.bias",
+        1058336768,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.attention.output.dense.bias",
+        1058340864,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.attention.output.LayerNorm.weight",
+        1058344960,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.attention.output.LayerNorm.bias",
+        1058349056,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.intermediate.dense.bias",
+        1058353152,
+        &[4096],
+    ),
+    ("encoder.layer.14.output.dense.bias", 1058369536, &[1024]),
+    (
+        "encoder.layer.14.output.LayerNorm.weight",
+        1058373632,
+        &[1024],
+    ),
+    (
+        "encoder.layer.14.output.LayerNorm.bias",
+        1058377728,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.attention.self.query.bias",
+        1058381824,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.attention.self.key.bias",
+        1058385920,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.attention.self.value.bias",
+        1058390016,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.attention.output.dense.bias",
+        1058394112,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.attention.output.LayerNorm.weight",
+        1058398208,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.attention.output.LayerNorm.bias",
+        1058402304,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.intermediate.dense.bias",
+        1058406400,
+        &[4096],
+    ),
+    ("encoder.layer.15.output.dense.bias", 1058422784, &[1024]),
+    (
+        "encoder.layer.15.output.LayerNorm.weight",
+        1058426880,
+        &[1024],
+    ),
+    (
+        "encoder.layer.15.output.LayerNorm.bias",
+        1058430976,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.attention.self.query.bias",
+        1058435072,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.attention.self.key.bias",
+        1058439168,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.attention.self.value.bias",
+        1058443264,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.attention.output.dense.bias",
+        1058447360,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.attention.output.LayerNorm.weight",
+        1058451456,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.attention.output.LayerNorm.bias",
+        1058455552,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.intermediate.dense.bias",
+        1058459648,
+        &[4096],
+    ),
+    ("encoder.layer.16.output.dense.bias", 1058476032, &[1024]),
+    (
+        "encoder.layer.16.output.LayerNorm.weight",
+        1058480128,
+        &[1024],
+    ),
+    (
+        "encoder.layer.16.output.LayerNorm.bias",
+        1058484224,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.attention.self.query.bias",
+        1058488320,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.attention.self.key.bias",
+        1058492416,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.attention.self.value.bias",
+        1058496512,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.attention.output.dense.bias",
+        1058500608,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.attention.output.LayerNorm.weight",
+        1058504704,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.attention.output.LayerNorm.bias",
+        1058508800,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.intermediate.dense.bias",
+        1058512896,
+        &[4096],
+    ),
+    ("encoder.layer.17.output.dense.bias", 1058529280, &[1024]),
+    (
+        "encoder.layer.17.output.LayerNorm.weight",
+        1058533376,
+        &[1024],
+    ),
+    (
+        "encoder.layer.17.output.LayerNorm.bias",
+        1058537472,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.attention.self.query.bias",
+        1058541568,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.attention.self.key.bias",
+        1058545664,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.attention.self.value.bias",
+        1058549760,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.attention.output.dense.bias",
+        1058553856,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.attention.output.LayerNorm.weight",
+        1058557952,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.attention.output.LayerNorm.bias",
+        1058562048,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.intermediate.dense.bias",
+        1058566144,
+        &[4096],
+    ),
+    ("encoder.layer.18.output.dense.bias", 1058582528, &[1024]),
+    (
+        "encoder.layer.18.output.LayerNorm.weight",
+        1058586624,
+        &[1024],
+    ),
+    (
+        "encoder.layer.18.output.LayerNorm.bias",
+        1058590720,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.attention.self.query.bias",
+        1058594816,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.attention.self.key.bias",
+        1058598912,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.attention.self.value.bias",
+        1058603008,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.attention.output.dense.bias",
+        1058607104,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.attention.output.LayerNorm.weight",
+        1058611200,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.attention.output.LayerNorm.bias",
+        1058615296,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.intermediate.dense.bias",
+        1058619392,
+        &[4096],
+    ),
+    ("encoder.layer.19.output.dense.bias", 1058635776, &[1024]),
+    (
+        "encoder.layer.19.output.LayerNorm.weight",
+        1058639872,
+        &[1024],
+    ),
+    (
+        "encoder.layer.19.output.LayerNorm.bias",
+        1058643968,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.attention.self.query.bias",
+        1058648064,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.attention.self.key.bias",
+        1058652160,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.attention.self.value.bias",
+        1058656256,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.attention.output.dense.bias",
+        1058660352,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.attention.output.LayerNorm.weight",
+        1058664448,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.attention.output.LayerNorm.bias",
+        1058668544,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.intermediate.dense.bias",
+        1058672640,
+        &[4096],
+    ),
+    ("encoder.layer.20.output.dense.bias", 1058689024, &[1024]),
+    (
+        "encoder.layer.20.output.LayerNorm.weight",
+        1058693120,
+        &[1024],
+    ),
+    (
+        "encoder.layer.20.output.LayerNorm.bias",
+        1058697216,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.attention.self.query.bias",
+        1058701312,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.attention.self.key.bias",
+        1058705408,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.attention.self.value.bias",
+        1058709504,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.attention.output.dense.bias",
+        1058713600,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.attention.output.LayerNorm.weight",
+        1058717696,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.attention.output.LayerNorm.bias",
+        1058721792,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.intermediate.dense.bias",
+        1058725888,
+        &[4096],
+    ),
+    ("encoder.layer.21.output.dense.bias", 1058742272, &[1024]),
+    (
+        "encoder.layer.21.output.LayerNorm.weight",
+        1058746368,
+        &[1024],
+    ),
+    (
+        "encoder.layer.21.output.LayerNorm.bias",
+        1058750464,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.attention.self.query.bias",
+        1058754560,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.attention.self.key.bias",
+        1058758656,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.attention.self.value.bias",
+        1058762752,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.attention.output.dense.bias",
+        1058766848,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.attention.output.LayerNorm.weight",
+        1058770944,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.attention.output.LayerNorm.bias",
+        1058775040,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.intermediate.dense.bias",
+        1058779136,
+        &[4096],
+    ),
+    ("encoder.layer.22.output.dense.bias", 1058795520, &[1024]),
+    (
+        "encoder.layer.22.output.LayerNorm.weight",
+        1058799616,
+        &[1024],
+    ),
+    (
+        "encoder.layer.22.output.LayerNorm.bias",
+        1058803712,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.attention.self.query.bias",
+        1058807808,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.attention.self.key.bias",
+        1058811904,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.attention.self.value.bias",
+        1058816000,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.attention.output.dense.bias",
+        1058820096,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.attention.output.LayerNorm.weight",
+        1058824192,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.attention.output.LayerNorm.bias",
+        1058828288,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.intermediate.dense.bias",
+        1058832384,
+        &[4096],
+    ),
+    ("encoder.layer.23.output.dense.bias", 1058848768, &[1024]),
+    (
+        "encoder.layer.23.output.LayerNorm.weight",
+        1058852864,
+        &[1024],
+    ),
+    (
+        "encoder.layer.23.output.LayerNorm.bias",
+        1058856960,
+        &[1024],
+    ),
+    (
+        "encoder.layer.0.attention.self.query.weight",
+        1058861056,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.0.attention.self.key.weight",
+        1063055360,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.0.attention.self.value.weight",
+        1067249664,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.0.attention.output.dense.weight",
+        1071443968,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.0.intermediate.dense.weight",
+        1075638272,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.0.output.dense.weight",
+        1092415488,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.1.attention.self.query.weight",
+        1109192704,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.1.attention.self.key.weight",
+        1113387008,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.1.attention.self.value.weight",
+        1117581312,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.1.attention.output.dense.weight",
+        1121775616,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.1.intermediate.dense.weight",
+        1125969920,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.1.output.dense.weight",
+        1142747136,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.2.attention.self.query.weight",
+        1159524352,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.2.attention.self.key.weight",
+        1163718656,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.2.attention.self.value.weight",
+        1167912960,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.2.attention.output.dense.weight",
+        1172107264,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.2.intermediate.dense.weight",
+        1176301568,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.2.output.dense.weight",
+        1193078784,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.3.attention.self.query.weight",
+        1209856000,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.3.attention.self.key.weight",
+        1214050304,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.3.attention.self.value.weight",
+        1218244608,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.3.attention.output.dense.weight",
+        1222438912,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.3.intermediate.dense.weight",
+        1226633216,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.3.output.dense.weight",
+        1243410432,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.4.attention.self.query.weight",
+        1260187648,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.4.attention.self.key.weight",
+        1264381952,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.4.attention.self.value.weight",
+        1268576256,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.4.attention.output.dense.weight",
+        1272770560,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.4.intermediate.dense.weight",
+        1276964864,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.4.output.dense.weight",
+        1293742080,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.5.attention.self.query.weight",
+        1310519296,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.5.attention.self.key.weight",
+        1314713600,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.5.attention.self.value.weight",
+        1318907904,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.5.attention.output.dense.weight",
+        1323102208,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.5.intermediate.dense.weight",
+        1327296512,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.5.output.dense.weight",
+        1344073728,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.6.attention.self.query.weight",
+        1360850944,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.6.attention.self.key.weight",
+        1365045248,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.6.attention.self.value.weight",
+        1369239552,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.6.attention.output.dense.weight",
+        1373433856,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.6.intermediate.dense.weight",
+        1377628160,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.6.output.dense.weight",
+        1394405376,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.7.attention.self.query.weight",
+        1411182592,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.7.attention.self.key.weight",
+        1415376896,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.7.attention.self.value.weight",
+        1419571200,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.7.attention.output.dense.weight",
+        1423765504,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.7.intermediate.dense.weight",
+        1427959808,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.7.output.dense.weight",
+        1444737024,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.8.attention.self.query.weight",
+        1461514240,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.8.attention.self.key.weight",
+        1465708544,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.8.attention.self.value.weight",
+        1469902848,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.8.attention.output.dense.weight",
+        1474097152,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.8.intermediate.dense.weight",
+        1478291456,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.8.output.dense.weight",
+        1495068672,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.9.attention.self.query.weight",
+        1511845888,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.9.attention.self.key.weight",
+        1516040192,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.9.attention.self.value.weight",
+        1520234496,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.9.attention.output.dense.weight",
+        1524428800,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.9.intermediate.dense.weight",
+        1528623104,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.9.output.dense.weight",
+        1545400320,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.10.attention.self.query.weight",
+        1562177536,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.10.attention.self.key.weight",
+        1566371840,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.10.attention.self.value.weight",
+        1570566144,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.10.attention.output.dense.weight",
+        1574760448,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.10.intermediate.dense.weight",
+        1578954752,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.10.output.dense.weight",
+        1595731968,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.11.attention.self.query.weight",
+        1612509184,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.11.attention.self.key.weight",
+        1616703488,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.11.attention.self.value.weight",
+        1620897792,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.11.attention.output.dense.weight",
+        1625092096,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.11.intermediate.dense.weight",
+        1629286400,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.11.output.dense.weight",
+        1646063616,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.12.attention.self.query.weight",
+        1662840832,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.12.attention.self.key.weight",
+        1667035136,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.12.attention.self.value.weight",
+        1671229440,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.12.attention.output.dense.weight",
+        1675423744,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.12.intermediate.dense.weight",
+        1679618048,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.12.output.dense.weight",
+        1696395264,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.13.attention.self.query.weight",
+        1713172480,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.13.attention.self.key.weight",
+        1717366784,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.13.attention.self.value.weight",
+        1721561088,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.13.attention.output.dense.weight",
+        1725755392,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.13.intermediate.dense.weight",
+        1729949696,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.13.output.dense.weight",
+        1746726912,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.14.attention.self.query.weight",
+        1763504128,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.14.attention.self.key.weight",
+        1767698432,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.14.attention.self.value.weight",
+        1771892736,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.14.attention.output.dense.weight",
+        1776087040,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.14.intermediate.dense.weight",
+        1780281344,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.14.output.dense.weight",
+        1797058560,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.15.attention.self.query.weight",
+        1813835776,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.15.attention.self.key.weight",
+        1818030080,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.15.attention.self.value.weight",
+        1822224384,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.15.attention.output.dense.weight",
+        1826418688,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.15.intermediate.dense.weight",
+        1830612992,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.15.output.dense.weight",
+        1847390208,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.16.attention.self.query.weight",
+        1864167424,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.16.attention.self.key.weight",
+        1868361728,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.16.attention.self.value.weight",
+        1872556032,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.16.attention.output.dense.weight",
+        1876750336,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.16.intermediate.dense.weight",
+        1880944640,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.16.output.dense.weight",
+        1897721856,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.17.attention.self.query.weight",
+        1914499072,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.17.attention.self.key.weight",
+        1918693376,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.17.attention.self.value.weight",
+        1922887680,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.17.attention.output.dense.weight",
+        1927081984,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.17.intermediate.dense.weight",
+        1931276288,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.17.output.dense.weight",
+        1948053504,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.18.attention.self.query.weight",
+        1964830720,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.18.attention.self.key.weight",
+        1969025024,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.18.attention.self.value.weight",
+        1973219328,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.18.attention.output.dense.weight",
+        1977413632,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.18.intermediate.dense.weight",
+        1981607936,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.18.output.dense.weight",
+        1998385152,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.19.attention.self.query.weight",
+        2015162368,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.19.attention.self.key.weight",
+        2019356672,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.19.attention.self.value.weight",
+        2023550976,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.19.attention.output.dense.weight",
+        2027745280,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.19.intermediate.dense.weight",
+        2031939584,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.19.output.dense.weight",
+        2048716800,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.20.attention.self.query.weight",
+        2065494016,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.20.attention.self.key.weight",
+        2069688320,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.20.attention.self.value.weight",
+        2073882624,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.20.attention.output.dense.weight",
+        2078076928,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.20.intermediate.dense.weight",
+        2082271232,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.20.output.dense.weight",
+        2099048448,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.21.attention.self.query.weight",
+        2115825664,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.21.attention.self.key.weight",
+        2120019968,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.21.attention.self.value.weight",
+        2124214272,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.21.attention.output.dense.weight",
+        2128408576,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.21.intermediate.dense.weight",
+        2132602880,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.21.output.dense.weight",
+        2149380096,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.22.attention.self.query.weight",
+        2166157312,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.22.attention.self.key.weight",
+        2170351616,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.22.attention.self.value.weight",
+        2174545920,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.22.attention.output.dense.weight",
+        2178740224,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.22.intermediate.dense.weight",
+        2182934528,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.22.output.dense.weight",
+        2199711744,
+        &[4096, 1024],
+    ),
+    (
+        "encoder.layer.23.attention.self.query.weight",
+        2216488960,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.23.attention.self.key.weight",
+        2220683264,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.23.attention.self.value.weight",
+        2224877568,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.23.attention.output.dense.weight",
+        2229071872,
+        &[1024, 1024],
+    ),
+    (
+        "encoder.layer.23.intermediate.dense.weight",
+        2233266176,
+        &[1024, 4096],
+    ),
+    (
+        "encoder.layer.23.output.dense.weight",
+        2250043392,
+        &[4096, 1024],
+    ),
+];

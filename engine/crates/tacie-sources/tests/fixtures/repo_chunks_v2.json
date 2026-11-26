@@ -1,0 +1,350 @@
+[
+ {
+  "src": "code",
+  "path": ".github/workflows/ci.yaml",
+  "line": 1,
+  "text": "file: .github/workflows/ci.yaml\nname: ci"
+ },
+ {
+  "src": "code",
+  "path": "app/App.swift",
+  "line": 1,
+  "text": "file: app/App.swift\nimport SwiftUI\n\nstruct App {}"
+ },
+ {
+  "src": "code",
+  "path": "drizzle/schema.ts",
+  "line": 1,
+  "text": "file: drizzle/schema.ts\n// drizzle/schema.ts is kept\nconst kept = 1;"
+ },
+ {
+  "src": "code",
+  "path": "engine/head_blank.rs",
+  "line": 1,
+  "text": "file: engine/head_blank.rs\nfn h0() {}\nfn h1() {}\nfn h2() {}\nfn h3() {}\nfn h4() {}\nfn h5() {}\nfn h6() {}"
+ },
+ {
+  "src": "code",
+  "path": "engine/head_blank.rs",
+  "line": 43,
+  "text": "file: engine/head_blank.rs\nfn h7() {}\nfn h8() {}\nfn h9() {}"
+ },
+ {
+  "src": "code",
+  "path": "infra/deploy.yml",
+  "line": 1,
+  "text": "file: infra/deploy.yml\non: push"
+ },
+ {
+  "src": "code",
+  "path": "infra/main.tf",
+  "line": 1,
+  "text": "file: infra/main.tf\nresource \"x\" \"y\" {}"
+ },
+ {
+  "src": "code",
+  "path": "src/app.ts",
+  "line": 1,
+  "text": "file: src/app.ts\nsymbols: nine, two, four, three, eight, five\nexport const v1 = 1;\nexport const v2 = 2;\nexport const v3 = 3;\nexport const v4 = 4;\nexport const v5 = 5;\nexport const v6 = 6;\nexport const v7 = 7;\nexport const v8 = 8;\nexport const v9 = 9;\nexport const v10 = 10;\nexport const v11 = 11;\nexport const v12 = 12;\nexport const v13 = 13;\nexport const v14 = 14;\nexport const v15 = 15;\nexport const v16 = 16;\nexport const v17 = 17;\nexport const v18 = 18;\nexport const v19 = 19;\nexport const v20 = 20;\nexport const v21 = 21;\nexport const v22 = 22;"
+ },
+ {
+  "src": "code",
+  "path": "src/app.ts",
+  "line": 23,
+  "text": "file: src/app.ts\nsymbols: thirty, thirty_one\nexport const v23 = 23;\nexport const v24 = 24;\nexport const v25 = 25;\nexport const v26 = 26;\nexport const v27 = 27;\nexport const v28 = 28;\nexport const v29 = 29;\nexport const v30 = 30;\nexport const v31 = 31;\nexport const v32 = 32;\nexport const v33 = 33;\nexport const v34 = 34;\nexport const v35 = 35;\nexport const v36 = 36;\nexport const v37 = 37;\nexport const v38 = 38;\nexport const v39 = 39;"
+ },
+ {
+  "src": "code",
+  "path": "src/app.ts",
+  "line": 40,
+  "text": "file: src/app.ts\nsymbols: forty, forty_one\nexport const v40 = 40;\nexport const v41 = 41;\nexport const v42 = 42;\nexport const v43 = 43;\nexport const v44 = 44;\nexport const v45 = 45;\nexport const v46 = 46;\nexport const v47 = 47;\nexport const v48 = 48;\nexport const v49 = 49;\nexport const v50 = 50;\nexport const v51 = 51;\nexport const v52 = 52;\nexport const v53 = 53;\nexport const v54 = 54;\nexport const v55 = 55;\nexport const v56 = 56;"
+ },
+ {
+  "src": "code",
+  "path": "src/app.ts",
+  "line": 57,
+  "text": "file: src/app.ts\nsymbols: seventy, seventy_one\nexport const v57 = 57;\nexport const v58 = 58;\nexport const v59 = 59;\nexport const v60 = 60;\nexport const v61 = 61;\nexport const v62 = 62;\nexport const v63 = 63;\nexport const v64 = 64;\nexport const v65 = 65;\nexport const v66 = 66;\nexport const v67 = 67;\nexport const v68 = 68;\nexport const v69 = 69;\nexport const v70 = 70;\nexport const v71 = 71;\nexport const v72 = 72;\nexport const v73 = 73;\nexport const v74 = 74;\nexport const v75 = 75;\nexport const v76 = 76;\nexport const v77 = 77;\nexport const v78 = 78;\nexport const v79 = 79;\nexport const v80 = 80;\nexport const v81 = 81;\nexport const v82 = 82;\nexport const v83 = 83;\nexport const v84 = 84;"
+ },
+ {
+  "src": "code",
+  "path": "src/app.ts",
+  "line": 85,
+  "text": "file: src/app.ts\nsymbols: last\nexport const v85 = 85;\nexport const v86 = 86;\nexport const v87 = 87;\nexport const v88 = 88;\nexport const v89 = 89;\nexport const v90 = 90;\nexport const v91 = 91;\nexport const v92 = 92;\nexport const v93 = 93;\nexport const v94 = 94;\nexport const v95 = 95;\nexport const v96 = 96;\nexport const v97 = 97;\nexport const v98 = 98;\nexport const v99 = 99;\nexport const v100 = 100;\nexport const v101 = 101;\nexport const v102 = 102;\nexport const v103 = 103;\nexport const v104 = 104;\nexport const v105 = 105;\nexport const v106 = 106;\nexport const v107 = 107;\nexport const v108 = 108;\nexport const v109 = 109;\nexport const v110 = 110;"
+ },
+ {
+  "src": "code",
+  "path": "src/graft/util.ts",
+  "line": 1,
+  "text": "file: src/graft/util.ts\n// src/graft/util.ts is kept\nconst kept = 1;"
+ },
+ {
+  "src": "code",
+  "path": "src/hundred.ts",
+  "line": 1,
+  "text": "file: src/hundred.ts\nlet h1 = 1\nlet h2 = 2\nlet h3 = 3\nlet h4 = 4\nlet h5 = 5\nlet h6 = 6\nlet h7 = 7\nlet h8 = 8\nlet h9 = 9\nlet h10 = 10\nlet h11 = 11\nlet h12 = 12\nlet h13 = 13\nlet h14 = 14\nlet h15 = 15\nlet h16 = 16\nlet h17 = 17\nlet h18 = 18\nlet h19 = 19\nlet h20 = 20\nlet h21 = 21\nlet h22 = 22\nlet h23 = 23\nlet h24 = 24\nlet h25 = 25\nlet h26 = 26"
+ },
+ {
+  "src": "code",
+  "path": "src/hundred.ts",
+  "line": 27,
+  "text": "file: src/hundred.ts\nlet h27 = 27\nlet h28 = 28\nlet h29 = 29\nlet h30 = 30\nlet h31 = 31\nlet h32 = 32\nlet h33 = 33\nlet h34 = 34\nlet h35 = 35\nlet h36 = 36\nlet h37 = 37\nlet h38 = 38\nlet h39 = 39\nlet h40 = 40\nlet h41 = 41\nlet h42 = 42"
+ },
+ {
+  "src": "code",
+  "path": "src/hundred.ts",
+  "line": 43,
+  "text": "file: src/hundred.ts\nlet h43 = 43\nlet h44 = 44\nlet h45 = 45\nlet h46 = 46\nlet h47 = 47\nlet h48 = 48\nlet h49 = 49\nlet h50 = 50\nlet h51 = 51\nlet h52 = 52\nlet h53 = 53\nlet h54 = 54\nlet h55 = 55\nlet h56 = 56"
+ },
+ {
+  "src": "code",
+  "path": "src/hundred.ts",
+  "line": 57,
+  "text": "file: src/hundred.ts\nlet h57 = 57\nlet h58 = 58\nlet h59 = 59\nlet h60 = 60\nlet h61 = 61\nlet h62 = 62\nlet h63 = 63\nlet h64 = 64\nlet h65 = 65\nlet h66 = 66\nlet h67 = 67\nlet h68 = 68\nlet h69 = 69\nlet h70 = 70\nlet h71 = 71\nlet h72 = 72\nlet h73 = 73\nlet h74 = 74\nlet h75 = 75\nlet h76 = 76\nlet h77 = 77\nlet h78 = 78\nlet h79 = 79\nlet h80 = 80\nlet h81 = 81\nlet h82 = 82\nlet h83 = 83"
+ },
+ {
+  "src": "code",
+  "path": "src/hundred.ts",
+  "line": 84,
+  "text": "file: src/hundred.ts\nsymbols: hundredth\nlet h84 = 84\nlet h85 = 85\nlet h86 = 86\nlet h87 = 87\nlet h88 = 88\nlet h89 = 89\nlet h90 = 90\nlet h91 = 91\nlet h92 = 92\nlet h93 = 93\nlet h94 = 94\nlet h95 = 95\nlet h96 = 96\nlet h97 = 97\nlet h98 = 98\nlet h99 = 99\nlet h100 = 100"
+ },
+ {
+  "src": "code",
+  "path": "src/long.js",
+  "line": 1,
+  "text": "file: src/long.js\nsymbols: long_line\n가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마"
+ },
+ {
+  "src": "code",
+  "path": "src/mod.mjs",
+  "line": 1,
+  "text": "file: src/mod.mjs\nexport default 1;"
+ },
+ {
+  "src": "code",
+  "path": "src/skipped.ts",
+  "line": 1,
+  "text": "file: src/skipped.ts\nexport function s1() {}\nexport function s2() {}\nexport function s3() {}\nexport function s4() {}\nexport function s5() {}\nexport function s6() {}\nexport function s7() {}\nexport function s8() {}\nexport function s9() {}\nexport function s10() {}\nexport function s11() {}\nexport function s12() {}\nexport function s13() {}\nexport function s14() {}\nexport function s15() {}\nexport function s16() {}\nexport function s17() {}\nexport function s18() {}\nexport function s19() {}\nexport function s20() {}"
+ },
+ {
+  "src": "code",
+  "path": "src/skipped.ts",
+  "line": 21,
+  "text": "file: src/skipped.ts\nexport function s21() {}\nexport function s22() {}\nexport function s23() {}\nexport function s24() {}\nexport function s25() {}\nexport function s26() {}\nexport function s27() {}\nexport function s28() {}\nexport function s29() {}\nexport function s30() {}\nexport function s31() {}\nexport function s32() {}\nexport function s33() {}\nexport function s34() {}\nexport function s35() {}\nexport function s36() {}\nexport function s37() {}\nexport function s38() {}\nexport function s39() {}\nexport function s40() {}\nexport function s41() {}"
+ },
+ {
+  "src": "code",
+  "path": "src/skipped.ts",
+  "line": 42,
+  "text": "file: src/skipped.ts\nexport function s42() {}\nexport function s43() {}\nexport function s44() {}\nexport function s45() {}\nexport function s46() {}\nexport function s47() {}\nexport function s48() {}\nexport function s49() {}\nexport function s50() {}"
+ },
+ {
+  "src": "code",
+  "path": "src/style.css",
+  "line": 1,
+  "text": "file: src/style.css\n.a {\n  color: red;\n}"
+ },
+ {
+  "src": "code",
+  "path": "src/tail_blank.ts",
+  "line": 1,
+  "text": "file: src/tail_blank.ts\nt0();\nt1();\nt2();\nt3();\nt4();\nt5();\nt6();\nt7();\nt8();\nt9();"
+ },
+ {
+  "src": "code",
+  "path": "src/testing.ts",
+  "line": 1,
+  "text": "file: src/testing.ts\n// src/testing.ts is kept\nconst kept = 1;"
+ },
+ {
+  "src": "code",
+  "path": "src/view.d.tsx",
+  "line": 1,
+  "text": "file: src/view.d.tsx\n// src/view.d.tsx is kept\nconst kept = 1;"
+ },
+ {
+  "src": "code",
+  "path": "src/한글 폴더/모듈 이름.py",
+  "line": 1,
+  "text": "file: src/한글 폴더/모듈 이름.py\nsymbols: 한글_함수\n﻿# 모듈: BOM은 공백이 아니에요\nimport os\nbroken  byte ( here  end\nsurrogate  gone, overlong  too\n\t\"quoted\" back\\slash \u0001ctl del\u0000nul tab\tin\n  \u001f  　\nx6 = '한글 6'\nx7 = '한글 7'\nx8 = '한글 8'\nx9 = '한글 9'\nx10 = '한글 10'\nx11 = '한글 11'\nx12 = '한글 12'"
+ },
+ {
+  "src": "code",
+  "path": "src/한글 폴더/모듈 이름.py",
+  "line": 14,
+  "text": "file: src/한글 폴더/모듈 이름.py\nx13 = '한글 13'\nx14 = '한글 14'\nx15 = '한글 15'\nx16 = '한글 16'\nx17 = '한글 17'\nx18 = '한글 18'\nx19 = '한글 19'\nx20 = '한글 20'\nx21 = '한글 21'\nx22 = '한글 22'\nx23 = '한글 23'\nx24 = '한글 24'\nx25 = '한글 25'\nx26 = '한글 26'\nx27 = '한글 27'\nx28 = '한글 28'\nx29 = '한글 29'\n\u001f　 starts_with_unit_separator = 30\nx31 = '한글 31'\nx32 = '한글 32'"
+ },
+ {
+  "src": "code",
+  "path": "src/한글 폴더/모듈 이름.py",
+  "line": 34,
+  "text": "file: src/한글 폴더/모듈 이름.py\nx33 = '한글 33'\nx34 = '한글 34'\nx35 = '한글 35'\nx36 = '한글 36'\nx37 = '한글 37'\nx38 = '한글 38'\nx39 = '한글 39'\nx40 = '한글 40'\nx41 = '한글 41'\nx42 = '한글 42'\nx43 = '한글 43'\nx44 = '한글 44'\ncr then junk\nafter junk\nx46 = '한글 46'\nx47 = '한글 47'\nx48 = '한글 48'\nx49 = '한글 49'"
+ },
+ {
+  "src": "code",
+  "path": "src/한글 폴더/모듈 이름.py",
+  "line": 52,
+  "text": "file: src/한글 폴더/모듈 이름.py\nx50 = '한글 50'\nx51 = '한글 51'\nx52 = '한글 52'\nx53 = '한글 53'\nx54 = '한글 54'\nx55 = '한글 55'\nx56 = '한글 56'\nx57 = '한글 57'\nx58 = '한글 58'\nx59 = '한글 59'\n\u001f\u001f   sixty = 60  \u001f\nx61 = '한글 61'\nx62 = '한글 62'\nx63 = '한글 63'\nx64 = '한글 64'\nx65 = '한글 65'\nx66 = '한글 66'\nx67 = '한글 67'\nx68 = '한글 68'\nx69 = '한글 69'\nx70 = '한글 70'\nx71 = '한글 71'\nx72 = '한글 72'\nx73 = '한글 73'"
+ },
+ {
+  "src": "code",
+  "path": "src/한글 폴더/모듈 이름.py",
+  "line": 76,
+  "text": "file: src/한글 폴더/모듈 이름.py\nx74 = '한글 74'"
+ },
+ {
+  "src": "code",
+  "path": "apps/desktop/src-tauri/b.json",
+  "line": 1,
+  "text": "file: apps/desktop/src-tauri/b.json\n{\n  \"window\": \"메인\"\n}"
+ },
+ {
+  "src": "code",
+  "path": "infra/a.json",
+  "line": 1,
+  "text": "file: infra/a.json\n{\n  \"k0\": 0,\n  \"k1\": 1,\n  \"k2\": 2,\n  \"k3\": 3,\n  \"k4\": 4,\n  \"k5\": 5,\n  \"k6\": 6,\n  \"k7\": 7,\n  \"k8\": 8,\n  \"k9\": 9,\n  \"k10\": 10,\n  \"k11\": 11,"
+ },
+ {
+  "src": "code",
+  "path": "infra/a.json",
+  "line": 14,
+  "text": "file: infra/a.json\n\"k12\": 12,\n  \"k13\": 13,\n  \"k14\": 14,\n  \"k15\": 15,\n  \"k16\": 16,\n  \"k17\": 17,\n  \"k18\": 18,\n  \"k19\": 19,\n  \"k20\": 20,\n  \"k21\": 21,\n  \"k22\": 22,\n  \"k23\": 23,\n  \"k24\": 24,"
+ },
+ {
+  "src": "code",
+  "path": "infra/a.json",
+  "line": 27,
+  "text": "file: infra/a.json\n\"k25\": 25,\n  \"k26\": 26,\n  \"k27\": 27,\n  \"k28\": 28,\n  \"k29\": 29,\n  \"k30\": 30,\n  \"k31\": 31,\n  \"k32\": 32,\n  \"k33\": 33,\n  \"k34\": 34,\n  \"k35\": 35,\n  \"k36\": 36,\n  \"k37\": 37,\n  \"k38\": 38,\n  \"k39\": 39,\n  \"k40\": 40,\n  \"k41\": 41,\n  \"k42\": 42,\n  \"k43\": 43,\n  \"k44\": 44,\n  \"k45\": 45,"
+ },
+ {
+  "src": "code",
+  "path": "infra/a.json",
+  "line": 48,
+  "text": "file: infra/a.json\n\"k46\": 46,\n  \"k47\": 47,\n  \"k48\": 48,\n  \"k49\": 49,\n  \"k50\": 50,\n  \"k51\": 51,\n  \"k52\": 52,\n  \"k53\": 53,\n  \"k54\": 54,\n  \"k55\": 55,\n  \"k56\": 56,\n  \"k57\": 57,\n  \"k58\": 58,\n  \"k59\": 59,\n  \"k60\": 60,\n  \"k61\": 61,\n  \"k62\": 62,\n  \"k63\": 63,\n  \"k64\": 64,\n  \"k65\": 65,"
+ },
+ {
+  "src": "code",
+  "path": "infra/a.json",
+  "line": 68,
+  "text": "file: infra/a.json\n\"k66\": 66,\n  \"k67\": 67,\n}"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 1,
+  "text": "doc: README.md\nsection: \nIntro before any heading.\nMore intro."
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 4,
+  "text": "doc: README.md\nsection: Title\n# Title\npara"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 6,
+  "text": "doc: README.md\nsection: Title > Section A\n## Section A  \ntext a"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 8,
+  "text": "doc: README.md\nsection: Title > Section A > Sub A1\n### Sub A1\ntext a1"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 10,
+  "text": "doc: README.md\nsection: Title > Section A > Sub A1 > Deep\n#### Deep\ntext deep\n##### Five is not a heading\nstill deep\n####NoSpace is not a heading\n  # indented is not a heading"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 16,
+  "text": "doc: README.md\nsection: Unit separator heading\n#\u001fUnit separator heading\nunder unit separator"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 18,
+  "text": "doc: README.md\nsection: 전각 공백 제목\n#　전각 공백 제목\n전각 아래"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 20,
+  "text": "doc: README.md\nsection: tab heading\n#\ttab heading\nunder tab"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 22,
+  "text": "doc: README.md\nsection: tab heading > \n## \nunder an empty title"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 24,
+  "text": "doc: README.md\nsection: Second top\n# Second top"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 25,
+  "text": "doc: README.md\nsection: Second top > Skipped level\n### Skipped level\nunder skipped level"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 27,
+  "text": "doc: README.md\nsection: Second top > Long section\n## Long section\nlong line 1\nlong line 2\nlong line 3\nlong line 4\nlong line 5\nlong line 6\nlong line 7\nlong line 8\nlong line 9\nlong line 10\nlong line 11\nlong line 12\nlong line 13\nlong line 14\nlong line 15\nlong line 16\nlong line 17\nlong line 18\nlong line 19\nlong line 20\nlong line 21\nlong line 22\nlong line 23\nlong line 24\nlong line 25\nlong line 26\nlong line 27\nlong line 28\nlong line 29\nlong line 30\nlong line 31\nlong line 32\nlong line 33\nlong line 34\nlong line 35\nlong line 36\nlong line 37\nlong line 38\nlong line 39\nlong line 40\nlong line 41\nlong line 42\nlong line 43\nlong line 44\nlong line 45"
+ },
+ {
+  "src": "docs",
+  "path": "README.md",
+  "line": 73,
+  "text": "doc: README.md\nsection: Second top > Long section > After long\n### After long\nend"
+ },
+ {
+  "src": "docs",
+  "path": "docs/bom.md",
+  "line": 1,
+  "text": "doc: docs/bom.md\nsection: \n﻿# BOM 때문에 머리가 아니에요\n본문"
+ },
+ {
+  "src": "docs",
+  "path": "docs/bom.md",
+  "line": 3,
+  "text": "doc: docs/bom.md\nsection: 진짜 머리\n## 진짜 머리\n아래"
+ },
+ {
+  "src": "docs",
+  "path": "docs/long.md",
+  "line": 1,
+  "text": "doc: docs/long.md\nsection: 긴 줄\n# 긴 줄\n가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마바사abc 가나다라마"
+ },
+ {
+  "src": "docs",
+  "path": "docs/superpowers/plans/p.md",
+  "line": 1,
+  "text": "doc: docs/superpowers/plans/p.md\nsection: Plan\n# Plan\nkept: only plans/assets is left out"
+ },
+ {
+  "src": "docs",
+  "path": "docs/한글 문서.md",
+  "line": 1,
+  "text": "doc: docs/한글 문서.md\nsection: 첫 머리\n# 첫 머리\n본문"
+ },
+ {
+  "src": "docs",
+  "path": "docs/한글 문서.md",
+  "line": 4,
+  "text": "doc: docs/한글 문서.md\nsection: 첫 머리 > 둘째\n## 둘째\n내용 끝\n tail"
+ },
+ {
+  "src": "docs",
+  "path": "sub/CLAUDE.md",
+  "line": 1,
+  "text": "doc: sub/CLAUDE.md\nsection: Sub\n# Sub\nonly the root CLAUDE.md is left out"
+ }
+]

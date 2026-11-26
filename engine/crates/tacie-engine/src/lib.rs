@@ -1,0 +1,34 @@
+//! The HTTP server the app launches. Shared by the binary (`main.rs`) and the tests.
+
+pub mod ai_address;
+pub mod cards;
+pub mod errors;
+pub mod jev;
+pub mod keys;
+pub mod lang;
+pub mod local_stt;
+pub mod notes;
+pub mod notes_kind;
+pub mod notes_v2;
+pub mod openrouter;
+pub mod harness;
+pub mod panel;
+pub mod panel_tools;
+pub mod panel_write;
+pub mod pipeline;
+pub mod prompts;
+pub mod prompts_en;
+pub mod refresh;
+pub mod routed_stt;
+pub mod sample;
+pub mod server;
+pub mod services;
+pub mod session;
+pub mod settings;
+pub mod stt_provider;
+pub mod soniox;
+pub mod split;
+pub mod stt_clean;
+pub mod terms;
+pub mod tools;
+pub mod voices;

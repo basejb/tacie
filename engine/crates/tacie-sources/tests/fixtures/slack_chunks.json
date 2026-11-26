@@ -1,0 +1,1158 @@
+{
+ "raw": {
+  "team_url": "https://acme.slack.com/",
+  "users": {
+   "U1": "민수",
+   "U2": "하은",
+   "U3": "지호",
+   "U4": "서연",
+   "U5": "도윤",
+   "U6": "예린",
+   "W123": "외부 손님"
+  },
+  "channels": [
+   {
+    "id": "C1",
+    "name": "dev-help",
+    "is_private": false,
+    "members": null,
+    "replies": {
+     "1729500000.000100": [
+      {
+       "ts": "1729500060.000200",
+       "user": "U2",
+       "text": "<@U1> 먼저 `pnpm dev:doctor` 돌려 보세요"
+      }
+     ],
+     "1729511300.000000": [
+      {
+       "ts": "1729511310.000000",
+       "user": "U1",
+       "text": "저도 봤어요"
+      },
+      {
+       "ts": "1729511320.000000",
+       "user": "U2",
+       "text": "<@U1|minsu> 로그 올려 주세요"
+      },
+      {
+       "ts": "1729511330.000000",
+       "user": "U3",
+       "text": "재현돼요\r\n두 번째 줄\r\n"
+      },
+      {
+       "ts": "1729511340.000000",
+       "bot_id": "B1",
+       "text": "봇 답글"
+      },
+      {
+       "ts": "1729511350.000000",
+       "user": "U5",
+       "subtype": "channel_join",
+       "text": "joined"
+      },
+      {
+       "ts": "1729511360.000000",
+       "user": "U5",
+       "text": "<!channel> 확인 부탁"
+      },
+      {
+       "ts": "1729511370.000000",
+       "user": "U6",
+       "text": "1번째 줄\n2번째 줄\n3번째 줄\n4번째 줄\n5번째 줄\n6번째 줄\n7번째 줄\n8번째 줄\n9번째 줄\n10번째 줄\n11번째 줄\n12번째 줄\n13번째 줄\n14번째 줄\n15번째 줄\n16번째 줄\n17번째 줄\n18번째 줄\n19번째 줄\n20번째 줄\n21번째 줄\n22번째 줄\n23번째 줄\n24번째 줄\n25번째 줄\n26번째 줄\n27번째 줄\n28번째 줄\n29번째 줄\n30번째 줄\n31번째 줄\n32번째 줄\n33번째 줄\n34번째 줄\n35번째 줄\n36번째 줄\n37번째 줄\n38번째 줄\n39번째 줄\n40번째 줄\n41번째 줄\n42번째 줄\n43번째 줄\n44번째 줄\n45번째 줄"
+      },
+      {
+       "ts": "1729511380.000000",
+       "user": "U2",
+       "text": "정리했어요 <https://x.dev/doc?a=1&amp;b=2>"
+      }
+     ]
+    },
+    "messages": [
+     {
+      "ts": "1729500000.000100",
+      "user": "U1",
+      "text": "메일 탭 401 떠요 &lt;급함&gt;",
+      "reply_count": 1,
+      "thread_ts": "1729500000.000100"
+     },
+     {
+      "ts": "1729500300.000300",
+      "user": "U2",
+      "subtype": "channel_join",
+      "text": "joined"
+     },
+     {
+      "ts": "1729503000.000400",
+      "user": "U2",
+      "text": "배포 끝났어요 <https://x.dev|대시보드>"
+     },
+     {
+      "ts": "1729503100.000500",
+      "bot_id": "B1",
+      "text": "CI passed"
+     },
+     {
+      "ts": "1729510600.000000",
+      "user": "U1",
+      "text": "<!here> <#C2|infra> 채널 봐 주세요 &amp;lt; 그대로, <!everyone> <!subteam^S1|@team>"
+     },
+     {
+      "ts": "1729510000.000000",
+      "user": "U3",
+      "text": "첫 줄\n둘째 줄\n\n넷째 줄"
+     },
+     {
+      "ts": "1729511200.000001",
+      "user": "U2",
+      "text": "<https://example.com/a?b=1&amp;c=2> 링크만"
+     },
+     {
+      "ts": "1729511300.000000",
+      "user": "U4",
+      "text": "스레드 시작이에요 이 줄은 제목에 들어가기에는 사십 자를 훌쩍 넘는 아주 긴 첫 줄이에요\n둘째 줄",
+      "reply_count": 8,
+      "thread_ts": "1729511300.000000"
+     },
+     {
+      "ts": "1729511500.000000",
+      "user": "U1",
+      "text": "버스트 계속 <@W123> <@U8>",
+      "reply_count": 0
+     },
+     {
+      "ts": "1729511505.000000",
+      "user": "U1",
+      "text": "브로드캐스트",
+      "subtype": "thread_broadcast",
+      "thread_ts": "1729511300.000000"
+     },
+     {
+      "ts": "1729511510.000000",
+      "user": "U2",
+      "text": "   "
+     },
+     {
+      "ts": "1729522799.500000",
+      "user": "U9",
+      "text": " \u001c 앞뒤 공백 　 "
+     },
+     {
+      "ts": "1729522800.400000",
+      "user": "U1",
+      "text": "자정 넘었어요 &copy x &notit; &#x80; &#39; &ampx &unknown; &#0;"
+     },
+     {
+      "ts": "1729526459.9999996",
+      "user": "U2",
+      "text": "반올림하면 다음 분이에요 같은 줄"
+     },
+     {
+      "ts": "1729526459.9999996",
+      "user": "U3",
+      "text": "같은 시각 둘째"
+     },
+     {
+      "ts": "1729530000.000000",
+      "user": "U2",
+      "text": "답글 없는 스레드",
+      "reply_count": 2
+     }
+    ]
+   },
+   {
+    "id": "G1",
+    "name": "leads",
+    "is_private": true,
+    "members": [
+     "U1",
+     "U2"
+    ],
+    "replies": {},
+    "messages": [
+     {
+      "ts": "1729510000.000100",
+      "user": "U1",
+      "text": "채용 얘기"
+     }
+    ]
+   },
+   {
+    "id": "G2",
+    "name": "nobody",
+    "is_private": true,
+    "members": [],
+    "replies": {},
+    "messages": [
+     {
+      "ts": "1729510000.000200",
+      "user": "U2",
+      "text": "아무도 못 봐요"
+     }
+    ]
+   },
+   {
+    "id": "C3",
+    "name": "quiet",
+    "is_private": false,
+    "members": null,
+    "replies": {},
+    "messages": []
+   }
+  ],
+  "failed": [],
+  "fetched_at": "2026-10-26T00:00:00Z"
+ },
+ "documents": [
+  {
+   "path": "slack/C1/1729500000.000100",
+   "title": "#dev-help · 메일 탭 401 떠요 <급함>",
+   "url": "https://acme.slack.com/archives/C1/p1729500000000100",
+   "author": "민수",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-21\nmeta: 스레드 · 민수, 하은 · 답글 1개",
+   "body": [
+    [
+     "민수 17:40  메일 탭 401 떠요 <급함>",
+     "https://acme.slack.com/archives/C1/p1729500000000100"
+    ],
+    [
+     "하은 17:41  @민수 먼저 `pnpm dev:doctor` 돌려 보세요",
+     "https://acme.slack.com/archives/C1/p1729500060000200?thread_ts=1729500000.000100&cid=C1"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729503000.000400",
+   "title": "#dev-help · 배포 끝났어요 대시보드",
+   "url": "https://acme.slack.com/archives/C1/p1729503000000400",
+   "author": "하은",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 하은",
+   "body": [
+    [
+     "하은 18:30  배포 끝났어요 대시보드",
+     "https://acme.slack.com/archives/C1/p1729503000000400"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729510000.000000",
+   "title": "#dev-help · 첫 줄",
+   "url": "https://acme.slack.com/archives/C1/p1729510000000000",
+   "author": "지호",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 지호, 민수",
+   "body": [
+    [
+     "지호 20:26  첫 줄",
+     "https://acme.slack.com/archives/C1/p1729510000000000"
+    ],
+    [
+     "  둘째 줄",
+     "https://acme.slack.com/archives/C1/p1729510000000000"
+    ],
+    [
+     "  ",
+     "https://acme.slack.com/archives/C1/p1729510000000000"
+    ],
+    [
+     "  넷째 줄",
+     "https://acme.slack.com/archives/C1/p1729510000000000"
+    ],
+    [
+     "민수 20:36  @here #infra 채널 봐 주세요 &lt; 그대로, @everyone <!subteam^S1|@team>",
+     "https://acme.slack.com/archives/C1/p1729510600000000"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729511300.000000",
+   "title": "#dev-help · 스레드 시작이에요 이 줄은 제목에 들어가기에는 사십 자를 훌쩍 넘는 아주",
+   "url": "https://acme.slack.com/archives/C1/p1729511300000000",
+   "author": "서연",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-21\nmeta: 스레드 · 서연, 민수, 하은, 지호 외 · 답글 6개",
+   "body": [
+    [
+     "서연 20:48  스레드 시작이에요 이 줄은 제목에 들어가기에는 사십 자를 훌쩍 넘는 아주 긴 첫 줄이에요",
+     "https://acme.slack.com/archives/C1/p1729511300000000"
+    ],
+    [
+     "  둘째 줄",
+     "https://acme.slack.com/archives/C1/p1729511300000000"
+    ],
+    [
+     "민수 20:48  저도 봤어요",
+     "https://acme.slack.com/archives/C1/p1729511310000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "하은 20:48  @민수 로그 올려 주세요",
+     "https://acme.slack.com/archives/C1/p1729511320000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "지호 20:48  재현돼요\r",
+     "https://acme.slack.com/archives/C1/p1729511330000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  두 번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511330000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "도윤 20:49  @channel 확인 부탁",
+     "https://acme.slack.com/archives/C1/p1729511360000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "예린 20:49  1번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  2번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  3번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  4번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  5번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  6번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  7번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  8번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  9번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  10번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  11번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  12번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  13번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  14번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  15번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  16번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  17번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  18번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  19번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  20번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  21번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  22번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  23번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  24번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  25번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  26번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  27번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  28번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  29번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  30번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  31번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  32번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  33번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  34번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  35번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  36번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  37번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  38번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  39번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  40번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  41번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  42번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  43번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  44번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "  45번째 줄",
+     "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1"
+    ],
+    [
+     "하은 20:49  정리했어요 https://x.dev/doc?a=1&b=2",
+     "https://acme.slack.com/archives/C1/p1729511380000000?thread_ts=1729511300.000000&cid=C1"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729511200.000001",
+   "title": "#dev-help · https://example.com/a?b=1&c=2 링크만",
+   "url": "https://acme.slack.com/archives/C1/p1729511200000001",
+   "author": "하은",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 하은, 민수",
+   "body": [
+    [
+     "하은 20:46  https://example.com/a?b=1&c=2 링크만",
+     "https://acme.slack.com/archives/C1/p1729511200000001"
+    ],
+    [
+     "민수 20:51  버스트 계속 @외부 손님 @누군가",
+     "https://acme.slack.com/archives/C1/p1729511500000000"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729522799.500000",
+   "title": "#dev-help · 앞뒤 공백",
+   "url": "https://acme.slack.com/archives/C1/p1729522799500000",
+   "author": "누군가",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 누군가, 민수",
+   "body": [
+    [
+     "누군가 23:59  앞뒤 공백",
+     "https://acme.slack.com/archives/C1/p1729522799500000"
+    ],
+    [
+     "민수 00:00  자정 넘었어요 © x ¬it; € ' &x &unknown; �",
+     "https://acme.slack.com/archives/C1/p1729522800400000"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729530000.000000",
+   "title": "#dev-help · 답글 없는 스레드",
+   "url": "https://acme.slack.com/archives/C1/p1729530000000000",
+   "author": "하은",
+   "at": "2024-10-22",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-22\nmeta: 스레드 · 하은 · 답글 0개",
+   "body": [
+    [
+     "하은 02:00  답글 없는 스레드",
+     "https://acme.slack.com/archives/C1/p1729530000000000"
+    ]
+   ]
+  },
+  {
+   "path": "slack/C1/1729526459.9999996",
+   "title": "#dev-help · 반올림하면 다음 분이에요 같은 줄",
+   "url": "https://acme.slack.com/archives/C1/p17295264599999996",
+   "author": "하은",
+   "at": "2024-10-22",
+   "acl": [
+    "*"
+   ],
+   "head": "slack: #dev-help · 2024-10-22\nmeta: 대화 · 하은, 지호",
+   "body": [
+    [
+     "하은 01:01  반올림하면 다음 분이에요 같은 줄",
+     "https://acme.slack.com/archives/C1/p17295264599999996"
+    ],
+    [
+     "지호 01:01  같은 시각 둘째",
+     "https://acme.slack.com/archives/C1/p17295264599999996"
+    ]
+   ]
+  },
+  {
+   "path": "slack/G1/1729510000.000100",
+   "title": "#leads · 채용 얘기",
+   "url": "https://acme.slack.com/archives/G1/p1729510000000100",
+   "author": "민수",
+   "at": "2024-10-21",
+   "acl": [
+    "slack:U1",
+    "slack:U2"
+   ],
+   "head": "slack: #leads · 2024-10-21\nmeta: 대화 · 민수",
+   "body": [
+    [
+     "민수 20:26  채용 얘기",
+     "https://acme.slack.com/archives/G1/p1729510000000100"
+    ]
+   ]
+  },
+  {
+   "path": "slack/G2/1729510000.000200",
+   "title": "#nobody · 아무도 못 봐요",
+   "url": "https://acme.slack.com/archives/G2/p1729510000000200",
+   "author": "하은",
+   "at": "2024-10-21",
+   "acl": [],
+   "head": "slack: #nobody · 2024-10-21\nmeta: 대화 · 하은",
+   "body": [
+    [
+     "하은 20:26  아무도 못 봐요",
+     "https://acme.slack.com/archives/G2/p1729510000000200"
+    ]
+   ]
+  }
+ ],
+ "chunks": [
+  {
+   "src": "slack",
+   "path": "slack/C1/1729500000.000100",
+   "title": "#dev-help · 메일 탭 401 떠요 <급함>",
+   "author": "민수",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729500000000100",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 스레드 · 민수, 하은 · 답글 1개\n민수 17:40  메일 탭 401 떠요 <급함>\n하은 17:41  @민수 먼저 `pnpm dev:doctor` 돌려 보세요"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729503000.000400",
+   "title": "#dev-help · 배포 끝났어요 대시보드",
+   "author": "하은",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729503000000400",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 하은\n하은 18:30  배포 끝났어요 대시보드"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729510000.000000",
+   "title": "#dev-help · 첫 줄",
+   "author": "지호",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729510000000000",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 지호, 민수\n지호 20:26  첫 줄\n  둘째 줄\n  \n  넷째 줄\n민수 20:36  @here #infra 채널 봐 주세요 &lt; 그대로, @everyone <!subteam^S1|@team>"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729511300.000000",
+   "title": "#dev-help · 스레드 시작이에요 이 줄은 제목에 들어가기에는 사십 자를 훌쩍 넘는 아주",
+   "author": "서연",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729511300000000",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 스레드 · 서연, 민수, 하은, 지호 외 · 답글 6개\n서연 20:48  스레드 시작이에요 이 줄은 제목에 들어가기에는 사십 자를 훌쩍 넘는 아주 긴 첫 줄이에요\n  둘째 줄\n민수 20:48  저도 봤어요\n하은 20:48  @민수 로그 올려 주세요\n지호 20:48  재현돼요\r\n  두 번째 줄\n도윤 20:49  @channel 확인 부탁\n예린 20:49  1번째 줄\n  2번째 줄\n  3번째 줄\n  4번째 줄\n  5번째 줄\n  6번째 줄\n  7번째 줄\n  8번째 줄\n  9번째 줄\n  10번째 줄\n  11번째 줄\n  12번째 줄\n  13번째 줄\n  14번째 줄\n  15번째 줄\n  16번째 줄\n  17번째 줄\n  18번째 줄\n  19번째 줄\n  20번째 줄\n  21번째 줄\n  22번째 줄\n  23번째 줄\n  24번째 줄\n  25번째 줄\n  26번째 줄\n  27번째 줄\n  28번째 줄\n  29번째 줄\n  30번째 줄\n  31번째 줄\n  32번째 줄\n  33번째 줄"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729511300.000000",
+   "title": "#dev-help · 스레드 시작이에요 이 줄은 제목에 들어가기에는 사십 자를 훌쩍 넘는 아주",
+   "author": "서연",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 31,
+   "url": "https://acme.slack.com/archives/C1/p1729511370000000?thread_ts=1729511300.000000&cid=C1",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 스레드 · 서연, 민수, 하은, 지호 외 · 답글 6개\n24번째 줄\n  25번째 줄\n  26번째 줄\n  27번째 줄\n  28번째 줄\n  29번째 줄\n  30번째 줄\n  31번째 줄\n  32번째 줄\n  33번째 줄\n  34번째 줄\n  35번째 줄\n  36번째 줄\n  37번째 줄\n  38번째 줄\n  39번째 줄\n  40번째 줄\n  41번째 줄\n  42번째 줄\n  43번째 줄\n  44번째 줄\n  45번째 줄\n하은 20:49  정리했어요 https://x.dev/doc?a=1&b=2"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729511200.000001",
+   "title": "#dev-help · https://example.com/a?b=1&c=2 링크만",
+   "author": "하은",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729511200000001",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 하은, 민수\n하은 20:46  https://example.com/a?b=1&c=2 링크만\n민수 20:51  버스트 계속 @외부 손님 @누군가"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729522799.500000",
+   "title": "#dev-help · 앞뒤 공백",
+   "author": "누군가",
+   "at": "2024-10-21",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729522799500000",
+   "text": "slack: #dev-help · 2024-10-21\nmeta: 대화 · 누군가, 민수\n누군가 23:59  앞뒤 공백\n민수 00:00  자정 넘었어요 © x ¬it; € ' &x &unknown; �"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729530000.000000",
+   "title": "#dev-help · 답글 없는 스레드",
+   "author": "하은",
+   "at": "2024-10-22",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p1729530000000000",
+   "text": "slack: #dev-help · 2024-10-22\nmeta: 스레드 · 하은 · 답글 0개\n하은 02:00  답글 없는 스레드"
+  },
+  {
+   "src": "slack",
+   "path": "slack/C1/1729526459.9999996",
+   "title": "#dev-help · 반올림하면 다음 분이에요 같은 줄",
+   "author": "하은",
+   "at": "2024-10-22",
+   "acl": [
+    "*"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/C1/p17295264599999996",
+   "text": "slack: #dev-help · 2024-10-22\nmeta: 대화 · 하은, 지호\n하은 01:01  반올림하면 다음 분이에요 같은 줄\n지호 01:01  같은 시각 둘째"
+  },
+  {
+   "src": "slack",
+   "path": "slack/G1/1729510000.000100",
+   "title": "#leads · 채용 얘기",
+   "author": "민수",
+   "at": "2024-10-21",
+   "acl": [
+    "slack:U1",
+    "slack:U2"
+   ],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/G1/p1729510000000100",
+   "text": "slack: #leads · 2024-10-21\nmeta: 대화 · 민수\n민수 20:26  채용 얘기"
+  },
+  {
+   "src": "slack",
+   "path": "slack/G2/1729510000.000200",
+   "title": "#nobody · 아무도 못 봐요",
+   "author": "하은",
+   "at": "2024-10-21",
+   "acl": [],
+   "line": 1,
+   "url": "https://acme.slack.com/archives/G2/p1729510000000200",
+   "text": "slack: #nobody · 2024-10-21\nmeta: 대화 · 하은\n하은 20:26  아무도 못 봐요"
+  }
+ ],
+ "clean": [
+  [
+   "",
+   ""
+  ],
+  [
+   "plain",
+   "plain"
+  ],
+  [
+   "<@U1> <@U1|민수> <@W123> <@U8> <@u1> <@X1> <@U1|>",
+   "@민수 @민수 @외부 손님 @누군가 <@u1> <@X1> @민수"
+  ],
+  [
+   "<#C1|dev> <#G9|> <#c1|dev> <#C1>",
+   "#dev # <#c1|dev> <#C1>"
+  ],
+  [
+   "<!here> <!channel> <!everyone> <!here|@here> <!subteam^S1|@team> <!date^1|x>",
+   "@here @channel @everyone @here <!subteam^S1|@team> <!date^1|x>"
+  ],
+  [
+   "<https://x.dev|라벨> <http://x.dev/a?b=1&amp;c=2> <mailto:a@b.c|메일> <https://x.dev|>",
+   "라벨 http://x.dev/a?b=1&c=2 <mailto:a@b.c|메일> https://x.dev|"
+  ],
+  [
+   "<https://x.dev|a|b> <https://x.dev/<nested>>",
+   "a|b https://x.dev/<nested>"
+  ],
+  [
+   "&amp;lt; &lt;급함&gt; &copy x &notit; &#x80; &#39; &amp &ampx &unknown; &#0;",
+   "&lt; <급함> © x ¬it; € ' & &x &unknown; �"
+  ],
+  [
+   " \u001c  앞뒤 　 ",
+   "앞뒤"
+  ],
+  [
+   "줄\n바꿈\r\n여러\n\n줄\n",
+   "줄\n바꿈\r\n여러\n\n줄"
+  ],
+  [
+   "<@U1\n> <https://x.dev\n|y>",
+   "<@U1\n> y"
+  ]
+ ],
+ "fetch": {
+  "answers": {
+   "auth.test|||": {
+    "url": "https://acme.slack.com/",
+    "team": "acme",
+    "user_id": "UBOT"
+   },
+   "users.list|||": {
+    "members": [
+     {
+      "id": "U1",
+      "name": "minsu",
+      "real_name": "김민수",
+      "profile": {
+       "display_name": "민수"
+      }
+     },
+     {
+      "id": "U2",
+      "name": "haeun",
+      "real_name": "하은 김",
+      "profile": {
+       "display_name": ""
+      }
+     },
+     {
+      "id": "U3",
+      "name": "jiho"
+     }
+    ],
+    "response_metadata": {
+     "next_cursor": "dXNlcjpVMDM="
+    }
+   },
+   "users.list|||dXNlcjpVMDM=": {
+    "members": [
+     {
+      "id": "U4",
+      "name": "seoyeon",
+      "real_name": "",
+      "profile": {}
+     },
+     {
+      "id": "U5",
+      "profile": {
+       "display_name": ""
+      }
+     }
+    ],
+    "response_metadata": {
+     "next_cursor": ""
+    }
+   },
+   "conversations.list|||": {
+    "channels": [
+     {
+      "id": "C1",
+      "name": "dev-help",
+      "is_member": true
+     },
+     {
+      "id": "C2",
+      "name": "random",
+      "is_member": false
+     }
+    ],
+    "response_metadata": {
+     "next_cursor": "Y2hhbm5lbA=="
+    }
+   },
+   "conversations.list|||Y2hhbm5lbA==": {
+    "channels": [
+     {
+      "id": "G1",
+      "name": "leads",
+      "is_member": true,
+      "is_private": true
+     }
+    ]
+   },
+   "conversations.history|C1||": {
+    "messages": [
+     {
+      "ts": "1729500000.000100",
+      "user": "U1",
+      "text": "질문이에요 \"따옴표\" \\ 슬래시",
+      "reply_count": 2,
+      "thread_ts": "1729500000.000100",
+      "blocks": [
+       {
+        "type": "rich_text"
+       }
+      ],
+      "edited": {
+       "ts": "1729500001.5"
+      }
+     }
+    ],
+    "has_more": true,
+    "response_metadata": {
+     "next_cursor": "aGlzdG9yeQ=="
+    }
+   },
+   "conversations.history|C1||aGlzdG9yeQ==": {
+    "messages": [
+     {
+      "ts": "1729400000.000100",
+      "user": "U2",
+      "text": "예전 글 😀  ",
+      "reply_count": 0
+     }
+    ],
+    "response_metadata": {
+     "next_cursor": null
+    }
+   },
+   "conversations.replies|C1|1729500000.000100|": {
+    "messages": [
+     {
+      "ts": "1729500000.000100",
+      "user": "U1",
+      "text": "질문이에요"
+     },
+     {
+      "ts": "1729500060.000200",
+      "user": "U2",
+      "text": "첫 답"
+     }
+    ],
+    "response_metadata": {
+     "next_cursor": "cmVwbHk="
+    }
+   },
+   "conversations.replies|C1|1729500000.000100|cmVwbHk=": {
+    "messages": [
+     {
+      "ts": "1729500000.000100",
+      "user": "U1",
+      "text": "질문이에요"
+     },
+     {
+      "ts": "1729500060.000200",
+      "user": "U2",
+      "text": "첫 답 (고침)"
+     },
+     {
+      "ts": "1729500120.000300",
+      "user": "U3",
+      "text": "둘째 답",
+      "files": [
+       {
+        "id": "F1",
+        "size": 1.5
+       }
+      ]
+     }
+    ]
+   },
+   "conversations.history|G1||": {
+    "messages": [
+     {
+      "ts": "1729510000.000100",
+      "user": "U1",
+      "text": "채용 얘기"
+     }
+    ]
+   },
+   "conversations.members|G1||": {
+    "members": [
+     "U1",
+     "U2"
+    ],
+    "response_metadata": {
+     "next_cursor": ""
+    }
+   }
+  },
+  "calls": [
+   [
+    "auth.test",
+    []
+   ],
+   [
+    "users.list",
+    [
+     [
+      "limit",
+      "200"
+     ]
+    ]
+   ],
+   [
+    "users.list",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "cursor",
+      "dXNlcjpVMDM="
+     ]
+    ]
+   ],
+   [
+    "conversations.list",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "types",
+      "public_channel,private_channel"
+     ],
+     [
+      "exclude_archived",
+      "true"
+     ]
+    ]
+   ],
+   [
+    "conversations.history",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "channel",
+      "C1"
+     ],
+     [
+      "oldest",
+      "<oldest>"
+     ]
+    ]
+   ],
+   [
+    "conversations.history",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "channel",
+      "C1"
+     ],
+     [
+      "oldest",
+      "<oldest>"
+     ],
+     [
+      "cursor",
+      "aGlzdG9yeQ=="
+     ]
+    ]
+   ],
+   [
+    "conversations.replies",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "channel",
+      "C1"
+     ],
+     [
+      "ts",
+      "1729500000.000100"
+     ]
+    ]
+   ],
+   [
+    "conversations.replies",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "channel",
+      "C1"
+     ],
+     [
+      "ts",
+      "1729500000.000100"
+     ],
+     [
+      "cursor",
+      "cmVwbHk="
+     ]
+    ]
+   ],
+   [
+    "conversations.list",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "types",
+      "public_channel,private_channel"
+     ],
+     [
+      "exclude_archived",
+      "true"
+     ],
+     [
+      "cursor",
+      "Y2hhbm5lbA=="
+     ]
+    ]
+   ],
+   [
+    "conversations.history",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "channel",
+      "G1"
+     ],
+     [
+      "oldest",
+      "<oldest>"
+     ]
+    ]
+   ],
+   [
+    "conversations.members",
+    [
+     [
+      "limit",
+      "200"
+     ],
+     [
+      "channel",
+      "G1"
+     ]
+    ]
+   ]
+  ],
+  "written": "{\"team_url\": \"https://acme.slack.com/\", \"users\": {\"U1\": \"민수\", \"U2\": \"하은 김\", \"U3\": \"jiho\", \"U4\": \"seoyeon\", \"U5\": null}, \"channels\": [{\"id\": \"C1\", \"name\": \"dev-help\", \"is_private\": false, \"members\": null, \"messages\": [{\"ts\": \"1729500000.000100\", \"user\": \"U1\", \"text\": \"질문이에요 \\\"따옴표\\\" \\\\ 슬래시\", \"reply_count\": 2, \"thread_ts\": \"1729500000.000100\", \"blocks\": [{\"type\": \"rich_text\"}], \"edited\": {\"ts\": \"1729500001.5\"}}, {\"ts\": \"1729400000.000100\", \"user\": \"U2\", \"text\": \"예전 글 😀  \", \"reply_count\": 0}], \"replies\": {\"1729500000.000100\": [{\"ts\": \"1729500060.000200\", \"user\": \"U2\", \"text\": \"첫 답 (고침)\"}, {\"ts\": \"1729500120.000300\", \"user\": \"U3\", \"text\": \"둘째 답\", \"files\": [{\"id\": \"F1\", \"size\": 1.5}]}]}}, {\"id\": \"G1\", \"name\": \"leads\", \"is_private\": true, \"members\": [\"U1\", \"U2\"], \"messages\": [{\"ts\": \"1729510000.000100\", \"user\": \"U1\", \"text\": \"채용 얘기\"}], \"replies\": {}}], \"failed\": [], \"fetched_at\": \"<now>\"}"
+ }
+}

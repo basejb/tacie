@@ -1,0 +1,17 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+# The shipped engine carries no symbol table: function and type names make the binary much easier to read for
+# anyone taking the app apart. Panic messages keep their file:line; backtraces lose the function names.
+[profile.release]
+strip = true
+
+# Each worktree builds its own target/, and debug info was most of it (about 16 GB per worktree, 60–75% of each
+# library is DWARF). Our crates keep line tables, so panics and backtraces still show file:line; dependencies carry
+# none, so lldb cannot show variables inside them. Release builds are unchanged.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false

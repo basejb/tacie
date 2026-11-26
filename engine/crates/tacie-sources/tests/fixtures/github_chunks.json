@@ -1,0 +1,67 @@
+[
+ {
+  "src": "github",
+  "path": "github/pull/6",
+  "title": "PR #6 · Close stale exporter",
+  "author": "mina-k",
+  "at": "2026-10-12",
+  "acl": [
+   "*"
+  ],
+  "line": 1,
+  "url": "https://github.com/o/n/pull/6",
+  "text": "github: PR #6 · Close stale exporter\nmeta: 닫힘 · mina-k · 2026-10-12\nNot needed after #5."
+ },
+ {
+  "src": "github",
+  "path": "github/pull/5",
+  "title": "PR #5 · 결제 재시도 횟수 설정",
+  "author": "jun-h",
+  "at": "2026-10-10",
+  "acl": [
+   "*"
+  ],
+  "line": 1,
+  "url": "https://github.com/o/n/pull/5",
+  "text": "github: PR #5 · 결제 재시도 횟수 설정\nmeta: 머지됨 · jun-h · 2026-10-10 · feat/retry-setting → dev\nfiles: apps/api/src/pay/retry.ts, docs/pay.md 외 1개\n## 무엇\n재시도 횟수를 설정으로 빼요.\n\n— sora-p · 리뷰 · apps/api/src/pay/retry.ts\n기본값은 3이에요?\n\n— sora-p · 2026-10-11\n설정 이름은 `retry.max`로 해요.\n\n— mina-k · 리뷰 approved\n좋아요\n\n— ? · 리뷰 commented\nLooks fine"
+ },
+ {
+  "src": "github",
+  "path": "github/issue/4",
+  "title": "이슈 #4 · Empty report",
+  "author": "mina-k",
+  "at": "2026-10-08",
+  "acl": [
+   "*"
+  ],
+  "line": 1,
+  "url": "https://github.com/o/n/issues/4",
+  "text": "github: 이슈 #4 · Empty report\nmeta: 닫힘 · mina-k · 2026-10-08\n(설명 없음)"
+ },
+ {
+  "src": "github",
+  "path": "github/pull/2",
+  "title": "PR #2 · 메일 탭 새로고침",
+  "author": "jun-h",
+  "at": "2026-10-04",
+  "acl": [
+   "*"
+  ],
+  "line": 1,
+  "url": "https://github.com/o/n/pull/2",
+  "text": "github: PR #2 · 메일 탭 새로고침\nmeta: 열림 · jun-h · 2026-10-04 · fix/mail-refresh → dev\nfiles: apps/web/src/mail/Tab.tsx, apps/web/src/mail/session.ts, apps/web/src/mail/token.ts, apps/web/src/mail/api.ts, apps/web/src/mail/store.ts, apps/web/src/mail/hooks.ts, apps/web/src/mail/index.ts, apps/web/src/mail/types.ts 외 4개\n메일 탭을 새로고침해요.\n\nFixes #1\n\n— mina-k · 리뷰 · apps/web/src/mail/Tab.tsx:12\n여기서 토큰을 다시 읽어요?\n\n— jun-h · 리뷰 · apps/web/src/mail/Tab.tsx:9\n네, 만료되면요.\n\n— jun-h · 리뷰 changes_requested\n반영했어요.\n\n— sora-p · 2026-10-05\n고쳐졌어요, 고마워요!\n\n확인했어요."
+ },
+ {
+  "src": "github",
+  "path": "github/issue/1",
+  "title": "이슈 #1 · 메일 탭이 401을 내요",
+  "author": "sora-p",
+  "at": "2026-10-01",
+  "acl": [
+   "*"
+  ],
+  "line": 1,
+  "url": "https://github.com/o/n/issues/1",
+  "text": "github: 이슈 #1 · 메일 탭이 401을 내요\nmeta: 열림 · sora-p · 2026-10-01 · bug, mail\n로그인 뒤 메일 탭을 열면 401이 나요.\n\n재현: 앱을 다시 켜요.\n\n— jun-h · 2026-10-02\n먼저 `pnpm dev:doctor`를 돌려 보세요."
+ }
+]

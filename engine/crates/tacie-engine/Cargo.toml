@@ -1,0 +1,49 @@
+[package]
+name = "tacie-engine"
+version = "0.1.0"
+edition = "2024"
+
+# `local-prompts`: the prompt texts are compiled in, so the engine can call the AI providers itself (dev builds with
+# key files, eval, tests). The shipped app's engine is built without it (apps/mac/scripts/build-engine.sh, Release):
+# it names the prompt and sends the values, and the Tacie AI relay fills the text in (apps/server/src/prompts.json).
+[features]
+default = ["local-prompts"]
+local-prompts = []
+
+[dependencies]
+anyhow = "1"
+arc-swap = "1"
+axum = "0.8"
+base64 = "0.22"
+# Times in the refresh status (Python `time.strftime("%Y-%m-%dT%H:%M:%S%z")`, local time zone).
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+clap = { version = "4", features = ["derive", "env"] }
+dirs = "7"
+# Parses the query of `GET /github/branches?repo=` (Python `parse_qs`).
+form_urlencoded = "1"
+# The ndjson stream of `/panel/prep`.
+futures-util = { version = "0.3", default-features = false, features = ["alloc"] }
+hex = "0.4"
+regex = "1"
+# `system-proxy`: follows the macOS system proxy (environment proxies are followed by default). The loopback client
+# uses no proxy (`settings::http_client`).
+reqwest = { version = "0.12", default-features = false, features = ["json", "multipart", "rustls-tls", "system-proxy"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+sha1 = "0.10"
+subtle = "2"
+tacie-embed = { path = "../tacie-embed" }
+tacie-index = { path = "../tacie-index" }
+tacie-sources = { path = "../tacie-sources" }
+# On-device speech recognition (whisper.cpp), on Apple Silicon's Metal.
+whisper-rs = { version = "0.15", features = ["metal"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "io-std", "time", "sync"] }
+
+[dev-dependencies]
+crc32fast = "1"
+http-body-util = "0.1"
+# The fake GitHub (`FakeGitHub`) and Slack (`FakeSlack`) for the refresh tests.
+tacie-sources = { path = "../tacie-sources", features = ["testing"] }
+tempfile = "3"
+tokio = { version = "1", features = ["test-util"] }
+tower = { version = "0.5", features = ["util"] }

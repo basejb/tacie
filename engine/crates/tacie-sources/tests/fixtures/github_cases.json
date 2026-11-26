@@ -1,0 +1,3456 @@
+{
+ "clean": [
+  [
+   "",
+   ""
+  ],
+  [
+   "plain",
+   "plain"
+  ],
+  [
+   "a\r\n\r\n\r\n\r\nb",
+   "a\n\nb"
+  ],
+  [
+   "a\n\n\n\n\nb\n\n\nc\n\nd",
+   "a\n\nb\n\nc\n\nd"
+  ],
+  [
+   "<!-- one\nand two -->x<!-- -->y<!--unterminated",
+   "xy<!--unterminated"
+  ],
+  [
+   "![a](b) ![](c)\n![no close](x\n![x]\n(y)",
+   ""
+  ],
+  [
+   "keep\n🤖 generated WITH [claude code] now\nCO-AUTHORED-BY: x\nco-authored-by:y\n end",
+   "keep\n\n end"
+  ],
+  [
+   "Co-Authored-By: x\r\nnext\r\n",
+   "next"
+  ],
+  [
+   "x\rGenerated with Claude Code y\nz",
+   "z"
+  ],
+  [
+   "Generated with \\[Claude Code",
+   "Generated with \\[Claude Code"
+  ],
+  [
+   " \u001c  text 　 ",
+   "text"
+  ],
+  [
+   " line ",
+   "line"
+  ],
+  [
+   "﻿BOM\t\u000b\f",
+   "﻿BOM"
+  ],
+  [
+   "a<!-- x -->\n\n<!-- y -->\n\nb",
+   "a\n\nb"
+  ],
+  [
+   "한글 ![그림](https://x.dev/a.png) 끝\r\n\r\n\r\n\r\n🤖 Generated with Claude Code",
+   "한글  끝"
+  ]
+ ],
+ "windows": [
+  {
+   "doc": {
+    "path": "github/pull/1",
+    "title": "PR #1 · t",
+    "url": "https://x/1",
+    "author": "a",
+    "at": "2026-10-01",
+    "head": "github: PR #1 · t\nmeta: 열림 · a · 2026-10-01",
+    "body": []
+   },
+   "chunks": []
+  },
+  {
+   "doc": {
+    "path": "github/issue/2",
+    "title": "이슈 #2 · t",
+    "url": "https://x/2",
+    "author": null,
+    "at": "",
+    "head": "github: 이슈 #2",
+    "body": [
+     [
+      "",
+      "https://x/2#a"
+     ],
+     [
+      "   ",
+      "https://x/2#b"
+     ]
+    ]
+   },
+   "chunks": []
+  },
+  {
+   "doc": {
+    "path": "github/issue/8",
+    "title": "이슈 #8",
+    "url": "https://x/8",
+    "author": "g",
+    "at": "2026-10-07",
+    "head": "github: 이슈 #8",
+    "body": [
+     [
+      "",
+      "https://x/8#a"
+     ],
+     [
+      "　",
+      "https://x/8#b"
+     ],
+     [
+      "첫 줄",
+      "https://x/8#c"
+     ],
+     [
+      "둘째",
+      "https://x/8#d"
+     ]
+    ]
+   },
+   "chunks": [
+    {
+     "src": "github",
+     "path": "github/issue/8",
+     "title": "이슈 #8",
+     "author": "g",
+     "at": "2026-10-07",
+     "acl": [
+      "*"
+     ],
+     "line": 1,
+     "url": "https://x/8#c",
+     "text": "github: 이슈 #8\n첫 줄\n둘째"
+    }
+   ]
+  },
+  {
+   "doc": {
+    "path": "slack/C1/1.0",
+    "title": "#c · t",
+    "url": "https://x/3",
+    "author": "b",
+    "at": "2026-10-02",
+    "acl": [
+     "slack:U1"
+    ],
+    "head": "slack: #c",
+    "body": [
+     [
+      "line 0",
+      "https://x/3#0"
+     ],
+     [
+      "line 1",
+      "https://x/3#0"
+     ],
+     [
+      "line 2",
+      "https://x/3#0"
+     ],
+     [
+      "line 3",
+      "https://x/3#0"
+     ],
+     [
+      "line 4",
+      "https://x/3#0"
+     ],
+     [
+      "line 5",
+      "https://x/3#0"
+     ],
+     [
+      "line 6",
+      "https://x/3#0"
+     ],
+     [
+      "line 7",
+      "https://x/3#1"
+     ],
+     [
+      "line 8",
+      "https://x/3#1"
+     ],
+     [
+      "line 9",
+      "https://x/3#1"
+     ],
+     [
+      "line 10",
+      "https://x/3#1"
+     ],
+     [
+      "line 11",
+      "https://x/3#1"
+     ],
+     [
+      "line 12",
+      "https://x/3#1"
+     ],
+     [
+      "line 13",
+      "https://x/3#1"
+     ],
+     [
+      "line 14",
+      "https://x/3#2"
+     ],
+     [
+      "line 15",
+      "https://x/3#2"
+     ],
+     [
+      "line 16",
+      "https://x/3#2"
+     ],
+     [
+      "line 17",
+      "https://x/3#2"
+     ],
+     [
+      "line 18",
+      "https://x/3#2"
+     ],
+     [
+      "line 19",
+      "https://x/3#2"
+     ],
+     [
+      "line 20",
+      "https://x/3#2"
+     ],
+     [
+      "line 21",
+      "https://x/3#3"
+     ],
+     [
+      "line 22",
+      "https://x/3#3"
+     ],
+     [
+      "line 23",
+      "https://x/3#3"
+     ],
+     [
+      "line 24",
+      "https://x/3#3"
+     ],
+     [
+      "line 25",
+      "https://x/3#3"
+     ],
+     [
+      "line 26",
+      "https://x/3#3"
+     ],
+     [
+      "line 27",
+      "https://x/3#3"
+     ],
+     [
+      "line 28",
+      "https://x/3#4"
+     ],
+     [
+      "line 29",
+      "https://x/3#4"
+     ],
+     [
+      "line 30",
+      "https://x/3#4"
+     ],
+     [
+      "line 31",
+      "https://x/3#4"
+     ],
+     [
+      "line 32",
+      "https://x/3#4"
+     ],
+     [
+      "line 33",
+      "https://x/3#4"
+     ],
+     [
+      "line 34",
+      "https://x/3#4"
+     ],
+     [
+      "line 35",
+      "https://x/3#5"
+     ],
+     [
+      "line 36",
+      "https://x/3#5"
+     ],
+     [
+      "line 37",
+      "https://x/3#5"
+     ],
+     [
+      "line 38",
+      "https://x/3#5"
+     ],
+     [
+      "line 39",
+      "https://x/3#5"
+     ]
+    ]
+   },
+   "chunks": [
+    {
+     "src": "github",
+     "path": "slack/C1/1.0",
+     "title": "#c · t",
+     "author": "b",
+     "at": "2026-10-02",
+     "acl": [
+      "slack:U1"
+     ],
+     "line": 1,
+     "url": "https://x/3#0",
+     "text": "slack: #c\nline 0\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19\nline 20\nline 21\nline 22\nline 23\nline 24\nline 25\nline 26\nline 27\nline 28\nline 29\nline 30\nline 31\nline 32\nline 33\nline 34\nline 35\nline 36\nline 37\nline 38\nline 39"
+    }
+   ]
+  },
+  {
+   "doc": {
+    "path": "github/issue/4",
+    "title": "이슈 #4",
+    "url": "https://x/4",
+    "author": "c",
+    "at": "2026-10-03",
+    "head": "github: 이슈 #4",
+    "body": [
+     [
+      "l0",
+      "https://x/4#0"
+     ],
+     [
+      "l1",
+      "https://x/4#1"
+     ],
+     [
+      "l2",
+      "https://x/4#2"
+     ],
+     [
+      "l3",
+      "https://x/4#3"
+     ],
+     [
+      "l4",
+      "https://x/4#4"
+     ],
+     [
+      "l5",
+      "https://x/4#5"
+     ],
+     [
+      "l6",
+      "https://x/4#6"
+     ],
+     [
+      "l7",
+      "https://x/4#7"
+     ],
+     [
+      "l8",
+      "https://x/4#8"
+     ],
+     [
+      "l9",
+      "https://x/4#9"
+     ],
+     [
+      "l10",
+      "https://x/4#10"
+     ],
+     [
+      "l11",
+      "https://x/4#11"
+     ],
+     [
+      "l12",
+      "https://x/4#12"
+     ],
+     [
+      "l13",
+      "https://x/4#13"
+     ],
+     [
+      "l14",
+      "https://x/4#14"
+     ],
+     [
+      "l15",
+      "https://x/4#15"
+     ],
+     [
+      "l16",
+      "https://x/4#16"
+     ],
+     [
+      "l17",
+      "https://x/4#17"
+     ],
+     [
+      "l18",
+      "https://x/4#18"
+     ],
+     [
+      "l19",
+      "https://x/4#19"
+     ],
+     [
+      "l20",
+      "https://x/4#20"
+     ],
+     [
+      "l21",
+      "https://x/4#21"
+     ],
+     [
+      "l22",
+      "https://x/4#22"
+     ],
+     [
+      "l23",
+      "https://x/4#23"
+     ],
+     [
+      "l24",
+      "https://x/4#24"
+     ],
+     [
+      "l25",
+      "https://x/4#25"
+     ],
+     [
+      "l26",
+      "https://x/4#26"
+     ],
+     [
+      "l27",
+      "https://x/4#27"
+     ],
+     [
+      "l28",
+      "https://x/4#28"
+     ],
+     [
+      "l29",
+      "https://x/4#29"
+     ],
+     [
+      "l30",
+      "https://x/4#30"
+     ],
+     [
+      "l31",
+      "https://x/4#31"
+     ],
+     [
+      "l32",
+      "https://x/4#32"
+     ],
+     [
+      "l33",
+      "https://x/4#33"
+     ],
+     [
+      "l34",
+      "https://x/4#34"
+     ],
+     [
+      "l35",
+      "https://x/4#35"
+     ],
+     [
+      "l36",
+      "https://x/4#36"
+     ],
+     [
+      "l37",
+      "https://x/4#37"
+     ],
+     [
+      "l38",
+      "https://x/4#38"
+     ],
+     [
+      "l39",
+      "https://x/4#39"
+     ],
+     [
+      "l40",
+      "https://x/4#40"
+     ]
+    ]
+   },
+   "chunks": [
+    {
+     "src": "github",
+     "path": "github/issue/4",
+     "title": "이슈 #4",
+     "author": "c",
+     "at": "2026-10-03",
+     "acl": [
+      "*"
+     ],
+     "line": 1,
+     "url": "https://x/4#0",
+     "text": "github: 이슈 #4\nl0\nl1\nl2\nl3\nl4\nl5\nl6\nl7\nl8\nl9\nl10\nl11\nl12\nl13\nl14\nl15\nl16\nl17\nl18\nl19\nl20\nl21\nl22\nl23\nl24\nl25\nl26\nl27\nl28\nl29\nl30\nl31\nl32\nl33\nl34\nl35\nl36\nl37\nl38\nl39"
+    },
+    {
+     "src": "github",
+     "path": "github/issue/4",
+     "title": "이슈 #4",
+     "author": "c",
+     "at": "2026-10-03",
+     "acl": [
+      "*"
+     ],
+     "line": 31,
+     "url": "https://x/4#30",
+     "text": "github: 이슈 #4\nl30\nl31\nl32\nl33\nl34\nl35\nl36\nl37\nl38\nl39\nl40"
+    }
+   ]
+  },
+  {
+   "doc": {
+    "path": "github/pull/5",
+    "title": "PR #5",
+    "url": "https://x/5",
+    "author": "d",
+    "at": "2026-10-04",
+    "acl": [],
+    "head": "github: PR #5\nmeta: 머지됨",
+    "body": [
+     [
+      "",
+      "https://x/5#c0"
+     ],
+     [
+      "　",
+      "https://x/5#c1"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c2"
+     ],
+     [
+      "   ",
+      "https://x/5#c3"
+     ],
+     [
+      "가나다xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx끝",
+      "https://x/5#c4"
+     ],
+     [
+      "",
+      "https://x/5#c5"
+     ],
+     [
+      "　",
+      "https://x/5#c6"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c7"
+     ],
+     [
+      "   ",
+      "https://x/5#c8"
+     ],
+     [
+      " 줄 9 ",
+      "https://x/5#c9"
+     ],
+     [
+      "",
+      "https://x/5#c10"
+     ],
+     [
+      "　",
+      "https://x/5#c11"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c12"
+     ],
+     [
+      "   ",
+      "https://x/5#c13"
+     ],
+     [
+      " 줄 14 ",
+      "https://x/5#c14"
+     ],
+     [
+      "",
+      "https://x/5#c15"
+     ],
+     [
+      "　",
+      "https://x/5#c16"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c17"
+     ],
+     [
+      "   ",
+      "https://x/5#c18"
+     ],
+     [
+      " 줄 19 ",
+      "https://x/5#c19"
+     ],
+     [
+      "",
+      "https://x/5#c20"
+     ],
+     [
+      "　",
+      "https://x/5#c21"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c22"
+     ],
+     [
+      "   ",
+      "https://x/5#c23"
+     ],
+     [
+      " 줄 24 ",
+      "https://x/5#c24"
+     ],
+     [
+      "",
+      "https://x/5#c25"
+     ],
+     [
+      "　",
+      "https://x/5#c26"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c27"
+     ],
+     [
+      "   ",
+      "https://x/5#c28"
+     ],
+     [
+      " 줄 29 ",
+      "https://x/5#c29"
+     ],
+     [
+      "",
+      "https://x/5#c30"
+     ],
+     [
+      "",
+      "https://x/5#c31"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c32"
+     ],
+     [
+      "   ",
+      "https://x/5#c33"
+     ],
+     [
+      " 줄 34 ",
+      "https://x/5#c34"
+     ],
+     [
+      "",
+      "https://x/5#c35"
+     ],
+     [
+      "　",
+      "https://x/5#c36"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c37"
+     ],
+     [
+      "   ",
+      "https://x/5#c38"
+     ],
+     [
+      " 줄 39 ",
+      "https://x/5#c39"
+     ],
+     [
+      "",
+      "https://x/5#c40"
+     ],
+     [
+      "　",
+      "https://x/5#c41"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c42"
+     ],
+     [
+      "   ",
+      "https://x/5#c43"
+     ],
+     [
+      " 줄 44 ",
+      "https://x/5#c44"
+     ],
+     [
+      "",
+      "https://x/5#c45"
+     ],
+     [
+      "　",
+      "https://x/5#c46"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c47"
+     ],
+     [
+      "   ",
+      "https://x/5#c48"
+     ],
+     [
+      " 줄 49 ",
+      "https://x/5#c49"
+     ],
+     [
+      "",
+      "https://x/5#c50"
+     ],
+     [
+      "　",
+      "https://x/5#c51"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c52"
+     ],
+     [
+      "   ",
+      "https://x/5#c53"
+     ],
+     [
+      " 줄 54 ",
+      "https://x/5#c54"
+     ],
+     [
+      "",
+      "https://x/5#c55"
+     ],
+     [
+      "　",
+      "https://x/5#c56"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c57"
+     ],
+     [
+      "   ",
+      "https://x/5#c58"
+     ],
+     [
+      " 줄 59 ",
+      "https://x/5#c59"
+     ],
+     [
+      "",
+      "https://x/5#c60"
+     ],
+     [
+      "　",
+      "https://x/5#c61"
+     ],
+     [
+      "",
+      "https://x/5#c62"
+     ],
+     [
+      "   ",
+      "https://x/5#c63"
+     ],
+     [
+      "가나다xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx끝",
+      "https://x/5#c64"
+     ],
+     [
+      "",
+      "https://x/5#c65"
+     ],
+     [
+      "　",
+      "https://x/5#c66"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c67"
+     ],
+     [
+      "   ",
+      "https://x/5#c68"
+     ],
+     [
+      " 줄 69 ",
+      "https://x/5#c69"
+     ],
+     [
+      "",
+      "https://x/5#c70"
+     ],
+     [
+      "　",
+      "https://x/5#c71"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c72"
+     ],
+     [
+      "   ",
+      "https://x/5#c73"
+     ],
+     [
+      " 줄 74 ",
+      "https://x/5#c74"
+     ],
+     [
+      "",
+      "https://x/5#c75"
+     ],
+     [
+      "　",
+      "https://x/5#c76"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c77"
+     ],
+     [
+      "   ",
+      "https://x/5#c78"
+     ],
+     [
+      " 줄 79 ",
+      "https://x/5#c79"
+     ],
+     [
+      "",
+      "https://x/5#c80"
+     ],
+     [
+      "　",
+      "https://x/5#c81"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c82"
+     ],
+     [
+      "   ",
+      "https://x/5#c83"
+     ],
+     [
+      " 줄 84 ",
+      "https://x/5#c84"
+     ],
+     [
+      "",
+      "https://x/5#c85"
+     ],
+     [
+      "　",
+      "https://x/5#c86"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c87"
+     ],
+     [
+      "   ",
+      "https://x/5#c88"
+     ],
+     [
+      " 줄 89 ",
+      "https://x/5#c89"
+     ],
+     [
+      "",
+      "https://x/5#c90"
+     ],
+     [
+      "　",
+      "https://x/5#c91"
+     ],
+     [
+      "\u001c",
+      "https://x/5#c92"
+     ],
+     [
+      "",
+      "https://x/5#c93"
+     ],
+     [
+      " 줄 94 ",
+      "https://x/5#c94"
+     ]
+    ]
+   },
+   "chunks": [
+    {
+     "src": "github",
+     "path": "github/pull/5",
+     "title": "PR #5",
+     "author": "d",
+     "at": "2026-10-04",
+     "acl": [],
+     "line": 1,
+     "url": "https://x/5#c4",
+     "text": "github: PR #5\nmeta: 머지됨\n가나다xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+     "src": "github",
+     "path": "github/pull/5",
+     "title": "PR #5",
+     "author": "d",
+     "at": "2026-10-04",
+     "acl": [],
+     "line": 31,
+     "url": "https://x/5#c34",
+     "text": "github: PR #5\nmeta: 머지됨\n줄 34 \n\n　\n\u001c\n   \n 줄 39 \n\n　\n\u001c\n   \n 줄 44 \n\n　\n\u001c\n   \n 줄 49 \n\n　\n\u001c\n   \n 줄 54 \n\n　\n\u001c\n   \n 줄 59 \n\n　\n\n   \n가나다xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+     "src": "github",
+     "path": "github/pull/5",
+     "title": "PR #5",
+     "author": "d",
+     "at": "2026-10-04",
+     "acl": [],
+     "line": 61,
+     "url": "https://x/5#c64",
+     "text": "github: PR #5\nmeta: 머지됨\n가나다xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+   ]
+  },
+  {
+   "doc": {
+    "path": "github/pull/6",
+    "title": "PR #6",
+    "url": "https://x/6",
+    "author": "e",
+    "at": "2026-10-05",
+    "head": "github: PR #6",
+    "body": [
+     [
+      "x0",
+      "https://x/6#0"
+     ],
+     [
+      "x1",
+      "https://x/6#1"
+     ],
+     [
+      "x2",
+      "https://x/6#2"
+     ],
+     [
+      "x3",
+      "https://x/6#3"
+     ],
+     [
+      "x4",
+      "https://x/6#4"
+     ],
+     [
+      "x5",
+      "https://x/6#5"
+     ],
+     [
+      "x6",
+      "https://x/6#6"
+     ],
+     [
+      "x7",
+      "https://x/6#7"
+     ],
+     [
+      "x8",
+      "https://x/6#8"
+     ],
+     [
+      "x9",
+      "https://x/6#9"
+     ],
+     [
+      "x10",
+      "https://x/6#10"
+     ],
+     [
+      "x11",
+      "https://x/6#11"
+     ],
+     [
+      "x12",
+      "https://x/6#12"
+     ],
+     [
+      "x13",
+      "https://x/6#13"
+     ],
+     [
+      "x14",
+      "https://x/6#14"
+     ],
+     [
+      "x15",
+      "https://x/6#15"
+     ],
+     [
+      "x16",
+      "https://x/6#16"
+     ],
+     [
+      "x17",
+      "https://x/6#17"
+     ],
+     [
+      "x18",
+      "https://x/6#18"
+     ],
+     [
+      "x19",
+      "https://x/6#19"
+     ],
+     [
+      "x20",
+      "https://x/6#20"
+     ],
+     [
+      "x21",
+      "https://x/6#21"
+     ],
+     [
+      "x22",
+      "https://x/6#22"
+     ],
+     [
+      "x23",
+      "https://x/6#23"
+     ],
+     [
+      "x24",
+      "https://x/6#24"
+     ],
+     [
+      "x25",
+      "https://x/6#25"
+     ],
+     [
+      "x26",
+      "https://x/6#26"
+     ],
+     [
+      "x27",
+      "https://x/6#27"
+     ],
+     [
+      "x28",
+      "https://x/6#28"
+     ],
+     [
+      "x29",
+      "https://x/6#29"
+     ],
+     [
+      "",
+      "https://x/6#30"
+     ],
+     [
+      "",
+      "https://x/6#31"
+     ],
+     [
+      "",
+      "https://x/6#32"
+     ],
+     [
+      "",
+      "https://x/6#33"
+     ],
+     [
+      "",
+      "https://x/6#34"
+     ],
+     [
+      "",
+      "https://x/6#35"
+     ],
+     [
+      "",
+      "https://x/6#36"
+     ],
+     [
+      "",
+      "https://x/6#37"
+     ],
+     [
+      "",
+      "https://x/6#38"
+     ],
+     [
+      "",
+      "https://x/6#39"
+     ],
+     [
+      "",
+      "https://x/6#40"
+     ],
+     [
+      "",
+      "https://x/6#41"
+     ],
+     [
+      "",
+      "https://x/6#42"
+     ],
+     [
+      "",
+      "https://x/6#43"
+     ],
+     [
+      "",
+      "https://x/6#44"
+     ],
+     [
+      "",
+      "https://x/6#45"
+     ],
+     [
+      "",
+      "https://x/6#46"
+     ],
+     [
+      "",
+      "https://x/6#47"
+     ],
+     [
+      "",
+      "https://x/6#48"
+     ],
+     [
+      "",
+      "https://x/6#49"
+     ],
+     [
+      "",
+      "https://x/6#50"
+     ],
+     [
+      "",
+      "https://x/6#51"
+     ],
+     [
+      "",
+      "https://x/6#52"
+     ],
+     [
+      "",
+      "https://x/6#53"
+     ],
+     [
+      "",
+      "https://x/6#54"
+     ],
+     [
+      "",
+      "https://x/6#55"
+     ],
+     [
+      "",
+      "https://x/6#56"
+     ],
+     [
+      "",
+      "https://x/6#57"
+     ],
+     [
+      "",
+      "https://x/6#58"
+     ],
+     [
+      "",
+      "https://x/6#59"
+     ],
+     [
+      "",
+      "https://x/6#60"
+     ],
+     [
+      "",
+      "https://x/6#61"
+     ],
+     [
+      "",
+      "https://x/6#62"
+     ],
+     [
+      "",
+      "https://x/6#63"
+     ],
+     [
+      "",
+      "https://x/6#64"
+     ],
+     [
+      "",
+      "https://x/6#65"
+     ],
+     [
+      "",
+      "https://x/6#66"
+     ],
+     [
+      "",
+      "https://x/6#67"
+     ],
+     [
+      "",
+      "https://x/6#68"
+     ],
+     [
+      "",
+      "https://x/6#69"
+     ]
+    ]
+   },
+   "chunks": [
+    {
+     "src": "github",
+     "path": "github/pull/6",
+     "title": "PR #6",
+     "author": "e",
+     "at": "2026-10-05",
+     "acl": [
+      "*"
+     ],
+     "line": 1,
+     "url": "https://x/6#0",
+     "text": "github: PR #6\nx0\nx1\nx2\nx3\nx4\nx5\nx6\nx7\nx8\nx9\nx10\nx11\nx12\nx13\nx14\nx15\nx16\nx17\nx18\nx19\nx20\nx21\nx22\nx23\nx24\nx25\nx26\nx27\nx28\nx29"
+    }
+   ]
+  },
+  {
+   "doc": {
+    "path": "github/pull/7",
+    "title": "PR #7",
+    "url": "https://x/7",
+    "author": "f",
+    "at": "2026-10-06",
+    "head": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+    "body": [
+     [
+      "본문 ",
+      "https://x/7#1"
+     ],
+     [
+      "둘째",
+      "https://x/7#2"
+     ]
+    ]
+   },
+   "chunks": [
+    {
+     "src": "github",
+     "path": "github/pull/7",
+     "title": "PR #7",
+     "author": "f",
+     "at": "2026-10-06",
+     "acl": [
+      "*"
+     ],
+     "line": 1,
+     "url": "https://x/7#1",
+     "text": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\n"
+    }
+   ]
+  }
+ ],
+ "documents": {
+  "issues": [
+   {
+    "id": 5021,
+    "number": 21,
+    "title": "파일이 많은 PR",
+    "body": "1번째 줄\n2번째 줄\n3번째 줄\n4번째 줄\n5번째 줄\n6번째 줄\n7번째 줄\n8번째 줄\n\n10번째 줄\n11번째 줄\n12번째 줄\n13번째 줄\n14번째 줄\n15번째 줄\n16번째 줄\n17번째 줄\n\n19번째 줄\n20번째 줄\n21번째 줄\n22번째 줄\n23번째 줄\n24번째 줄\n25번째 줄\n26번째 줄\n\n28번째 줄\n29번째 줄\n30번째 줄\n31번째 줄\n32번째 줄\n33번째 줄\n34번째 줄\n35번째 줄\n\n37번째 줄\n38번째 줄\n39번째 줄\n40번째 줄\n41번째 줄\n42번째 줄\n43번째 줄\n44번째 줄\n\n46번째 줄\n47번째 줄\n48번째 줄\n49번째 줄\n50번째 줄\n51번째 줄\n52번째 줄\n53번째 줄\n\n55번째 줄\n56번째 줄\n57번째 줄\n58번째 줄\n59번째 줄\n60번째 줄\n61번째 줄\n62번째 줄\n\n64번째 줄\n65번째 줄\n66번째 줄\n67번째 줄\n68번째 줄\n69번째 줄\n70번째 줄\n71번째 줄\n\n73번째 줄\n74번째 줄",
+    "user": {
+     "login": "sora-p",
+     "type": "User"
+    },
+    "state": "open",
+    "created_at": "2026-10-01T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "html_url": "https://github.com/o/n/pull/21",
+    "labels": [
+     {
+      "name": "ignored for PRs"
+     }
+    ],
+    "pull_request": {
+     "merged_at": "2026-10-03T00:00:00Z"
+    }
+   },
+   {
+    "id": 5022,
+    "number": 22,
+    "title": "리뷰만 있는 PR",
+    "body": "   \r\n<!-- only -->\r\n",
+    "user": {
+     "login": "sora-p",
+     "type": "User"
+    },
+    "state": "closed",
+    "created_at": "2026-10-01T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "html_url": "https://github.com/o/n/pull/22",
+    "labels": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "id": 5023,
+    "number": 23,
+    "title": "로그인이 없는 이슈",
+    "body": null,
+    "user": {
+     "login": null
+    },
+    "state": "open",
+    "created_at": "2026-10-01T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "html_url": "https://github.com/o/n/issues/23",
+    "labels": [
+     {
+      "name": "a"
+     },
+     {
+      "name": "b c"
+     }
+    ]
+   },
+   {
+    "id": 5024,
+    "number": 24,
+    "title": "pending 리뷰 하나",
+    "body": "설명",
+    "user": {
+     "login": "sora-p",
+     "type": "User"
+    },
+    "state": "open",
+    "created_at": "2026-10-01T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "html_url": "https://github.com/o/n/pull/24",
+    "labels": [],
+    "pull_request": null
+   },
+   {
+    "id": 5025,
+    "number": 25,
+    "title": "봇이 연 이슈",
+    "body": "설명",
+    "user": {
+     "login": "renovate",
+     "type": "Bot"
+    },
+    "state": "open",
+    "created_at": "2026-10-01T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "html_url": "https://github.com/o/n/issues/25",
+    "labels": []
+   }
+  ],
+  "comments": [
+   {
+    "id": 601,
+    "issue_url": "https://api.github.com/repos/o/n/issues/21",
+    "user": {
+     "login": "jun-h"
+    },
+    "created_at": "2026-10-02T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "body": "같은 시각 B",
+    "html_url": "https://github.com/o/n/issues/21#issuecomment-601"
+   },
+   {
+    "id": 602,
+    "issue_url": "https://api.github.com/repos/o/n/issues/21",
+    "user": {
+     "login": "alice"
+    },
+    "created_at": "2026-10-02T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "body": "같은 시각 A",
+    "html_url": "https://github.com/o/n/issues/21#issuecomment-602"
+   },
+   {
+    "id": 603,
+    "issue_url": "https://api.github.com/repos/o/n/issues/21",
+    "user": {
+     "login": "kim"
+    },
+    "created_at": "2026-10-02T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "body": null,
+    "html_url": "https://github.com/o/n/issues/21#issuecomment-603"
+   },
+   {
+    "id": 607,
+    "issue_url": "https://api.github.com/repos/o/n/issues/21",
+    "user": {
+     "login": "jun-h"
+    },
+    "created_at": "2026-10-02T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "body": "같은 시각 0",
+    "html_url": "https://github.com/o/n/issues/21#issuecomment-607"
+   },
+   {
+    "id": 604,
+    "issue_url": "https://api.github.com/repos/o/n/issues/21",
+    "user": {
+     "login": "zed"
+    },
+    "created_at": "2026-10-01T00:00:00Z",
+    "updated_at": "2026-10-01T00:00:00Z",
+    "body": "먼저 단 댓글\r\n\r\n\r\n둘째 줄",
+    "html_url": "https://github.com/o/n/issues/21#issuecomment-604"
+   },
+   {
+    "id": 605,
+    "issue_url": "https://api.github.com/repos/o/n/issues/23",
+    "user": {
+     "login": "robot"
+    },
+    "created_at": "2026-10-05T00:00:00Z",
+    "updated_at": "2026-10-05T00:00:00Z",
+    "body": "봇 아닌 bot",
+    "html_url": "https://github.com/o/n/issues/23#issuecomment-605"
+   },
+   {
+    "id": 606,
+    "issue_url": "https://api.github.com/repos/o/n/issues/23",
+    "user": {
+     "login": "x",
+     "type": "Bot"
+    },
+    "created_at": "2026-10-06T00:00:00Z",
+    "updated_at": "2026-10-06T00:00:00Z",
+    "body": "타입이 봇",
+    "html_url": "https://github.com/o/n/issues/23#issuecomment-606"
+   }
+  ],
+  "review_comments": [
+   {
+    "id": 701,
+    "pull_request_url": "https://api.github.com/repos/o/n/pulls/21",
+    "user": {
+     "login": "mina-k"
+    },
+    "path": "src/a.ts",
+    "line": 0,
+    "original_line": 7,
+    "created_at": "2026-10-02T00:00:00Z",
+    "updated_at": "2026-10-02T00:00:00Z",
+    "body": "인라인",
+    "html_url": "https://github.com/o/n/pull/21#discussion_r701"
+   },
+   {
+    "id": 702,
+    "pull_request_url": "https://api.github.com/repos/o/n/pulls/21",
+    "user": {
+     "login": "mina-k"
+    },
+    "path": "src/b.ts:",
+    "line": null,
+    "original_line": null,
+    "created_at": "2026-10-02T01:00:00Z",
+    "updated_at": "2026-10-02T01:00:00Z",
+    "body": "인라인",
+    "html_url": "https://github.com/o/n/pull/21#discussion_r702"
+   },
+   {
+    "id": 703,
+    "pull_request_url": "https://api.github.com/repos/o/n/pulls/22",
+    "user": {
+     "login": "mina-k"
+    },
+    "path": "c.ts",
+    "line": null,
+    "original_line": 0,
+    "created_at": "2026-10-04T00:00:00Z",
+    "updated_at": "2026-10-04T00:00:00Z",
+    "body": "인라인",
+    "html_url": "https://github.com/o/n/pull/22#discussion_r703"
+   }
+  ],
+  "pulls": [
+   {
+    "number": 21,
+    "headRefName": "",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 40,
+     "nodes": [
+      {
+       "path": "src/f0.ts"
+      },
+      {
+       "path": "src/f1.ts"
+      },
+      {
+       "path": "src/f2.ts"
+      },
+      {
+       "path": "src/f3.ts"
+      },
+      {
+       "path": "src/f4.ts"
+      },
+      {
+       "path": "src/f5.ts"
+      },
+      {
+       "path": "src/__tests__/a.ts"
+      },
+      {
+       "path": "src/b.test.ts"
+      },
+      {
+       "path": "src/c.spec.ts"
+      },
+      {
+       "path": "lib/g0.rs"
+      },
+      {
+       "path": "lib/g1.rs"
+      },
+      {
+       "path": "lib/g2.rs"
+      },
+      {
+       "path": "lib/g3.rs"
+      },
+      {
+       "path": "lib/g4.rs"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 4,
+     "nodes": [
+      {
+       "author": null,
+       "body": "작성자 없음",
+       "state": "COMMENTED",
+       "submittedAt": "2026-10-02T00:00:00Z",
+       "url": "https://github.com/o/n/pull/x#pullrequestreview-1"
+      },
+      {
+       "author": {
+        "login": "ci[bot]"
+       },
+       "body": "봇 리뷰",
+       "state": "COMMENTED",
+       "submittedAt": "2026-10-02T00:00:00Z",
+       "url": "https://github.com/o/n/pull/x#pullrequestreview-2"
+      },
+      {
+       "author": {
+        "login": "mina-k"
+       },
+       "body": " \n ",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-02T00:00:00Z",
+       "url": "https://github.com/o/n/pull/x#pullrequestreview-3"
+      },
+      {
+       "author": {
+        "login": "mina-k"
+       },
+       "body": "LGTM\r\n\r\n\r\n좋아요",
+       "state": "CHANGES_REQUESTED",
+       "submittedAt": "2026-10-02T00:00:00Z",
+       "url": "https://github.com/o/n/pull/x#pullrequestreview-4"
+      }
+     ]
+    }
+   },
+   {
+    "number": 22,
+    "headRefName": "feat/x",
+    "baseRefName": "main",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 3,
+     "nodes": [
+      {
+       "path": "a/__tests__/x.ts"
+      },
+      {
+       "path": "b.spec.ts"
+      },
+      {
+       "path": "c.test.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "리뷰 본문",
+       "state": "DISMISSED",
+       "submittedAt": "2026-10-04T00:00:00Z",
+       "url": "https://github.com/o/n/pull/x#pullrequestreview-5"
+      }
+     ]
+    }
+   },
+   {
+    "number": 24,
+    "headRefName": "wip",
+    "baseRefName": "dev",
+    "mergedAt": "2026-10-09T00:00:00Z",
+    "files": {
+     "totalCount": 0,
+     "nodes": []
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "sora-p"
+       },
+       "body": "아직 안 보낸 리뷰",
+       "state": "PENDING",
+       "submittedAt": null,
+       "url": "https://github.com/o/n/pull/x#pullrequestreview-6"
+      }
+     ]
+    }
+   }
+  ],
+  "chunks": [
+   {
+    "src": "github",
+    "path": "github/pull/24",
+    "title": "PR #24 · pending 리뷰 하나",
+    "author": "sora-p",
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 1,
+    "url": "https://github.com/o/n/pull/24",
+    "text": "github: PR #24 · pending 리뷰 하나\nmeta: 머지됨 · sora-p · 2026-10-01 · wip → dev\n설명\n\n— sora-p · 리뷰 pending\n아직 안 보낸 리뷰"
+   },
+   {
+    "src": "github",
+    "path": "github/issue/23",
+    "title": "이슈 #23 · 로그인이 없는 이슈",
+    "author": null,
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 1,
+    "url": "https://github.com/o/n/issues/23",
+    "text": "github: 이슈 #23 · 로그인이 없는 이슈\nmeta: 열림 · None · 2026-10-01 · a, b c\n(설명 없음)\n\n— robot · 2026-10-05\n봇 아닌 bot"
+   },
+   {
+    "src": "github",
+    "path": "github/pull/22",
+    "title": "PR #22 · 리뷰만 있는 PR",
+    "author": "sora-p",
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 1,
+    "url": "https://github.com/o/n/pull/22",
+    "text": "github: PR #22 · 리뷰만 있는 PR\nmeta: 닫힘 · sora-p · 2026-10-01 · feat/x → main\n(설명 없음)\n\n— jun-h · 리뷰 dismissed\n리뷰 본문\n\n— mina-k · 리뷰 · c.ts\n인라인"
+   },
+   {
+    "src": "github",
+    "path": "github/pull/21",
+    "title": "PR #21 · 파일이 많은 PR",
+    "author": "sora-p",
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 1,
+    "url": "https://github.com/o/n/pull/21",
+    "text": "github: PR #21 · 파일이 많은 PR\nmeta: 머지됨 · sora-p · 2026-10-01\nfiles: src/f0.ts, src/f1.ts, src/f2.ts, src/f3.ts, src/f4.ts, src/f5.ts, lib/g0.rs, lib/g1.rs 외 32개\n1번째 줄\n2번째 줄\n3번째 줄\n4번째 줄\n5번째 줄\n6번째 줄\n7번째 줄\n8번째 줄\n\n10번째 줄\n11번째 줄\n12번째 줄\n13번째 줄\n14번째 줄\n15번째 줄\n16번째 줄\n17번째 줄\n\n19번째 줄\n20번째 줄\n21번째 줄\n22번째 줄\n23번째 줄\n24번째 줄\n25번째 줄\n26번째 줄\n\n28번째 줄\n29번째 줄\n30번째 줄\n31번째 줄\n32번째 줄\n33번째 줄\n34번째 줄\n35번째 줄\n\n37번째 줄\n38번째 줄\n39번째 줄"
+   },
+   {
+    "src": "github",
+    "path": "github/pull/21",
+    "title": "PR #21 · 파일이 많은 PR",
+    "author": "sora-p",
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 31,
+    "url": "https://github.com/o/n/pull/21",
+    "text": "github: PR #21 · 파일이 많은 PR\nmeta: 머지됨 · sora-p · 2026-10-01\n30번째 줄\n31번째 줄\n32번째 줄\n33번째 줄\n34번째 줄\n35번째 줄\n\n37번째 줄\n38번째 줄\n39번째 줄\n40번째 줄\n41번째 줄\n42번째 줄\n43번째 줄\n44번째 줄\n\n46번째 줄\n47번째 줄\n48번째 줄\n49번째 줄\n50번째 줄\n51번째 줄\n52번째 줄\n53번째 줄\n\n55번째 줄\n56번째 줄\n57번째 줄\n58번째 줄\n59번째 줄\n60번째 줄\n61번째 줄\n62번째 줄\n\n64번째 줄\n65번째 줄\n66번째 줄\n67번째 줄\n68번째 줄\n69번째 줄"
+   },
+   {
+    "src": "github",
+    "path": "github/pull/21",
+    "title": "PR #21 · 파일이 많은 PR",
+    "author": "sora-p",
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 61,
+    "url": "https://github.com/o/n/pull/21",
+    "text": "github: PR #21 · 파일이 많은 PR\nmeta: 머지됨 · sora-p · 2026-10-01\n60번째 줄\n61번째 줄\n62번째 줄\n\n64번째 줄\n65번째 줄\n66번째 줄\n67번째 줄\n68번째 줄\n69번째 줄\n70번째 줄\n71번째 줄\n\n73번째 줄\n74번째 줄\n\n— zed · 2026-10-01\n먼저 단 댓글\n\n둘째 줄\n\n— ? · 리뷰 commented\n작성자 없음\n\n— alice · 2026-10-02\n같은 시각 A\n\n— jun-h · 2026-10-02\n같은 시각 0\n\n— jun-h · 2026-10-02\n같은 시각 B\n\n— mina-k · 리뷰 changes_requested\nLGTM\n\n좋아요\n\n— mina-k · 리뷰 · src/a.ts:7\n인라인"
+   },
+   {
+    "src": "github",
+    "path": "github/pull/21",
+    "title": "PR #21 · 파일이 많은 PR",
+    "author": "sora-p",
+    "at": "2026-10-01",
+    "acl": [
+     "*"
+    ],
+    "line": 91,
+    "url": "https://github.com/o/n/issues/21#issuecomment-601",
+    "text": "github: PR #21 · 파일이 많은 PR\nmeta: 머지됨 · sora-p · 2026-10-01\n— jun-h · 2026-10-02\n같은 시각 B\n\n— mina-k · 리뷰 changes_requested\nLGTM\n\n좋아요\n\n— mina-k · 리뷰 · src/a.ts:7\n인라인\n\n— mina-k · 리뷰 · src/b.ts\n인라인"
+   }
+  ]
+ },
+ "pr_extras": {
+  "numbers": [
+   44,
+   43,
+   42,
+   41,
+   40,
+   39,
+   38,
+   37,
+   36,
+   35,
+   34,
+   33,
+   32,
+   31,
+   30,
+   29,
+   28,
+   27,
+   26,
+   25,
+   24,
+   23,
+   22,
+   21,
+   20,
+   19,
+   18,
+   17,
+   16,
+   15,
+   14,
+   13,
+   12,
+   11,
+   10,
+   9,
+   8,
+   7,
+   6,
+   5,
+   4,
+   3,
+   2,
+   1,
+   655,
+   7
+  ],
+  "queries": [
+   "query($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { p1: pullRequest(number: 1) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p2: pullRequest(number: 2) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p3: pullRequest(number: 3) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p4: pullRequest(number: 4) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p5: pullRequest(number: 5) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p6: pullRequest(number: 6) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p7: pullRequest(number: 7) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p8: pullRequest(number: 8) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p9: pullRequest(number: 9) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p10: pullRequest(number: 10) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p11: pullRequest(number: 11) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p12: pullRequest(number: 12) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p13: pullRequest(number: 13) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p14: pullRequest(number: 14) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p15: pullRequest(number: 15) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p16: pullRequest(number: 16) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p17: pullRequest(number: 17) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p18: pullRequest(number: 18) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p19: pullRequest(number: 19) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p20: pullRequest(number: 20) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } } }",
+   "query($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { p21: pullRequest(number: 21) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p22: pullRequest(number: 22) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p23: pullRequest(number: 23) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p24: pullRequest(number: 24) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p25: pullRequest(number: 25) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p26: pullRequest(number: 26) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p27: pullRequest(number: 27) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p28: pullRequest(number: 28) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p29: pullRequest(number: 29) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p30: pullRequest(number: 30) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p31: pullRequest(number: 31) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p32: pullRequest(number: 32) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p33: pullRequest(number: 33) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p34: pullRequest(number: 34) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p35: pullRequest(number: 35) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p36: pullRequest(number: 36) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p37: pullRequest(number: 37) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p38: pullRequest(number: 38) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p39: pullRequest(number: 39) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p40: pullRequest(number: 40) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } } }",
+   "query($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { p41: pullRequest(number: 41) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p42: pullRequest(number: 42) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p43: pullRequest(number: 43) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p44: pullRequest(number: 44) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } p655: pullRequest(number: 655) { number headRefName baseRefName mergedAt files(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { path } } reviews(first: 100) { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } } }",
+   "query($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { p655: pullRequest(number: 655) { files(first: 100, after: \"c1\\\"\\u00e9\\u2028\\ud83d\\ude00\\u007f\\\\\") { totalCount pageInfo { hasNextPage endCursor } nodes { path } } } } }",
+   "query($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { p655: pullRequest(number: 655) { reviews(first: 100, after: \"r1\") { totalCount pageInfo { hasNextPage endCursor } nodes { author { login } body state submittedAt url } } } } }"
+  ],
+  "extras": {
+   "1": {
+    "number": 1,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/1#r0"
+      }
+     ]
+    }
+   },
+   "2": {
+    "number": 2,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/2#r0"
+      }
+     ]
+    }
+   },
+   "3": {
+    "number": 3,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/3#r0"
+      }
+     ]
+    }
+   },
+   "4": {
+    "number": 4,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/4#r0"
+      }
+     ]
+    }
+   },
+   "5": {
+    "number": 5,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/5#r0"
+      }
+     ]
+    }
+   },
+   "6": {
+    "number": 6,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/6#r0"
+      }
+     ]
+    }
+   },
+   "7": {
+    "number": 7,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/7#r0"
+      }
+     ]
+    }
+   },
+   "8": {
+    "number": 8,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/8#r0"
+      }
+     ]
+    }
+   },
+   "9": {
+    "number": 9,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/9#r0"
+      }
+     ]
+    }
+   },
+   "10": {
+    "number": 10,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/10#r0"
+      }
+     ]
+    }
+   },
+   "11": {
+    "number": 11,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/11#r0"
+      }
+     ]
+    }
+   },
+   "12": {
+    "number": 12,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/12#r0"
+      }
+     ]
+    }
+   },
+   "13": null,
+   "14": {
+    "number": 14,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/14#r0"
+      }
+     ]
+    }
+   },
+   "15": {
+    "number": 15,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/15#r0"
+      }
+     ]
+    }
+   },
+   "16": {
+    "number": 16,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/16#r0"
+      }
+     ]
+    }
+   },
+   "17": {
+    "number": 17,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/17#r0"
+      }
+     ]
+    }
+   },
+   "18": {
+    "number": 18,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/18#r0"
+      }
+     ]
+    }
+   },
+   "19": {
+    "number": 19,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/19#r0"
+      }
+     ]
+    }
+   },
+   "20": {
+    "number": 20,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/20#r0"
+      }
+     ]
+    }
+   },
+   "21": {
+    "number": 21,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/21#r0"
+      }
+     ]
+    }
+   },
+   "22": {
+    "number": 22,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/22#r0"
+      }
+     ]
+    }
+   },
+   "23": {
+    "number": 23,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/23#r0"
+      }
+     ]
+    }
+   },
+   "24": {
+    "number": 24,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/24#r0"
+      }
+     ]
+    }
+   },
+   "25": {
+    "number": 25,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/25#r0"
+      }
+     ]
+    }
+   },
+   "26": {
+    "number": 26,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/26#r0"
+      }
+     ]
+    }
+   },
+   "27": {
+    "number": 27,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/27#r0"
+      }
+     ]
+    }
+   },
+   "28": {
+    "number": 28,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/28#r0"
+      }
+     ]
+    }
+   },
+   "29": {
+    "number": 29,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/29#r0"
+      }
+     ]
+    }
+   },
+   "30": {
+    "number": 30,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/30#r0"
+      }
+     ]
+    }
+   },
+   "31": {
+    "number": 31,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/31#r0"
+      }
+     ]
+    }
+   },
+   "32": {
+    "number": 32,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/32#r0"
+      }
+     ]
+    }
+   },
+   "33": {
+    "number": 33,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/33#r0"
+      }
+     ]
+    }
+   },
+   "34": {
+    "number": 34,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/34#r0"
+      }
+     ]
+    }
+   },
+   "35": {
+    "number": 35,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/35#r0"
+      }
+     ]
+    }
+   },
+   "36": {
+    "number": 36,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/36#r0"
+      }
+     ]
+    }
+   },
+   "37": {
+    "number": 37,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/37#r0"
+      }
+     ]
+    }
+   },
+   "38": {
+    "number": 38,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/38#r0"
+      }
+     ]
+    }
+   },
+   "39": {
+    "number": 39,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/39#r0"
+      }
+     ]
+    }
+   },
+   "40": {
+    "number": 40,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/40#r0"
+      }
+     ]
+    }
+   },
+   "41": {
+    "number": 41,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/41#r0"
+      }
+     ]
+    }
+   },
+   "42": {
+    "number": 42,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/42#r0"
+      }
+     ]
+    }
+   },
+   "43": {
+    "number": 43,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/43#r0"
+      }
+     ]
+    }
+   },
+   "44": {
+    "number": 44,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 1,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/44#r0"
+      }
+     ]
+    }
+   },
+   "655": {
+    "number": 655,
+    "headRefName": "feat",
+    "baseRefName": "dev",
+    "mergedAt": null,
+    "files": {
+     "totalCount": 130,
+     "nodes": [
+      {
+       "path": "f0.ts"
+      },
+      {
+       "path": "f1.ts"
+      },
+      {
+       "path": "f2.ts"
+      },
+      {
+       "path": "f3.ts"
+      },
+      {
+       "path": "f4.ts"
+      },
+      {
+       "path": "f5.ts"
+      },
+      {
+       "path": "f6.ts"
+      },
+      {
+       "path": "f7.ts"
+      },
+      {
+       "path": "f8.ts"
+      },
+      {
+       "path": "f9.ts"
+      },
+      {
+       "path": "f10.ts"
+      },
+      {
+       "path": "f11.ts"
+      },
+      {
+       "path": "f12.ts"
+      },
+      {
+       "path": "f13.ts"
+      },
+      {
+       "path": "f14.ts"
+      },
+      {
+       "path": "f15.ts"
+      },
+      {
+       "path": "f16.ts"
+      },
+      {
+       "path": "f17.ts"
+      },
+      {
+       "path": "f18.ts"
+      },
+      {
+       "path": "f19.ts"
+      },
+      {
+       "path": "f20.ts"
+      },
+      {
+       "path": "f21.ts"
+      },
+      {
+       "path": "f22.ts"
+      },
+      {
+       "path": "f23.ts"
+      },
+      {
+       "path": "f24.ts"
+      },
+      {
+       "path": "f25.ts"
+      },
+      {
+       "path": "f26.ts"
+      },
+      {
+       "path": "f27.ts"
+      },
+      {
+       "path": "f28.ts"
+      },
+      {
+       "path": "f29.ts"
+      },
+      {
+       "path": "f30.ts"
+      },
+      {
+       "path": "f31.ts"
+      },
+      {
+       "path": "f32.ts"
+      },
+      {
+       "path": "f33.ts"
+      },
+      {
+       "path": "f34.ts"
+      },
+      {
+       "path": "f35.ts"
+      },
+      {
+       "path": "f36.ts"
+      },
+      {
+       "path": "f37.ts"
+      },
+      {
+       "path": "f38.ts"
+      },
+      {
+       "path": "f39.ts"
+      },
+      {
+       "path": "f40.ts"
+      },
+      {
+       "path": "f41.ts"
+      },
+      {
+       "path": "f42.ts"
+      },
+      {
+       "path": "f43.ts"
+      },
+      {
+       "path": "f44.ts"
+      },
+      {
+       "path": "f45.ts"
+      },
+      {
+       "path": "f46.ts"
+      },
+      {
+       "path": "f47.ts"
+      },
+      {
+       "path": "f48.ts"
+      },
+      {
+       "path": "f49.ts"
+      },
+      {
+       "path": "f50.ts"
+      },
+      {
+       "path": "f51.ts"
+      },
+      {
+       "path": "f52.ts"
+      },
+      {
+       "path": "f53.ts"
+      },
+      {
+       "path": "f54.ts"
+      },
+      {
+       "path": "f55.ts"
+      },
+      {
+       "path": "f56.ts"
+      },
+      {
+       "path": "f57.ts"
+      },
+      {
+       "path": "f58.ts"
+      },
+      {
+       "path": "f59.ts"
+      },
+      {
+       "path": "f60.ts"
+      },
+      {
+       "path": "f61.ts"
+      },
+      {
+       "path": "f62.ts"
+      },
+      {
+       "path": "f63.ts"
+      },
+      {
+       "path": "f64.ts"
+      },
+      {
+       "path": "f65.ts"
+      },
+      {
+       "path": "f66.ts"
+      },
+      {
+       "path": "f67.ts"
+      },
+      {
+       "path": "f68.ts"
+      },
+      {
+       "path": "f69.ts"
+      },
+      {
+       "path": "f70.ts"
+      },
+      {
+       "path": "f71.ts"
+      },
+      {
+       "path": "f72.ts"
+      },
+      {
+       "path": "f73.ts"
+      },
+      {
+       "path": "f74.ts"
+      },
+      {
+       "path": "f75.ts"
+      },
+      {
+       "path": "f76.ts"
+      },
+      {
+       "path": "f77.ts"
+      },
+      {
+       "path": "f78.ts"
+      },
+      {
+       "path": "f79.ts"
+      },
+      {
+       "path": "f80.ts"
+      },
+      {
+       "path": "f81.ts"
+      },
+      {
+       "path": "f82.ts"
+      },
+      {
+       "path": "f83.ts"
+      },
+      {
+       "path": "f84.ts"
+      },
+      {
+       "path": "f85.ts"
+      },
+      {
+       "path": "f86.ts"
+      },
+      {
+       "path": "f87.ts"
+      },
+      {
+       "path": "f88.ts"
+      },
+      {
+       "path": "f89.ts"
+      },
+      {
+       "path": "f90.ts"
+      },
+      {
+       "path": "f91.ts"
+      },
+      {
+       "path": "f92.ts"
+      },
+      {
+       "path": "f93.ts"
+      },
+      {
+       "path": "f94.ts"
+      },
+      {
+       "path": "f95.ts"
+      },
+      {
+       "path": "f96.ts"
+      },
+      {
+       "path": "f97.ts"
+      },
+      {
+       "path": "f98.ts"
+      },
+      {
+       "path": "f99.ts"
+      },
+      {
+       "path": "g0.ts"
+      },
+      {
+       "path": "g1.ts"
+      },
+      {
+       "path": "g2.ts"
+      },
+      {
+       "path": "g3.ts"
+      },
+      {
+       "path": "g4.ts"
+      },
+      {
+       "path": "g5.ts"
+      },
+      {
+       "path": "g6.ts"
+      },
+      {
+       "path": "g7.ts"
+      },
+      {
+       "path": "g8.ts"
+      },
+      {
+       "path": "g9.ts"
+      },
+      {
+       "path": "g10.ts"
+      },
+      {
+       "path": "g11.ts"
+      },
+      {
+       "path": "g12.ts"
+      },
+      {
+       "path": "g13.ts"
+      },
+      {
+       "path": "g14.ts"
+      },
+      {
+       "path": "g15.ts"
+      },
+      {
+       "path": "g16.ts"
+      },
+      {
+       "path": "g17.ts"
+      },
+      {
+       "path": "g18.ts"
+      },
+      {
+       "path": "g19.ts"
+      },
+      {
+       "path": "g20.ts"
+      },
+      {
+       "path": "g21.ts"
+      },
+      {
+       "path": "g22.ts"
+      },
+      {
+       "path": "g23.ts"
+      },
+      {
+       "path": "g24.ts"
+      },
+      {
+       "path": "g25.ts"
+      },
+      {
+       "path": "g26.ts"
+      },
+      {
+       "path": "g27.ts"
+      },
+      {
+       "path": "g28.ts"
+      },
+      {
+       "path": "g29.ts"
+      }
+     ]
+    },
+    "reviews": {
+     "totalCount": 2,
+     "nodes": [
+      {
+       "author": {
+        "login": "jun-h"
+       },
+       "body": "r0",
+       "state": "APPROVED",
+       "submittedAt": "2026-10-01T00:00:00Z",
+       "url": "https://github.com/o/n/pull/655#r0"
+      },
+      {
+       "author": null,
+       "body": "late",
+       "state": "COMMENTED",
+       "submittedAt": "2026-10-02T00:00:00Z",
+       "url": "https://x/r"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

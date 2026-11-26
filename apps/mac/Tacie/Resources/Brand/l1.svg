@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100" width="150" height="100">
+  <!-- Tacie L1: frosted cream round head (1.5:1) with two warm lights on the widest line (y 0.58) at 0.3 and 0.7 of the width. -->
+  <defs>
+    <linearGradient id="frost" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF8F1"/><stop offset="1" stop-color="#EEE7D9"/></linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#FFC654"/><stop offset=".4" stop-color="#FFC654" stop-opacity=".55"/><stop offset="1" stop-color="#FFC654" stop-opacity="0"/></radialGradient>
+    <radialGradient id="core"><stop offset="0" stop-color="#FFF6D8"/><stop offset=".45" stop-color="#FFC654"/><stop offset="1" stop-color="#FFC654"/></radialGradient>
+  </defs>
+  <path d="M75 .5C140.6 .5 149.5 38.4 149.5 58C149.5 77.2 140.6 99.5 108 99.5L42 99.5C9.4 99.5 .5 77.2 .5 58C.5 38.4 9.4 .5 75 .5Z" fill="url(#frost)" stroke="#E2DACB" stroke-width="1"/>
+  <g opacity=".8">
+    <circle cx="45" cy="58" r="23" fill="url(#halo)"/>
+    <circle cx="105" cy="58" r="23" fill="url(#halo)"/>
+  </g>
+  <circle cx="45" cy="58" r="7" fill="url(#core)"/>
+  <circle cx="105" cy="58" r="7" fill="url(#core)"/>
+</svg>

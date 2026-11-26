@@ -1,0 +1,25 @@
+[
+ {"number": 5, "headRefName": "feat/retry-setting", "baseRefName": "dev", "mergedAt": "2026-10-11T04:00:00Z",
+  "files": {"totalCount": 3, "nodes": [{"path": "apps/api/src/pay/retry.ts"}, {"path": "apps/api/src/pay/retry.spec.ts"},
+                                       {"path": "docs/pay.md"}]},
+  "reviews": {"nodes": [
+   {"author": {"login": "mina-k"}, "body": "좋아요", "state": "APPROVED", "submittedAt": "2026-10-11T03:10:00Z",
+    "url": "https://github.com/o/n/pull/5#pullrequestreview-4001"},
+   {"author": null, "body": "Looks fine", "state": "COMMENTED", "submittedAt": "2026-10-11T03:20:00Z",
+    "url": "https://github.com/o/n/pull/5#pullrequestreview-4002"}]}},
+ {"number": 3, "headRefName": "dependabot/npm/lodash-4.17.21", "baseRefName": "dev", "mergedAt": null,
+  "files": {"totalCount": 1, "nodes": [{"path": "package.json"}]}, "reviews": {"nodes": []}},
+ {"number": 2, "headRefName": "fix/mail-refresh", "baseRefName": "dev", "mergedAt": null,
+  "files": {"totalCount": 12, "nodes": [
+   {"path": "apps/web/src/mail/Tab.tsx"}, {"path": "apps/web/src/mail/__tests__/Tab.test.tsx"},
+   {"path": "apps/web/src/mail/session.ts"}, {"path": "apps/web/src/mail/session.spec.ts"},
+   {"path": "apps/web/src/mail/token.ts"}, {"path": "apps/web/src/mail/api.ts"}, {"path": "apps/web/src/mail/store.ts"},
+   {"path": "apps/web/src/mail/hooks.ts"}, {"path": "apps/web/src/mail/index.ts"}, {"path": "apps/web/src/mail/types.ts"}]},
+  "reviews": {"nodes": [
+   {"author": {"login": "mina-k"}, "body": "", "state": "COMMENTED", "submittedAt": "2026-10-05T10:01:00Z",
+    "url": "https://github.com/o/n/pull/2#pullrequestreview-4003"},
+   {"author": {"login": "reviewbot[bot]"}, "body": "Automated review.", "state": "COMMENTED", "submittedAt": "2026-10-05T10:02:00Z",
+    "url": "https://github.com/o/n/pull/2#pullrequestreview-4004"},
+   {"author": {"login": "jun-h"}, "body": "반영했어요.\n<!-- x -->", "state": "CHANGES_REQUESTED",
+    "submittedAt": "2026-10-05T12:00:00Z", "url": "https://github.com/o/n/pull/2#pullrequestreview-4005"}]}}
+]

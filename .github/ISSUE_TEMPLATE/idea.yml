@@ -1,0 +1,14 @@
+name: Idea
+description: Something Tacie could do
+body:
+  - type: textarea
+    id: moment
+    attributes:
+      label: The moment
+      description: When does this come up? What were you doing, and what got in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help

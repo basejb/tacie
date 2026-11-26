@@ -1,0 +1,43 @@
+MIT License
+
+Copyright (c) 2026 The Tacie Authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------------------------------------
+Not covered by the MIT License above
+--------------------------------------------------------------------------------
+
+- The name "Tacie", the Tacie app icon, and the Tacie character artwork
+  (apps/mac/Tacie/Assets.xcassets/AppIcon.appiconset, apps/mac/Tacie/Resources/Brand)
+  are trademarks and artwork of The Tacie Authors. Forks may not ship them;
+  pick your own name and icon.
+
+- Other companies' logos (apps/mac/Tacie/Assets.xcassets/Service*.imageset) are
+  trademarks of their owners. They are used only to show a connection to that
+  service, following each owner's brand guidelines.
+
+- The test recordings in engine/crates/tacie-embed/tests/fixtures/voice/ (and
+  apps/mac/TacieTests/Fixtures/silero_speech.wav, made from one of them) come
+  from Zeroth-Korean (Lucas Jo and Wonkyum Lee, Atlas Guide and Gridspace,
+  https://www.openslr.org/40/) and are licensed under CC BY 4.0
+  (https://creativecommons.org/licenses/by/4.0/).
+
+- Third-party code, libraries and model weights keep their own licenses; see
+  apps/mac/Tacie/Resources/ThirdPartyNotices.txt.

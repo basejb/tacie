@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>ko</string>
+	<key>CFBundleDisplayName</key>
+	<string>Tacie</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.48</string>
+	<key>CFBundleVersion</key>
+	<string>49</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>회의를 듣는 동안 재생 중인 Music·Spotify를 멈췄다가 회의가 끝나면 다시 틀어요.</string>
+	<key>NSAudioCaptureUsageDescription</key>
+	<string>원격 회의에서 상대가 하는 말을 받아쓰려고 회의 앱 소리를 들어요. 화면은 보지 않아요.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>회의를 시작할 때 지금 열리는 일정의 제목과 초대된 사람 이름을 채우려고 캘린더를 읽어요.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>회의 중 질문을 알아듣고 근거 파일을 찾기 위해 마이크를 써요.</string>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUEnableJavaScript</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>$(TACIE_SU_FEED_URL)</string>
+	<key>SUPublicEDKey</key>
+	<string>$(TACIE_SU_PUBLIC_KEY)</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
+	<key>TacieAccountServer</key>
+	<string>$(TACIE_ACCOUNT_SERVER)</string>
+	<key>TacieDropboxAppKey</key>
+	<string>$(TACIE_DROPBOX_APP_KEY)</string>
+	<key>TacieEdition</key>
+	<string>$(TACIE_EDITION)</string>
+	<key>TacieGitHubClientID</key>
+	<string>$(TACIE_GITHUB_CLIENT_ID)</string>
+	<key>TacieLinearClientID</key>
+	<string>$(TACIE_LINEAR_CLIENT_ID)</string>
+	<key>TacieModelsBase</key>
+	<string>$(TACIE_MODELS_BASE)</string>
+	<key>TaciePostHogHost</key>
+	<string>$(TACIE_POSTHOG_HOST)</string>
+	<key>TaciePostHogToken</key>
+	<string>$(TACIE_POSTHOG_TOKEN)</string>
+	<key>TacieRelaySeoul</key>
+	<string>$(TACIE_RELAY_SEOUL)</string>
+	<key>TacieRelayUS</key>
+	<string>$(TACIE_RELAY_US)</string>
+</dict>
+</plist>

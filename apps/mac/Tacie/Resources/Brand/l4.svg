@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100" width="150" height="100" fill="none" stroke="currentColor">
+  <!-- Tacie L4: one-color outline, dots, and faint glow rings. Color comes from currentColor. -->
+  <path d="M75 2.75C137.4 2.75 147.25 39.1 147.25 58C147.25 76.5 137.4 97.25 108 97.25L42 97.25C12.6 97.25 2.75 76.5 2.75 58C2.75 39.1 12.6 2.75 75 2.75Z" stroke-width="5.5"/>
+  <circle cx="45" cy="58" r="7.5" fill="currentColor" stroke="none"/>
+  <circle cx="105" cy="58" r="7.5" fill="currentColor" stroke="none"/>
+  <circle cx="45" cy="58" r="15" stroke-width="4" stroke-opacity=".28"/>
+  <circle cx="105" cy="58" r="15" stroke-width="4" stroke-opacity=".28"/>
+</svg>

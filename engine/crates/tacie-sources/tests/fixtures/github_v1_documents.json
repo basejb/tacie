@@ -1,0 +1,216 @@
+[
+ {
+  "path": "github/issue/1",
+  "title": "이슈 #1 · 메일 탭이 401을 내요",
+  "url": "https://github.com/o/n/issues/1",
+  "author": "sora-p",
+  "at": "2026-10-01",
+  "head": "github: 이슈 #1 · 메일 탭이 401을 내요\nmeta: 열림 · sora-p · 2026-10-01 · bug, mail",
+  "body": [
+   [
+    "로그인 뒤 메일 탭을 열면 401이 나요.",
+    "https://github.com/o/n/issues/1"
+   ],
+   [
+    "",
+    "https://github.com/o/n/issues/1"
+   ],
+   [
+    "재현: 앱을 다시 켜요.",
+    "https://github.com/o/n/issues/1"
+   ],
+   [
+    "",
+    "https://github.com/o/n/issues/1#issuecomment-2001"
+   ],
+   [
+    "— jun-h · 2026-10-02",
+    "https://github.com/o/n/issues/1#issuecomment-2001"
+   ],
+   [
+    "먼저 `pnpm dev:doctor`를 돌려 보세요.",
+    "https://github.com/o/n/issues/1#issuecomment-2001"
+   ]
+  ]
+ },
+ {
+  "path": "github/issue/4",
+  "title": "이슈 #4 · Empty report",
+  "url": "https://github.com/o/n/issues/4",
+  "author": "mina-k",
+  "at": "2026-10-08",
+  "head": "github: 이슈 #4 · Empty report\nmeta: 닫힘 · mina-k · 2026-10-08",
+  "body": [
+   [
+    "(설명 없음)",
+    "https://github.com/o/n/issues/4"
+   ]
+  ]
+ },
+ {
+  "path": "github/pull/2",
+  "title": "PR #2 · 메일 탭 새로고침",
+  "url": "https://github.com/o/n/pull/2",
+  "author": "jun-h",
+  "at": "2026-10-04",
+  "head": "github: PR #2 · 메일 탭 새로고침\nmeta: 열림 · jun-h · 2026-10-04 · fix/mail-refresh → dev",
+  "body": [
+   [
+    "files: apps/web/src/mail/Tab.tsx, apps/web/src/mail/session.ts, apps/web/src/mail/token.ts, apps/web/src/mail/api.ts, apps/web/src/mail/store.ts, apps/web/src/mail/hooks.ts, apps/web/src/mail/index.ts, apps/web/src/mail/types.ts 외 4개",
+    "https://github.com/o/n/pull/2"
+   ],
+   [
+    "메일 탭을 새로고침해요.",
+    "https://github.com/o/n/pull/2"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/2"
+   ],
+   [
+    "Fixes #1",
+    "https://github.com/o/n/pull/2"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/2#discussion_r3001"
+   ],
+   [
+    "— mina-k · 리뷰 · apps/web/src/mail/Tab.tsx:12",
+    "https://github.com/o/n/pull/2#discussion_r3001"
+   ],
+   [
+    "여기서 토큰을 다시 읽어요?",
+    "https://github.com/o/n/pull/2#discussion_r3001"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/2#discussion_r3002"
+   ],
+   [
+    "— jun-h · 리뷰 · apps/web/src/mail/Tab.tsx:9",
+    "https://github.com/o/n/pull/2#discussion_r3002"
+   ],
+   [
+    "네, 만료되면요.",
+    "https://github.com/o/n/pull/2#discussion_r3002"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/2#pullrequestreview-4005"
+   ],
+   [
+    "— jun-h · 리뷰 changes_requested",
+    "https://github.com/o/n/pull/2#pullrequestreview-4005"
+   ],
+   [
+    "반영했어요.",
+    "https://github.com/o/n/pull/2#pullrequestreview-4005"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/2#issuecomment-2003"
+   ],
+   [
+    "— sora-p · 2026-10-05",
+    "https://github.com/o/n/pull/2#issuecomment-2003"
+   ],
+   [
+    "고쳐졌어요, 고마워요!",
+    "https://github.com/o/n/pull/2#issuecomment-2003"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/2#issuecomment-2003"
+   ],
+   [
+    "확인했어요.",
+    "https://github.com/o/n/pull/2#issuecomment-2003"
+   ]
+  ]
+ },
+ {
+  "path": "github/pull/5",
+  "title": "PR #5 · 결제 재시도 횟수 설정",
+  "url": "https://github.com/o/n/pull/5",
+  "author": "jun-h",
+  "at": "2026-10-10",
+  "head": "github: PR #5 · 결제 재시도 횟수 설정\nmeta: 머지됨 · jun-h · 2026-10-10 · feat/retry-setting → dev",
+  "body": [
+   [
+    "files: apps/api/src/pay/retry.ts, docs/pay.md 외 1개",
+    "https://github.com/o/n/pull/5"
+   ],
+   [
+    "## 무엇",
+    "https://github.com/o/n/pull/5"
+   ],
+   [
+    "재시도 횟수를 설정으로 빼요.",
+    "https://github.com/o/n/pull/5"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/5#discussion_r3004"
+   ],
+   [
+    "— sora-p · 리뷰 · apps/api/src/pay/retry.ts",
+    "https://github.com/o/n/pull/5#discussion_r3004"
+   ],
+   [
+    "기본값은 3이에요?",
+    "https://github.com/o/n/pull/5#discussion_r3004"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/5#issuecomment-2008"
+   ],
+   [
+    "— sora-p · 2026-10-11",
+    "https://github.com/o/n/pull/5#issuecomment-2008"
+   ],
+   [
+    "설정 이름은 `retry.max`로 해요.",
+    "https://github.com/o/n/pull/5#issuecomment-2008"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/5#pullrequestreview-4001"
+   ],
+   [
+    "— mina-k · 리뷰 approved",
+    "https://github.com/o/n/pull/5#pullrequestreview-4001"
+   ],
+   [
+    "좋아요",
+    "https://github.com/o/n/pull/5#pullrequestreview-4001"
+   ],
+   [
+    "",
+    "https://github.com/o/n/pull/5#pullrequestreview-4002"
+   ],
+   [
+    "— ? · 리뷰 commented",
+    "https://github.com/o/n/pull/5#pullrequestreview-4002"
+   ],
+   [
+    "Looks fine",
+    "https://github.com/o/n/pull/5#pullrequestreview-4002"
+   ]
+  ]
+ },
+ {
+  "path": "github/pull/6",
+  "title": "PR #6 · Close stale exporter",
+  "url": "https://github.com/o/n/pull/6",
+  "author": "mina-k",
+  "at": "2026-10-12",
+  "head": "github: PR #6 · Close stale exporter\nmeta: 닫힘 · mina-k · 2026-10-12",
+  "body": [
+   [
+    "Not needed after #5.",
+    "https://github.com/o/n/pull/6"
+   ]
+  ]
+ }
+]

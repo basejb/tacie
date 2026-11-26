@@ -1,0 +1,11 @@
+{
+  "about": "English onboarding practice questions over sample/en/repo (the counterpart of sample/questions.json). 'ask' are the 3단계 buttons, 'spoken' is what the 4단계 practice meeting says. 'answer' lists the files that hold the answer (strict check when the sample index is built).",
+  "questions": [
+    { "text": "What's the default retry count?", "use": "ask", "answer": ["docs/configuration.md", "src/config.ts", "docs/decisions/0001-retry-policy.md"] },
+    { "text": "How do we roll back a deploy?", "use": "ask", "answer": ["docs/deploy.md", "scripts/deploy.sh"] },
+    { "text": "Which header carries the webhook signature?", "use": "ask", "answer": ["src/webhook/signature.ts", "src/webhook/sender.ts"] },
+    { "text": "Why did we pick Redis Streams for the queue?", "use": "ask", "answer": ["docs/decisions/0002-queue-choice.md"] },
+    { "text": "What's the timeout set to?", "use": "ask", "answer": ["docs/configuration.md", "src/config.ts"] },
+    { "text": "Um, where do events go after every retry fails? Does anyone know?", "use": "spoken", "answer": ["docs/incident-response.md", "docs/decisions/0001-retry-policy.md", "src/queue/consumer.ts"] }
+  ]
+}

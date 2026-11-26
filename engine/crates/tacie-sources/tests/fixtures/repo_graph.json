@@ -1,0 +1,153 @@
+{
+ "nodes": [
+  {
+   "kind": "file",
+   "path": "src/app.ts",
+   "span": "L1-L110",
+   "name": "app.ts"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L9-L10",
+   "name": "nine"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L2-L3",
+   "name": "two"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L4-L5",
+   "name": "four"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L3-L4",
+   "name": "three"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L8-L9",
+   "name": "eight"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L5-L6",
+   "name": "five"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L7-L8",
+   "name": "seven"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L6-L7",
+   "name": "six"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L30-L31",
+   "name": "thirty"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L31-L32",
+   "name": "thirty_one"
+  },
+  {
+   "kind": "class",
+   "path": "src/app.ts",
+   "span": "L40-L41",
+   "name": "forty"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L41-L42",
+   "name": "forty_one"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L70-L71",
+   "name": "seventy"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L71-L72",
+   "name": "seventy_one"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "L110-L111",
+   "name": "last"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "name": "no_span"
+  },
+  {
+   "kind": "function",
+   "path": "src/app.ts",
+   "span": "",
+   "name": "empty_span"
+  },
+  {
+   "kind": "function",
+   "path": "src/skipped.ts",
+   "span": "L5-L6",
+   "name": "skipped_fn"
+  },
+  {
+   "kind": "function",
+   "path": "src/한글 폴더/모듈 이름.py",
+   "span": "L2-L4",
+   "name": "한글_함수"
+  },
+  {
+   "kind": "function",
+   "path": "src/hundred.ts",
+   "span": "L100-L100",
+   "name": "hundredth"
+  },
+  {
+   "kind": "function",
+   "path": "README.md",
+   "span": "L1-L2",
+   "name": "doc_node"
+  },
+  {
+   "kind": "function",
+   "path": "infra/a.json",
+   "span": "L1-L2",
+   "name": "json_node"
+  },
+  {
+   "kind": "function",
+   "path": "src/long.js",
+   "span": "L1-L1",
+   "name": "long_line"
+  },
+  {
+   "kind": "function",
+   "path": "src/gone.ts",
+   "span": "L1-L1",
+   "name": "not_in_repo"
+  }
+ ]
+}

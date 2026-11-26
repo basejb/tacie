@@ -1,0 +1,18 @@
+# build output
+apps/mac/Tacie.xcodeproj/
+apps/mac/build*.noindex/
+engine/target/
+.build/
+DerivedData/
+
+# a search index built locally from your own material
+/index/
+/index.old/
+/index.new/
+/data/
+
+# the official build's values (never in this repository)
+apps/mac/Official.xcconfig
+
+.DS_Store
+*.log

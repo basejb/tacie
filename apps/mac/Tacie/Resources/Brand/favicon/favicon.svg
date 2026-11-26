@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Tacie favicon: the filled round-head template (1.5:1, eyes at 0.3/0.7 on the widest line), 24×16 centered. Dark ink on light tabs, cream on dark tabs. -->
+  <style>
+    .head { fill: #2A2622; }
+    @media (prefers-color-scheme: dark) { .head { fill: #F1ECE3; } }
+  </style>
+  <path class="head" fill-rule="evenodd" transform="translate(4 8) scale(.16)" d="M75 0C141 0 150 38.28 150 58C150 77.32 141 100 108 100L42 100C9 100 0 77.32 0 58C0 38.28 9 0 75 0ZM45 47.3a10.7 10.7 0 1 0 0 21.4 10.7 10.7 0 0 0 0-21.4zm60 0a10.7 10.7 0 1 0 0 21.4 10.7 10.7 0 0 0 0-21.4z"/>
+</svg>

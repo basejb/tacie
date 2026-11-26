@@ -1,0 +1,27 @@
+// The open edition's build values (docs/41 0절). This file is public; the official app's values live in
+// Official.xcconfig, which only the original repo has. Without it this builds the open edition.
+// `//` starts a comment in xcconfig, so addresses are written `https:/$()/host`.
+
+TACIE_EDITION = open
+// Official.xcconfig empties TACIE_OPEN_FLAG (a later `$(inherited)` would still carry an earlier TACIE_OPEN)
+TACIE_OPEN_FLAG = TACIE_OPEN
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(TACIE_OPEN_FLAG)
+TACIE_BUNDLE_ID = ai.tacie.open
+TACIE_BUNDLE_ID[config=Debug] = ai.tacie.open.dev
+
+// Empty in the open edition: no Tacie sign-in, relay, update feed, usage numbers or Tacie-registered connection apps.
+TACIE_SU_FEED_URL =
+TACIE_SU_PUBLIC_KEY =
+TACIE_POSTHOG_TOKEN =
+TACIE_POSTHOG_HOST =
+TACIE_GITHUB_CLIENT_ID =
+TACIE_LINEAR_CLIENT_ID =
+TACIE_DROPBOX_APP_KEY =
+TACIE_ACCOUNT_SERVER =
+TACIE_RELAY_SEOUL =
+TACIE_RELAY_US =
+
+// The same place for both (docs/41 13번); a fork can point it at its own copy.
+TACIE_MODELS_BASE = https:/$()/models.tacie.app
+
+#include? "Official.xcconfig"
