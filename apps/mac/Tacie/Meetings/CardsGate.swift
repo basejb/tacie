@@ -22,7 +22,7 @@ enum CardsGate {
 /// 오픈소스판 2-D의 회의 중 동작(AI를 고른 방법에 따라). 공식 앱은 모두 지금 그대로예요.
 enum OpenAIMeeting {
     static let chooseLine = String(localized: "받아쓸 방법을 골라 주세요")
-    static let noServerNotes = String(localized: "회의 정리는 Ollama나 LM Studio를 켜면 돼요")
+    static let noServerNotes = String(localized: "회의 정리는 설정 → AI에서 모델을 받으면 돼요")
     static let localWaitLine = String(localized: "음성 인식 모델을 받으면 받아써요")
 
     /// Nothing chosen yet: a missing key means "choose how", not "check your key". A wrong key in `key` mode keeps the
@@ -47,14 +47,14 @@ enum OpenAIMeeting {
 
     /// Words for an engine failure in the open edition, before the generic ones (`MeetingModel.say`): nothing chosen
     /// asks to choose (not "check the service key"); a key mode names the OpenRouter key; "Mac 안에서만" never calls an
-    /// outside service, so a server that does not answer is this Mac's Ollama or LM Studio.
+    /// outside service, so a server that does not answer is the notes model on this Mac (Tacie's own, Ollama or LM Studio).
     /// `keySaved`: an OpenRouter key is in the keychain (API key mode only); without one it asks to add it, not to check it.
     static func failureLine(kind: String, open: Bool, mode: AIMode?, keySaved: Bool = true) -> String? {
         guard open else { return nil }
         switch (kind, mode) {
         case ("key", nil): return chooseInSettings
         case ("key", .key?): return keySaved ? String(localized: "OpenRouter 키를 확인해 주세요") : addKeyInSettings
-        case ("down", .local?), ("busy", .local?): return String(localized: "이 Mac의 Ollama나 LM Studio가 응답하지 않아요")
+        case ("down", .local?), ("busy", .local?): return String(localized: "이 Mac의 회의 정리 모델이 응답하지 않아요")
         default: return nil
         }
     }
@@ -62,15 +62,10 @@ enum OpenAIMeeting {
     static let chooseInSettings = String(localized: "설정 → AI에서 쓸 방법을 골라 주세요")
     static let addKeyInSettings = String(localized: "설정 → AI에서 OpenRouter 키를 넣어 주세요")
 
-    /// The pill as an on-device meeting starts with no Ollama or LM Studio model to write its notes.
+    /// The pill as an on-device meeting starts with no model to write its notes (Tacie's own, Ollama or LM Studio).
     static let noModelAtStart = String(localized: "회의 정리에 쓸 모델이 없어요 · 설정 → AI를 확인해 주세요")
 
-    /// Ollama or LM Studio is on but has no model yet (just installed).
-    static func noModelNotes(_ server: String) -> String {
-        String(localized: "회의 정리는 \(server)에서 모델을 하나 받으면 돼요")
-    }
-
-    /// "Mac 안에서만" with no Ollama or LM Studio found: the notes request is not sent (it would fail as a key error).
+    /// "Mac 안에서만" with no notes model found: the notes request is not sent (it would fail as a key error).
     static func notesGo(open: Bool, mode: AIMode?, server: LocalServer?) -> Bool {
         !(open && mode == .local && server == nil)
     }

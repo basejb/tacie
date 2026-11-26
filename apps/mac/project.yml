@@ -72,6 +72,10 @@ targets:
       - name: Build search engine
         script: '"$SRCROOT/scripts/build-engine.sh"'
         basedOnDependencyAnalysis: false
+      # llama.cpp's server for on-device meeting notes (issue #54), Contents/MacOS/tacie-llm; built once per release
+      - name: Build notes server
+        script: '"$SRCROOT/scripts/build-llm.sh"'
+        basedOnDependencyAnalysis: false
       - name: Google Drive client
         script: '"$SRCROOT/scripts/gdrive-client.sh"'
         basedOnDependencyAnalysis: false
@@ -179,6 +183,7 @@ targets:
       - path: Tacie/Services/SystemAudio.swift
       - path: Tacie/Services/ModelDownload.swift
       - path: Tacie/Services/LocalSTT.swift
+      - path: Tacie/Services/BundledLLM.swift
       - path: Tacie/Services/LocalSTTCopy.swift
       - path: Tacie/Services/QuietMeeting.swift
       - path: Tacie/Services/NetHealth.swift

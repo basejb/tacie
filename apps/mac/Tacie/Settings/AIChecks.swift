@@ -3,7 +3,8 @@ import Foundation
 /// The two checks the app makes itself in the open edition's 2-D. They skip the engine and go through URLSession only.
 /// Neither costs money.
 /// - OpenRouter key: `GET /api/v1/key` (key info). The key goes only in the Authorization header.
-/// - This Mac's Ollama (11434) · LM Studio (1234): OpenAI-compatible `GET /v1/models`, 1.5 s each.
+/// - Tacie's own notes server (`BundledLLM`, once 받기 has the model), then this Mac's Ollama (11434) · LM Studio (1234):
+///   OpenAI-compatible `GET /v1/models`, 1.5 s each.
 enum AIChecks {
     typealias Get = @Sendable (URLRequest) async throws -> (Data, HTTPURLResponse)
 
@@ -34,8 +35,13 @@ enum AIChecks {
         ("LM Studio", "http://127.0.0.1:1234/v1"),
     ]
 
-    /// The first server on this Mac that answers with at least one model; its first model is the one notes use.
-    static func findLocalServer(get: Get = live) async -> LocalServer? {
+    typealias Bundled = @Sendable () async -> LocalServer?
+    static let ownServer: Bundled = { await BundledLLM.shared.server() }
+
+    /// Tacie's own server when its model is downloaded; else the first server on this Mac that answers with at least
+    /// one model, whose first model is the one notes use.
+    static func findLocalServer(get: Get = live, bundled: Bundled = ownServer) async -> LocalServer? {
+        if let own = await bundled() { return own }
         for server in localServers {
             let req = URLRequest(url: URL(string: server.url + "/models")!, timeoutInterval: 1.5)
             guard let (data, http) = try? await get(req), http.statusCode == 200,
@@ -47,7 +53,9 @@ enum AIChecks {
 
     /// The server still lists the saved model: an Ollama model removed or swapped after it was found would otherwise
     /// fail every notes request by name ("model not found"), and 다시 쓰기 with it (오픈소스판 e2e, 2026-11-25).
-    static func serves(_ server: LocalServer, get: Get = live) async -> Bool {
+    static func serves(_ server: LocalServer, get: Get = live, bundled: Bundled = ownServer) async -> Bool {
+        // Tacie's own server: (re)started if it stopped; the same address means the engine already has it
+        if server.name == BundledLLM.name { return await bundled() == server }
         let req = URLRequest(url: URL(string: server.url + "/models")!, timeoutInterval: 1.5)
         guard let (data, http) = try? await get(req), http.statusCode == 200 else { return false }
         let ids = (try? JSONDecoder().decode(Models.self, from: data))?.data.map(\.id) ?? []
@@ -65,57 +73,10 @@ enum AIChecks {
         return nil
     }
 
-    /// The notes model "받기" asks this Mac's Ollama for (docs/24 7-8절 measured Gemma 4 E4B at Q4_K_M; the plain
-    /// `gemma4:e4b` tag is 6.6–9.5GB depending on the Mac).
+    /// The notes model Ollama users may have pulled with an older Tacie (shown by name as Gemma 4 E4B).
     static let notesModel = "gemma4:e4b-it-q4_K_M"
-    static let notesModelSize: Int64 = 6_600_000_000
-    static let ollamaPullURL = URL(string: "http://127.0.0.1:11434/api/pull")!
 
-    /// Ollama's `/api/pull` progress: one JSON object per line, a total and completed bytes per layer (digest).
-    struct PullProgress: Equatable {
-        var layers: [String: (total: Int64, done: Int64)] = [:]
-        var finished = false
-        var error: String?
-
-        var total: Int64 { layers.values.reduce(0) { $0 + $1.total } }
-        var done: Int64 { layers.values.reduce(0) { $0 + $1.done } }
-
-        mutating func read(_ line: String) {
-            guard let obj = try? JSONSerialization.jsonObject(with: Data(line.utf8)) as? [String: Any] else { return }
-            if let e = obj["error"] as? String { error = e; return }
-            if obj["status"] as? String == "success" { finished = true; return }
-            if let digest = obj["digest"] as? String, let total = (obj["total"] as? NSNumber)?.int64Value, total > 0 {
-                let done = (obj["completed"] as? NSNumber)?.int64Value ?? 0
-                layers[digest] = (total, min(done, total))
-            }
-        }
-
-        static func == (a: Self, b: Self) -> Bool {
-            a.total == b.total && a.done == b.done && a.finished == b.finished && a.error == b.error
-        }
-    }
-
-    /// Asks this Mac's Ollama to download `model`, reporting progress as it comes; true once Ollama says success.
-    static func pullFromOllama(_ model: String, progress: @escaping @MainActor (PullProgress) -> Void) async -> Bool {
-        var req = URLRequest(url: ollamaPullURL, timeoutInterval: 60)
-        req.httpMethod = "POST"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.httpBody = try? JSONSerialization.data(withJSONObject: ["model": model, "stream": true])
-        guard let (bytes, response) = try? await URLSession.shared.bytes(for: req),
-              (response as? HTTPURLResponse)?.statusCode == 200 else { return false }
-        var p = PullProgress()
-        do {
-            for try await line in bytes.lines {
-                p.read(line)
-                let now = p
-                await progress(now)
-                if p.finished || p.error != nil { break }
-            }
-        } catch { return false }
-        return p.finished
-    }
-
-    /// Room left on the disk the home folder (and Ollama's models) are on.
+    /// Room left on the disk the home folder (and the models) are on.
     static func freeSpace() -> Int64 {
         let home = URL(fileURLWithPath: NSHomeDirectory())
         return (try? home.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey]))?

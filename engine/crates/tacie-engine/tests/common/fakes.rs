@@ -665,6 +665,8 @@ impl tacie_embed::voice::VoiceEmbed for FakeVoice {
 pub struct ScriptedPanel {
     turns: Mutex<std::collections::VecDeque<ChatTurn>>,
     seen: Mutex<Vec<ScriptedCall>>,
+    /// `small_model`이 돌려줄 값이에요(이 Mac의 작은 모델인 척, `ScriptedPanel::small`).
+    small: bool,
 }
 
 #[derive(Clone)]
@@ -673,11 +675,17 @@ pub struct ScriptedCall {
     pub tools: &'static str,
     pub turns: Vec<Value>,
     pub scope: String,
+    pub choice: &'static str,
 }
 
 impl ScriptedPanel {
     pub fn new(turns: Vec<ChatTurn>) -> Arc<Self> {
-        Arc::new(Self { turns: Mutex::new(turns.into()), seen: Mutex::new(vec![]) })
+        Arc::new(Self { turns: Mutex::new(turns.into()), seen: Mutex::new(vec![]), small: false })
+    }
+
+    /// 이 Mac의 작은 모델(127.0.0.1 주소)인 척하는 가짜예요.
+    pub fn small(turns: Vec<ChatTurn>) -> Arc<Self> {
+        Arc::new(Self { turns: Mutex::new(turns.into()), seen: Mutex::new(vec![]), small: true })
     }
 
     pub fn calls(&self) -> Vec<(&'static str, &'static str)> {
@@ -690,6 +698,9 @@ impl ScriptedPanel {
 }
 
 impl PanelWriter for ScriptedPanel {
+    fn small_model(&self) -> bool {
+        self.small
+    }
     fn prep<'a>(&'a self, _: &'a [Value], _: &'a [Value]) -> BoxFuture<'a, Result<PrepOut, ServiceError>> {
         not_faked()
     }
@@ -704,10 +715,10 @@ impl PanelWriter for ScriptedPanel {
         prompt: Prompt,
         tools: &'static str,
         turns: &'a [Value],
-        _choice: &'static str,
+        choice: &'static str,
     ) -> BoxFuture<'a, Result<ChatTurn, ServiceError>> {
         let scope = prompt.fields.iter().find(|(k, _)| *k == "scope").map(|(_, v)| v.clone()).unwrap_or_default();
-        self.seen.lock().unwrap().push(ScriptedCall { name: prompt.name, tools, turns: turns.to_vec(), scope });
+        self.seen.lock().unwrap().push(ScriptedCall { name: prompt.name, tools, turns: turns.to_vec(), scope, choice });
         let turn = self.turns.lock().unwrap().pop_front().unwrap_or_default();
         Box::pin(async move { Ok(turn) })
     }

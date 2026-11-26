@@ -24,7 +24,7 @@ final class AIModeMeetingTests: XCTestCase {
 
     func testLocalWithoutServerSkipsNotes() {
         XCTAssertFalse(OpenAIMeeting.notesGo(open: true, mode: .local, server: nil))
-        XCTAssertEqual(OpenAIMeeting.noServerNotes, "회의 정리는 Ollama나 LM Studio를 켜면 돼요")
+        XCTAssertEqual(OpenAIMeeting.noServerNotes, "회의 정리는 설정 → AI에서 모델을 받으면 돼요")
     }
 
     func testLocalWithServerGoes() {
@@ -71,8 +71,8 @@ final class AIModeMeetingTests: XCTestCase {
         XCTAssertEqual(OpenAIMeeting.failureLine(kind: "key", open: true, mode: .key), "OpenRouter 키를 확인해 주세요")
         // no key at all in API key mode: add one, not "check" it (2026-11-26)
         XCTAssertEqual(OpenAIMeeting.failureLine(kind: "key", open: true, mode: .key, keySaved: false), OpenAIMeeting.addKeyInSettings)
-        XCTAssertEqual(OpenAIMeeting.failureLine(kind: "down", open: true, mode: .local), "이 Mac의 Ollama나 LM Studio가 응답하지 않아요")
-        XCTAssertEqual(OpenAIMeeting.failureLine(kind: "busy", open: true, mode: .local), "이 Mac의 Ollama나 LM Studio가 응답하지 않아요")
+        XCTAssertEqual(OpenAIMeeting.failureLine(kind: "down", open: true, mode: .local), "이 Mac의 회의 정리 모델이 응답하지 않아요")
+        XCTAssertEqual(OpenAIMeeting.failureLine(kind: "busy", open: true, mode: .local), "이 Mac의 회의 정리 모델이 응답하지 않아요")
         XCTAssertNil(OpenAIMeeting.failureLine(kind: "down", open: true, mode: .key))
         XCTAssertNil(OpenAIMeeting.failureLine(kind: "key", open: true, mode: .custom))
         XCTAssertNil(OpenAIMeeting.failureLine(kind: "model", open: true, mode: .local))

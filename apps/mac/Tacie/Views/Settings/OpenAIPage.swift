@@ -220,7 +220,8 @@ struct AICustomPage: View {
                 switch chat {
                 case .openrouter: try AIAddress.save(nil, key: nil)  // the engine's own OpenRouter notes, with the OpenRouter key
                 case .device:
-                    guard let s = await AIChecks.findLocalServer() else {
+                    // 직접 고르기 points at an address it keeps: Ollama or LM Studio, not Tacie's own server (its port can move)
+                    guard let s = await AIChecks.findLocalServer(bundled: { nil }) else {
                         note = await AIChecks.idleServer().map { String(localized: "\($0)에서 모델을 하나 받으면 돼요") }
                             ?? String(localized: "Ollama나 LM Studio를 켜면 돼요")
                         return

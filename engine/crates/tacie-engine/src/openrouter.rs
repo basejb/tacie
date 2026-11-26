@@ -1338,6 +1338,10 @@ pub fn address_body(
 }
 
 impl PanelWriter for OpenRouter {
+    fn small_model(&self) -> bool {
+        self.current_address().is_some_and(|a| a.is_local())
+    }
+
     fn chat_turn<'a>(
         &'a self,
         prompt: Prompt,

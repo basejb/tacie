@@ -498,6 +498,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         meeting.stop(by: .quit)
         mcp.stop()  // mcp.sock goes before the engine
         engine.stop()
+        BundledLLM.shared.stop()
         library.flush()  // the meeting's last save is written in the background
     }
 

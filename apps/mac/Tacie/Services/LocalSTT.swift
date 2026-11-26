@@ -393,8 +393,9 @@ final class LocalSTT {
         return v?.volumeAvailableCapacityForImportantUsage ?? -1
     }
 
-    /// Resumes a `.part`, checks the hash, gives the file its name. A wrong hash starts over once.
-    private static func fetchPack(_ pack: ModelPack, progress: @escaping @Sendable (Int64) -> Void) async throws {
+    /// Resumes a `.part`, checks the hash, gives the file its name. A wrong hash starts over once. The notes model's
+    /// 받기 (`AIChoiceModel.pullNotesModel`) uses it too.
+    static func fetchPack(_ pack: ModelPack, progress: @escaping @Sendable (Int64) -> Void) async throws {
         for f in pack.files where !ModelManifest.have(f, in: pack.dir) {
             for attempt in 0..<2 {
                 let part = pack.dir.appendingPathComponent(f.name + ".part")

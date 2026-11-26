@@ -223,3 +223,14 @@ async fn openai_style_remembered_only_after_success() {
     assert!(bodies[1].get("max_completion_tokens").is_some());
     assert!(bodies.len() > 2 && bodies[2].get("max_tokens").is_some(), "{bodies:?}");
 }
+
+#[test]
+fn local_addresses_are_this_macs_small_models() {
+    let at = |url: &str| AiAddress::parse(&serde_json::json!({"url": url, "model": "m"})).unwrap().unwrap();
+    assert!(at("http://127.0.0.1:11535/v1").is_local());
+    assert!(at("http://localhost:11434/v1").is_local());
+    assert!(at("http://[::1]:1234/v1").is_local());
+    assert!(!at("https://openrouter.ai/api/v1").is_local());
+    assert!(!at("http://192.168.0.10:11434/v1").is_local());
+    assert!(!at("https://127.example.com/v1").is_local() || at("https://127.example.com/v1").host() == "127.example.com");
+}

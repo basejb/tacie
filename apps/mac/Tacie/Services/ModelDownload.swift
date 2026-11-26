@@ -97,6 +97,24 @@ enum ModelManifest {
                   dir: sttDir(env: env, home: home), files: [sttFile])
     }
 
+    /// The open edition's on-device notes model (issue #54): Gemma 4 E4B at Q4_K_M, the one docs/24 7-8절 measured,
+    /// as unsloth's GGUF (Apache 2.0) copied to our bucket. Not in `packs`: only 받기 on the AI card fetches it, and the
+    /// bundled server (`BundledLLM`) runs it.
+    static let notesFile = ModelFile(name: "gemma-4-E4B-it-Q4_K_M.gguf", size: 4_977_171_584,
+                                     sha256: "85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87")
+    static let notesBase = BuildValues.modelsBase.absoluteString + "/gemma-4-e4b-q4km/v1/"
+
+    /// `TACIE_NOTES_MODEL_DIR` (development), else Application Support next to the other models.
+    static func notesDir(env: [String: String], home: URL) -> URL {
+        if let d = env["TACIE_NOTES_MODEL_DIR"], !d.isEmpty { return URL(fileURLWithPath: d) }
+        return home.appendingPathComponent("Library/Application Support/Tacie/models/gemma-4-e4b-q4km")
+    }
+
+    static func notesPack(env: [String: String], home: URL) -> ModelPack {
+        ModelPack(name: "notes", base: URL(string: env["TACIE_NOTES_MODEL_URL"] ?? notesBase)!,
+                  dir: notesDir(env: env, home: home), files: [notesFile])
+    }
+
     static func searchInstalled(env: [String: String], home: URL) -> Bool {
         packs(env: env, home: home).first { $0.name == "search" }.map { installed($0.files, in: $0.dir) } ?? false
     }

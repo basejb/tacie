@@ -68,6 +68,13 @@ pub trait PanelWriter: Send + Sync {
         ledger: &'a [Value],
     ) -> BoxFuture<'a, Result<FollowOut, ServiceError>>;
 
+    /// 답 모델이 이 Mac의 작은 모델(127.0.0.1 같은 loopback 주소: Tacie 번들 서버, Ollama, LM Studio)인지예요. 그러면
+    /// 하네스가 도구를 고르게 하지 않고 근거를 먼저 넣어 한 번에 물어요(이슈 #54: 작은 모델은 여러 단계 도구 흐름에서 길을 잃고
+    /// 도구 쓰는 말을 답에 섞었어요).
+    fn small_model(&self) -> bool {
+        false
+    }
+
     /// 패널 하네스의 한 번(docs/38 3-1절): 첫 메시지(`prompt`), 도구 묶음 이름(`tools`), 그 뒤의 도구 호출·결과
     /// 턴(`turns`)을 보내고 모델의 글이나 도구 호출을 받아요. `choice`는 OpenRouter `tool_choice`예요: "auto",
     /// "none"(도구를 끄고 답만), "required"(도구를 꼭 불러요).

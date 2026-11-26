@@ -378,3 +378,56 @@ fn iphone_keeps_items_without_filter_kinds() {
     );
     assert_eq!(done["items"], json!([{"meeting_id": "m1", "index": 0}, {"meeting_id": "m1", "index": 1}]), "{done}");
 }
+
+/// 이 Mac의 작은 모델(이슈 #54): 도구를 고르게 하지 않고, 엔진이 회의 정리와 관련 대화 줄을 먼저 넣어 한 번에 물어요.
+fn small_run(meetings: &[Value], turns: Vec<ChatTurn>, req: &Request) -> (Value, Vec<ScriptedCall>) {
+    let panel = ScriptedPanel::small(turns);
+    let (mut engine, dir) = harness_engine(meetings, panel.clone(), false);
+    engine.embedder = Arc::new(tacie_engine::sample::MissingModel);
+    let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+    let done = rt.block_on(harness::run(&engine, dir.path(), req, |_| {}));
+    (done, panel.seen())
+}
+
+#[test]
+fn small_model_on_a_meeting_page_gets_notes_and_lines_in_one_call() {
+    let mut req = Request { meeting_ids: vec!["m1".into()], ..ask("Redis를 계속 쓰는 이유가 뭐였죠?") };
+    req.transcripts.insert("m1".into(), vec![
+        json!({"key": "a1", "speaker": "1", "text": "이벤트 큐를 SQS로 옮기자는 얘기가 있었죠."}),
+        json!({"key": "a2", "speaker": "2", "text": "하루 10만 건이라 Redis 한 대로 충분했어요."}),
+    ]);
+    let (done, seen) = small_run(&[priced("m1", "큐 회의")], vec![says("하루 10만 건이라 Redis 한 대로 충분했어요 [1].")], &req);
+    assert_eq!(seen.len(), 1, "one call only");
+    assert_eq!(seen[0].choice, "none");
+    let results = tool_results(&seen);
+    assert!(results.iter().any(|r| r.contains("큐 회의")), "{results:?}");
+    assert!(results.iter().any(|r| r.contains("10만 건")), "{results:?}");
+    assert!(done["answer"].as_str().unwrap().contains("Redis"), "{done}");
+    assert_eq!(done["tools"], json!(["meeting_notes", "transcript_window"]));
+}
+
+#[test]
+fn small_model_across_meetings_searches_first() {
+    let (done, seen) = small_run(&[priced("m1", "가격 정책"), priced("m2", "채용 회의")],
+                                 vec![says("가격을 정했어요.")], &ask("가격 정책 얘기 뭐였죠?"));
+    assert_eq!(seen.len(), 1);
+    assert_eq!(seen[0].choice, "none");
+    assert_eq!(done["tools"], json!(["search", "filter_ledger"]));
+}
+
+#[test]
+fn small_model_is_not_nudged_back_into_tools() {
+    let req = Request { meeting_ids: vec!["m1".into()], ..ask("이거 바꿀까요?") };
+    let (_, seen) = small_run(&[priced("m1", "큐 회의")], vec![says("바꿔도 될지 알려 주세요?"), says("두 번째")], &req);
+    assert_eq!(seen.len(), 1, "a question back stays the answer");
+}
+
+#[test]
+fn a_hosted_model_still_picks_its_tools() {
+    let panel = ScriptedPanel::new(vec![says("답이에요.")]);
+    let (engine, dir) = harness_engine(&[priced("m1", "큐 회의")], panel.clone(), false);
+    let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+    let done = rt.block_on(harness::run(&engine, dir.path(), &ask("뭐였죠?"), |_| {}));
+    assert_eq!(panel.seen()[0].choice, "auto");
+    assert_eq!(done["tools"], json!([]));
+}

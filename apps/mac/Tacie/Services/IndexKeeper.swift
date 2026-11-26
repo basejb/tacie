@@ -273,6 +273,12 @@ final class IndexKeeper {
     func pushAIKeys(to client: EngineClient) async {
         // a meeting under way closes a Soniox connection the new choice would not open (MeetingModel.aiChoiceChanged)
         NotificationCenter.default.post(name: AIChoice.changed, object: nil)
+        // Tacie's own notes server (issue #54) runs from here on: it loads the model, unloads it when idle and loads it
+        // again on the next request, so the engine can reach it whenever notes or the main window's AI ask
+        if Build.isOpen, AIMode.saved() == .local, let saved = LocalServer.saved(), saved.name == BundledLLM.name,
+           let running = await BundledLLM.shared.server(), running != saved {
+            LocalServer.save(running)
+        }
         do {
             _ = try await client.setAIKeys(aiKeys(), chat: AIAddress.current, stt: SttProviderChoice.current)
             // whether meeting cards can run (2-C): the engine names its Jev provider, or nil without a key

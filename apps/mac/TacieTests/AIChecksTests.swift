@@ -58,31 +58,31 @@ final class AIChecksTests: XCTestCase {
     func testFindsOllamaFirst() async {
         let get = respond([ollama: .success((200, #"{"data":[{"id":"gemma4:e4b"},{"id":"qwen3.5:9b"}]}"#)),
                            lmstudio: .success((200, #"{"data":[{"id":"other"}]}"#))])
-        let found = await AIChecks.findLocalServer(get: get)
+        let found = await AIChecks.findLocalServer(get: get, bundled: none)
         XCTAssertEqual(found, LocalServer(name: "Ollama", url: "http://127.0.0.1:11434/v1", model: "gemma4:e4b"))
     }
 
     func testFallsBackToLMStudio() async {
         let get = respond([lmstudio: .success((200, #"{"object":"list","data":[{"id":"google/gemma-4"}]}"#))])
-        let found = await AIChecks.findLocalServer(get: get)
+        let found = await AIChecks.findLocalServer(get: get, bundled: none)
         XCTAssertEqual(found, LocalServer(name: "LM Studio", url: "http://127.0.0.1:1234/v1", model: "google/gemma-4"))
     }
 
     func testEmptyListIsNotFound() async {
         let get = respond([ollama: .success((200, #"{"data":[]}"#)), lmstudio: .success((200, "not json"))])
-        let found = await AIChecks.findLocalServer(get: get)
+        let found = await AIChecks.findLocalServer(get: get, bundled: none)
         XCTAssertNil(found)
     }
 
     func testTimeoutIsNotFound() async {
         let get = respond([ollama: .failure(URLError(.timedOut)), lmstudio: .failure(URLError(.timedOut))])
-        let found = await AIChecks.findLocalServer(get: get)
+        let found = await AIChecks.findLocalServer(get: get, bundled: none)
         XCTAssertNil(found)
     }
 
     func testTimeoutIs1_5s() async {
         let seen = Seen()
-        _ = await AIChecks.findLocalServer(get: respond([:], seen: seen))
+        _ = await AIChecks.findLocalServer(get: respond([:], seen: seen), bundled: none)
         XCTAssertEqual(seen.requests.map(\.timeoutInterval), [1.5, 1.5])
     }
 
@@ -99,9 +99,9 @@ final class AIChecksTests: XCTestCase {
         let swapped = respond([ollama: .success((200, #"{"data":[{"id":"qwen2.5:3b"}]}"#))])
         let still = respond([ollama: .success((200, #"{"data":[{"id":"qwen2.5:3b"},{"id":"qwen2.5:1.5b"}]}"#))])
         let off = respond([ollama: .failure(URLError(.cannotConnectToHost))])
-        let gone = await AIChecks.serves(saved, get: swapped)
-        let kept = await AIChecks.serves(saved, get: still)
-        let down = await AIChecks.serves(saved, get: off)
+        let gone = await AIChecks.serves(saved, get: swapped, bundled: none)
+        let kept = await AIChecks.serves(saved, get: still, bundled: none)
+        let down = await AIChecks.serves(saved, get: off, bundled: none)
         XCTAssertFalse(gone)
         XCTAssertTrue(kept)
         XCTAssertFalse(down)
@@ -122,22 +122,30 @@ final class AIChecksTests: XCTestCase {
         XCTAssertNil(d)
     }
 
-    // 받기 reads Ollama's /api/pull lines: bytes summed over layers, success at the end, an error stops it
-    func testPullProgressReadsOllamaLines() {
-        var p = AIChecks.PullProgress()
-        for line in [#"{"status":"pulling manifest"}"#,
-                     #"{"status":"pulling a1","digest":"sha256:a1","total":6000,"completed":1500}"#,
-                     #"{"status":"pulling b2","digest":"sha256:b2","total":1000,"completed":1000}"#,
-                     #"{"status":"pulling a1","digest":"sha256:a1","total":6000,"completed":3000}"#, "not json"] {
-            p.read(line)
-        }
-        XCTAssertEqual(p.total, 7000)
-        XCTAssertEqual(p.done, 4000)
-        XCTAssertFalse(p.finished)
-        p.read(#"{"status":"success"}"#)
-        XCTAssertTrue(p.finished)
-        var e = AIChecks.PullProgress()
-        e.read(#"{"error":"pull model manifest: file does not exist"}"#)
-        XCTAssertEqual(e.error, "pull model manifest: file does not exist")
+    private let none: AIChecks.Bundled = { nil }
+    private let own = LocalServer(name: BundledLLM.name, url: "http://127.0.0.1:11535/v1", model: BundledLLM.model)
+
+    // Tacie's own server, once its model is downloaded, comes before Ollama and LM Studio (issue #54)
+    func testFindsTaciesOwnServerFirst() async {
+        let own = self.own
+        let seen = Seen()
+        let get = respond([ollama: .success((200, #"{"data":[{"id":"qwen2.5:3b"}]}"#))], seen: seen)
+        let found = await AIChecks.findLocalServer(get: get, bundled: { own })
+        XCTAssertEqual(found, own)
+        XCTAssertTrue(seen.requests.isEmpty)
+        let without = await AIChecks.findLocalServer(get: get, bundled: none)
+        XCTAssertEqual(without?.name, "Ollama")
+    }
+
+    // the saved server is Tacie's own: it serves when the bundled server (re)starts at the same address
+    func testServesTaciesOwnServer() async {
+        let own = self.own
+        let moved = LocalServer(name: BundledLLM.name, url: "http://127.0.0.1:50000/v1", model: BundledLLM.model)
+        let up = await AIChecks.serves(own, get: respond([:]), bundled: { own })
+        let elsewhere = await AIChecks.serves(own, get: respond([:]), bundled: { moved })
+        let gone = await AIChecks.serves(own, get: respond([:]), bundled: none)
+        XCTAssertTrue(up)
+        XCTAssertFalse(elsewhere)
+        XCTAssertFalse(gone)
     }
 }

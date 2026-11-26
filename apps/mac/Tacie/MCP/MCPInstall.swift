@@ -76,7 +76,7 @@ enum MCPInstall {
             "homepage": "https://tacie.app",
             // an open-source build is supported where its code lives
             "support": Build.isOpen ? "https://github.com/basejb/tacie/issues"
-                : korean ? "https://tacie.app/contact" : "https://tacie.app/en/contact",
+                : korean ? "https://tacie.app/ko/contact/" : "https://tacie.app/contact/",
             // the official app's privacy policy; an open-source build has no Tacie service to cover
             "privacy_policies": Build.isOpen ? [] : ["https://auth.tacie.app/privacy"],
             "keywords": copy.keywords,

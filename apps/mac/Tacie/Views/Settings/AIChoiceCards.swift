@@ -7,7 +7,7 @@ import SwiftUI
 @MainActor
 final class AIChoiceModel {
     enum KeyState: Equatable { case empty, checking, ok, saved, rejected, unknown }
-    enum Search: Equatable { case idle, searching, found(LocalServer), none, noModel(String) }
+    enum Search: Equatable { case idle, searching, found(LocalServer), none }
 
     let localSTT: LocalSTT
     /// Applies a chosen mode (`AIModeApply.apply` in the app; a stand-in in the render tests).
@@ -20,7 +20,7 @@ final class AIChoiceModel {
     var keyState: KeyState
     /// Set only here and by the render tests.
     var search: Search
-    /// 받기 (the notes model through this Mac's Ollama). Set only here and by the render tests.
+    /// 받기 (the notes model for Tacie's own server, `BundledLLM`). Set only here and by the render tests.
     enum Pull: Equatable { case idle, pulling(done: Int64, total: Int64), failed(String) }
     var pull: Pull = .idle
     private var pulling: Task<Void, Never>?
@@ -84,28 +84,38 @@ final class AIChoiceModel {
         chooseLocal()
     }
 
-    /// 받기: this Mac's Ollama downloads the notes model; once it has, the Mac is searched again and the notes use it.
-    /// The disk is checked first, as for the search model.
+    /// 받기: the notes model comes from the models bucket (resumable, hash-checked, as the speech model does); once it is
+    /// there the Mac is searched again and Tacie's own server writes the notes. The disk is checked first.
     func pullNotesModel() {
         guard pulling == nil else { return }
-        let need = AIChecks.notesModelSize + 1_000_000_000 - AIChecks.freeSpace()
+        let pack = ModelManifest.notesPack(env: ProcessInfo.processInfo.environment, home: URL(fileURLWithPath: NSHomeDirectory()))
+        let total = ModelManifest.total(pack.files)
+        let left = ModelManifest.remaining(pack.files, in: pack.dir)
+        let need = left + 1_000_000_000 - AIChecks.freeSpace()
         if need > 0 {
             pull = .failed(String(localized: "디스크 공간이 \(ByteCountFormatter.string(fromByteCount: need, countStyle: .file)) 더 필요해요"))
             return
         }
-        pull = .pulling(done: 0, total: AIChecks.notesModelSize)
+        pull = .pulling(done: total - left, total: total)
         pulling = Task {
-            let ok = await AIChecks.pullFromOllama(AIChecks.notesModel) { [weak self] p in
-                guard let self, p.total > 0 else { return }
-                self.pull = .pulling(done: p.done, total: p.total)
-            }
-            pulling = nil
-            guard !Task.isCancelled else { return }
-            if ok {
+            do {
+                try FileManager.default.createDirectory(at: pack.dir, withIntermediateDirectories: true)
+                try await LocalSTT.fetchPack(pack) { done in
+                    Task { @MainActor [weak self] in
+                        guard let self, case .pulling = self.pull else { return }
+                        self.pull = .pulling(done: min(done, total), total: total)
+                    }
+                }
+                pulling = nil
+                guard !Task.isCancelled else { return }
                 pull = .idle
+                Log.info("notes model ready")
                 if open == .local { chooseLocal() }
-            } else {
-                pull = .failed(String(localized: "받지 못했어요. Ollama가 켜져 있는지 확인한 뒤 다시 받아 주세요."))
+            } catch {
+                pulling = nil
+                guard !Task.isCancelled else { return }
+                Log.info("notes model download failed: \(error)")
+                pull = .failed(String(localized: "받지 못했어요. 인터넷 연결을 확인한 뒤 다시 받아 주세요."))
             }
         }
     }
@@ -115,10 +125,9 @@ final class AIChoiceModel {
         search = .searching
         searching = Task {
             let found = await AIChecks.findLocalServer()
-            let idle = found == nil ? await AIChecks.idleServer() : nil
             guard !Task.isCancelled, open == .local else { return }
             await apply(.local, found)
-            search = found.map { .found($0) } ?? idle.map { .noModel($0) } ?? .none
+            search = found.map { .found($0) } ?? .none
         }
     }
 
@@ -313,21 +322,15 @@ struct AIChoiceCards: View {
     @ViewBuilder private var serverState: some View {
         switch model.search {
         case .idle, .searching:
-            HStack(spacing: 6) { ProgressView().controlSize(.mini); Text("이 Mac에서 Ollama나 LM Studio를 찾는 중") }
+            HStack(spacing: 6) { ProgressView().controlSize(.mini); Text("회의 정리 모델을 찾는 중") }
                 .uiFont(12.5).foregroundStyle(Theme.ink2)
+        case .found(let s) where s.name == BundledLLM.name: status(String(localized: "\(LocalModelGuide.shownName(s.model))로 정리해요"))
         case .found(let s): status(String(localized: "\(s.name)의 \(LocalModelGuide.shownName(s.model))로 정리해요"))
-        case .none:
-            HStack(spacing: 0) {
-                Text("Ollama나 LM Studio를 켜면 돼요 · ")
-                Link(String(localized: "설치 방법"), destination: URL(string: "https://ollama.com/download")!).underline()
-            }
-            .uiFont(12.5).foregroundStyle(Theme.ink2).tint(Theme.ink2)
-        case .noModel(let name) where !inSettings && name != "LM Studio":
+        case .none where !inSettings:
             // 온보딩: the fixed-height window has room for this row only, so 받기 sits in it (설정 has the full block)
             inlinePull
-        case .noModel(let name):
-            // on but empty (just installed): it needs a model, not to be turned on
-            Text("\(name)에서 모델을 하나 받으면 돼요").uiFont(12.5).foregroundStyle(Theme.ink2)
+        case .none:
+            Text("회의 정리 모델을 받으면 돼요").uiFont(12.5).foregroundStyle(Theme.ink2)
         }
     }
 
@@ -336,7 +339,7 @@ struct AIChoiceCards: View {
         switch model.pull {
         case .idle:
             HStack(spacing: 8) {
-                Text(verbatim: "Gemma 4 E4B · \(ByteCountFormatter.string(fromByteCount: AIChecks.notesModelSize, countStyle: .file))")
+                Text(verbatim: "Gemma 4 E4B · \(ByteCountFormatter.string(fromByteCount: ModelManifest.notesFile.size, countStyle: .file))")
                     .uiFont(12.5).foregroundStyle(Theme.ink2)
                 smallButton(String(localized: "받기"))
             }
@@ -364,25 +367,21 @@ struct AIChoiceCards: View {
     }
 }
 
-/// What to get for 회의 정리 when "Mac 안에서만" has no model yet (오픈소스판 e2e, 2026-11-25): one model, a 받기 that
-/// has this Mac's Ollama download it (no Terminal), and what a model this small misses. The pick and the numbers come
-/// from docs/24 7-8절 (2026-11-19): Gemma 4 E4B (Q4_K_M) was the best of four small models and kept 27 of 58 decisions
-/// where the cloud notes kept 54. Tacie ships no model and serves none: Ollama downloads it (docs/41 0절, 2026-11-26).
+/// What to get for 회의 정리 when "Mac 안에서만" has no model yet (오픈소스판 e2e, 2026-11-25): one model, one 받기 (no
+/// Terminal, no other app), and what a model this small misses. The pick and the numbers come from docs/24 7-8절
+/// (2026-11-19): Gemma 4 E4B (Q4_K_M) was the best of four small models and kept 27 of 58 decisions where the cloud
+/// notes kept 54. Tacie downloads it and runs it on its own server (`BundledLLM`, issue #54, 2026-11-26); Ollama and
+/// LM Studio are still found when they have a model.
 struct LocalModelGuide: View {
-    enum Server { case ollama, none, lmStudio }
-
     @Bindable var model: AIChoiceModel
-    let server: Server
 
-    /// The model's name as the card says it: the recommended download by its name, any other as Ollama lists it.
-    static func shownName(_ id: String) -> String { id == AIChecks.notesModel ? "Gemma 4 E4B" : id }
+    /// The model's name as the card says it: the recommended model by its name, any other as its server lists it.
+    static func shownName(_ id: String) -> String {
+        id == BundledLLM.model || id == AIChecks.notesModel ? "Gemma 4 E4B" : id
+    }
 
     @MainActor static func shown(for model: AIChoiceModel) -> LocalModelGuide? {
-        switch model.search {
-        case .none: LocalModelGuide(model: model, server: .none)
-        case .noModel(let name): LocalModelGuide(model: model, server: name == "LM Studio" ? .lmStudio : .ollama)
-        default: nil
-        }
+        model.search == .none ? LocalModelGuide(model: model) : nil
     }
 
     var body: some View {
@@ -392,19 +391,20 @@ struct LocalModelGuide: View {
                     .padding(.horizontal, 7).padding(.vertical, 1.5)
                     .background(Theme.ink.opacity(0.08), in: Capsule())
                 Text(verbatim: "Gemma 4 E4B").uiFont(12.5, weight: .semibold).foregroundStyle(Theme.ink)
-                Text(ByteCountFormatter.string(fromByteCount: AIChecks.notesModelSize, countStyle: .file))
+                Text(ByteCountFormatter.string(fromByteCount: ModelManifest.notesFile.size, countStyle: .file))
                     .uiFont(12).foregroundStyle(Theme.ink3)
                 Spacer(minLength: 8)
-                if server == .ollama { action }
+                action
             }
             if case .pulling(let done, let total) = model.pull {
                 ProgressView(value: Double(done), total: Double(max(total, 1))).progressViewStyle(.linear).tint(Theme.ink2)
-                Text("\(ByteCountFormatter.string(fromByteCount: done, countStyle: .file)) / \(ByteCountFormatter.string(fromByteCount: total, countStyle: .file)) · 이 Mac의 Ollama로 받는 중")
+                Text("\(ByteCountFormatter.string(fromByteCount: done, countStyle: .file)) / \(ByteCountFormatter.string(fromByteCount: total, countStyle: .file)) · 받는 중")
                     .uiFont(12).foregroundStyle(Theme.ink2).monospacedDigit()
             } else if case .failed(let why) = model.pull {
                 Text(why).uiFont(12).foregroundStyle(Theme.ink2).fixedSize(horizontal: false, vertical: true)
             } else {
-                Text(note).uiFont(12).foregroundStyle(Theme.ink2).fixedSize(horizontal: false, vertical: true)
+                Text("받으면 이 Mac 안에서 회의 정리를 해요. 정리하는 동안 메모리를 5–10GB 써요.")
+                    .uiFont(12).foregroundStyle(Theme.ink2).fixedSize(horizontal: false, vertical: true)
             }
             Text("회의 정리 평가에서 이 모델은 결정 58개 중 27개를 담았어요(클라우드는 54개).")
                 .uiFont(12).foregroundStyle(Theme.ink3).fixedSize(horizontal: false, vertical: true)
@@ -421,14 +421,6 @@ struct LocalModelGuide: View {
             Button { model.pullNotesModel() } label: { OutlineButton(label: String(localized: "다시 받기")) }.buttonStyle(PressStyle())
         case .idle:
             Button { model.pullNotesModel() } label: { OutlineButton(label: String(localized: "받기")) }.buttonStyle(PressStyle())
-        }
-    }
-
-    private var note: String {
-        switch server {
-        case .ollama: String(localized: "받으면 이 Mac의 Ollama가 내려받고, 다 받으면 바로 회의 정리에 써요.")
-        case .none: String(localized: "Ollama를 설치하고 켜면 여기서 바로 받을 수 있어요.")
-        case .lmStudio: String(localized: "LM Studio에서 이 모델을 받은 뒤 이 화면을 다시 열면 찾아요.")
         }
     }
 }

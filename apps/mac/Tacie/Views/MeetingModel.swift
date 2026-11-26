@@ -2271,8 +2271,9 @@ final class MeetingModel {
         writeAgain(id, m, kind: NotesFlow.rewriteKind(m), request: request)
     }
 
-    /// "Mac 안에서만" (2-D): look for Ollama or LM Studio once more before notes go out; with none, no request is sent
-    /// and the meeting says to turn one on (it would fail as a key error). 정리 다시 쓰기 goes through here too.
+    /// "Mac 안에서만" (2-D): look for a notes model once more before notes go out (Tacie's own server, restarted if it
+    /// stopped, then Ollama or LM Studio); with none, no request is sent and the meeting says to download one (it would
+    /// fail as a key error). 정리 다시 쓰기 goes through here too.
     private func notesCanGo(_ id: String) async -> Bool {
         // a saved model that is gone (removed or swapped in Ollama) is looked for again too, not only a missing one
         if Build.isOpen, AIMode.saved() == .local {
@@ -2284,8 +2285,7 @@ final class MeetingModel {
             }
         }
         guard OpenAIMeeting.notesGo(open: Build.isOpen, mode: AIMode.saved(), server: LocalServer.saved()) else {
-            let problem = await AIChecks.idleServer().map(OpenAIMeeting.noModelNotes) ?? OpenAIMeeting.noServerNotes
-            library.update(id) { $0.notes = .failed; $0.notesProblem = problem; $0.notesLimit = nil }
+            library.update(id) { $0.notes = .failed; $0.notesProblem = OpenAIMeeting.noServerNotes; $0.notesLimit = nil }
             return false
         }
         return true

@@ -10,9 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://tacie.app/download/Tacie.dmg"><b>Download for Mac</b></a> ·
-  <a href="https://apps.apple.com/app/tacie/id6834710881">iPhone app</a> ·
-  <a href="https://tacie.app/en/">tacie.app</a>
+  <a href="https://github.com/basejb/tacie/releases/latest/download/Tacie.dmg"><b>Download for Mac</b></a> ·
+  <a href="https://tacie.app/">Official app</a>
 </p>
 
 <p align="center">
@@ -26,13 +25,17 @@ it writes the notes: decisions, to-dos and what is still open.
 
 ## Two ways to use it
 
-- **The official app** is ready to use: no keys or setup, free with a monthly usage limit. Download it for the
-  [Mac](https://tacie.app/download/Tacie.dmg) or get the [iPhone app](https://apps.apple.com/app/tacie/id6834710881).
-- **This repository** is the source of the Mac app. Building it yourself gives you an edition without a Tacie account:
-  you bring your own AI key or run it on your Mac, and connect tools with personal tokens. The only thing it fetches
-  from Tacie is the model files (see [Downloads](#downloads-and-disk-space)), and it sends no usage statistics. iPhone
-  sync and one-click connections are only in the official app. There is no prebuilt download: you build it with Xcode,
-  as below.
+- **Tacie (open source)** is this repository. [Download the app](https://github.com/basejb/tacie/releases/latest/download/Tacie.dmg)
+  (signed and notarized, it updates itself from this repository's releases) or build it yourself as below. It is free
+  and needs no Tacie account: you bring your own AI key or run it on your Mac, and connect tools with personal tokens.
+  The only thing it fetches from Tacie is the model files (see [Downloads](#downloads-and-disk-space)), and it sends no
+  usage statistics.
+- **The official app** is the hosted version: no keys or setup, free with a monthly usage limit. It adds an
+  [iPhone app](https://apps.apple.com/app/tacie/id6834710881) with sync and one-click connections. Get it at
+  [tacie.app](https://tacie.app/).
+
+The steps below build the app from source. With the downloaded app, drag it to Applications, open it and start at
+[3. First launch](#3-first-launch). It needs a Mac with Apple silicon and macOS 14 or later.
 
 ## 1. Requirements
 
@@ -86,20 +89,17 @@ A short setup walks you through these steps. You can skip any of them and change
 |---|---|---|
 | Speech-to-text | OpenRouter | On your Mac (16 GB memory) |
 | Transcript | Not streamed: a sentence at a time | Not streamed: a sentence at a time |
-| Meeting notes, main window AI | OpenRouter | Ollama or LM Studio on your Mac |
+| Meeting notes, main window AI | OpenRouter | On your Mac (Gemma 4 E4B) |
 | Answer cards during meetings | Yes | No (they need a key) |
-| What you need | One [OpenRouter](https://openrouter.ai) key; you pay OpenRouter for what you use | Ollama (or LM Studio) and about 7.2 GB of downloads |
+| What you need | One [OpenRouter](https://openrouter.ai) key; you pay OpenRouter for what you use | About 5.6 GB of downloads |
 
 **API key.** Paste a key that starts with `sk-or-`. Tacie checks it with OpenRouter and keeps it in your Mac's
 keychain.
 
-**On-device processing.** Choosing it downloads the speech model (574 MB). For meeting notes:
-
-1. Install [Ollama](https://ollama.com/download) and open it.
-2. In **Settings → AI**, click **Download** next to Gemma 4 E4B. Ollama downloads the model (6.6 GB) and Tacie uses
-   it for notes as soon as it is done.
-
-With LM Studio, download Gemma 4 E4B in LM Studio and reopen Settings → AI. A small model on your Mac writes weaker
+**On-device processing.** Choosing it downloads the speech model (574 MB). For meeting notes, click **Download** next
+to Gemma 4 E4B (5 GB). Tacie runs it with a built-in [llama.cpp](https://github.com/ggml-org/llama.cpp) server that
+listens only on your Mac and loads the model while it writes notes (5–10 GB of memory), then unloads it. If Ollama or
+LM Studio already has a model, Tacie finds and uses it without the download. A small model on your Mac writes weaker
 notes than a hosted model: in our evaluation Gemma 4 E4B captured 27 of 58 decisions where the hosted model captured
 54, and took about 85 seconds per meeting on a 24 GB Mac.
 
@@ -134,7 +134,7 @@ No meeting content goes to Tacie. Where it goes depends on **Settings → AI**:
   team terms from your index (for their Korean spellings) go to OpenRouter and the models it routes to, under their
   terms.
 - **On-device processing**: meeting audio and transcripts stay on your Mac. Speech recognition runs in Tacie and notes
-  are written by Ollama or LM Studio on your Mac.
+  are written by Tacie's built-in model server (or Ollama or LM Studio) on your Mac.
 - **Choose providers**: each job goes to the provider you picked. Meeting audio streams to Soniox (with team terms from
   your index as recognition hints) or goes to ElevenLabs one utterance at a time; if a Soniox stream drops and an
   OpenRouter key is saved, that utterance's audio goes to OpenRouter instead. The meeting notes provider writes all of
@@ -150,11 +150,11 @@ No meeting content goes to Tacie. Where it goes depends on **Settings → AI**:
 |---|---|---|
 | Search model (BAAI bge-m3) and speaker models | 1.2 GB | On first launch |
 | On-device speech model (Whisper large-v3-turbo) | 574 MB | When you choose on-device speech |
-| Meeting notes model (Gemma 4 E4B, through Ollama) | 6.6 GB | When you click **Download** |
+| Meeting notes model (Gemma 4 E4B, Q4_K_M) | 5 GB | When you click **Download** |
 
 Tacie's models come from `https://models.tacie.app`, where each model folder has its license. To serve them yourself,
 copy the same paths to your server and set `TACIE_MODELS_BASE` in `apps/mac/Build.xcconfig`; the files and their
-SHA-256 checksums are in `apps/mac/Tacie/Services/ModelDownload.swift`. The notes model comes from Ollama's library.
+SHA-256 checksums are in `apps/mac/Tacie/Services/ModelDownload.swift`.
 
 ## Development
 

@@ -73,10 +73,9 @@ final class AIPageRenderTests: XCTestCase {
         }
         // "Mac 안에서만" with no notes model yet: what to get (오픈소스판 e2e, 2026-11-25)
         let pulls: [(String, AIChoiceModel.Search, AIChoiceModel.Pull)] = [
-            ("10-local-none", .none, .idle), ("11-local-ollama-empty", .noModel("Ollama"), .idle),
-            ("12-local-lmstudio-empty", .noModel("LM Studio"), .idle),
-            ("13-local-pulling", .noModel("Ollama"), .pulling(done: 2_140_000_000, total: 6_600_000_000)),
-            ("14-local-pull-failed", .noModel("Ollama"), .failed("받지 못했어요. Ollama가 켜져 있는지 확인한 뒤 다시 받아 주세요.")),
+            ("10-local-none", .none, .idle),
+            ("13-local-pulling", .none, .pulling(done: 2_140_000_000, total: 4_977_171_584)),
+            ("14-local-pull-failed", .none, .failed("받지 못했어요. 인터넷 연결을 확인한 뒤 다시 받아 주세요.")),
         ]
         for (name, search, pull) in pulls {
             let m = AIChoiceModel(localSTT: stt()) { _, _ in }
@@ -87,10 +86,11 @@ final class AIPageRenderTests: XCTestCase {
         }
         // the onboarding's card with 받기 in the 회의 정리 row (the window is a fixed 540×620)
         let inline: [(String, AIChoiceModel.Search, AIChoiceModel.Pull)] = [
-            ("15-onboarding-pull", .noModel("Ollama"), .idle),
-            ("16-onboarding-pulling", .noModel("Ollama"), .pulling(done: 2_140_000_000, total: 6_600_000_000)),
-            ("17-onboarding-pull-failed", .noModel("Ollama"), .failed("받지 못했어요")),
-            ("18-onboarding-pulled", .found(LocalServer(name: "Ollama", url: "http://127.0.0.1:11434/v1", model: AIChecks.notesModel)), .idle),
+            ("15-onboarding-pull", .none, .idle),
+            ("16-onboarding-pulling", .none, .pulling(done: 2_140_000_000, total: 4_977_171_584)),
+            ("17-onboarding-pull-failed", .none, .failed("받지 못했어요")),
+            ("18-onboarding-pulled", .found(LocalServer(name: BundledLLM.name, url: "http://127.0.0.1:11535/v1", model: BundledLLM.model)), .idle),
+            ("19-onboarding-ollama", .found(LocalServer(name: "Ollama", url: "http://127.0.0.1:11434/v1", model: AIChecks.notesModel)), .idle),
         ]
         for (name, search, pull) in inline {
             let m = AIChoiceModel(localSTT: stt()) { _, _ in }

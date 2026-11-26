@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "ko",
   "strings" : {
-    "%@ / %@ · 이 Mac의 Ollama로 받는 중" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ / %2$@ · Downloading through Ollama on this Mac"
-          }
-        }
-      }
-    },
     "%@에서 모델을 하나 받으면 돼요" : {
       "localizations" : {
         "en" : {
@@ -121,16 +111,6 @@
         }
       }
     },
-    "LM Studio에서 이 모델을 받은 뒤 이 화면을 다시 열면 찾아요." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download this model in LM Studio, then reopen this page and Tacie will find it."
-          }
-        }
-      }
-    },
     "Linear를 연결하면 이슈와 프로젝트에서도 찾아요." : {
       "localizations" : {
         "en" : {
@@ -157,16 +137,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pick an Obsidian vault to search notes on this Mac too."
-          }
-        }
-      }
-    },
-    "Ollama를 설치하고 켜면 여기서 바로 받을 수 있어요." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install and run Ollama to download it here."
           }
         }
       }
@@ -879,26 +849,6 @@
         }
       }
     },
-    "받으면 이 Mac의 Ollama가 내려받고, 다 받으면 바로 회의 정리에 써요." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ollama on this Mac downloads it, and meeting notes use it as soon as it's done."
-          }
-        }
-      }
-    },
-    "받지 못했어요. Ollama가 켜져 있는지 확인한 뒤 다시 받아 주세요." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Couldn't download it. Make sure Ollama is running, then try again."
-          }
-        }
-      }
-    },
     "방금" : {
       "localizations" : {
         "en" : {
@@ -1167,16 +1117,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This Mac turns meeting audio into text. Meeting audio is never sent to a server."
-          }
-        }
-      }
-    },
-    "이 Mac의 Ollama나 LM Studio가 응답하지 않아요" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ollama or LM Studio on this Mac is not responding"
           }
         }
       }
@@ -1491,16 +1431,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In our meeting-notes evaluation, this model captured 27 of 58 decisions (the cloud model captured 54)."
-          }
-        }
-      }
-    },
-    "회의 정리는 %@에서 모델을 하나 받으면 돼요" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download a model in %@ to write meeting notes"
           }
         }
       }
@@ -15904,16 +15834,6 @@
         }
       }
     },
-    "회의 정리는 Ollama나 LM Studio를 켜면 돼요" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meeting notes need Ollama or LM Studio running"
-          }
-        }
-      }
-    },
     "음성 인식 모델을 받으면 받아써요" : {
       "localizations" : {
         "en" : {
@@ -16140,26 +16060,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Getting ready"
-          }
-        }
-      }
-    },
-    "이 Mac에서 Ollama나 LM Studio를 찾는 중" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Looking for Ollama or LM Studio on this Mac"
-          }
-        }
-      }
-    },
-    "Ollama나 LM Studio를 켜면 돼요 · " : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Run Ollama or LM Studio · "
           }
         }
       }
@@ -17637,6 +17537,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your providers"
+          }
+        }
+      }
+    },
+    "회의 정리 모델을 찾는 중" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looking for a meeting notes model"
+          }
+        }
+      }
+    },
+    "%@로 정리해요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Writes notes with %@"
+          }
+        }
+      }
+    },
+    "회의 정리 모델을 받으면 돼요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download a meeting notes model to get notes"
+          }
+        }
+      }
+    },
+    "%@ / %@ · 받는 중" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ / %2$@ · Downloading"
+          }
+        }
+      }
+    },
+    "받으면 이 Mac 안에서 회의 정리를 해요. 정리하는 동안 메모리를 5–10GB 써요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Once it's downloaded, meeting notes are written on this Mac. It uses 5–10 GB of memory while it writes them."
+          }
+        }
+      }
+    },
+    "받지 못했어요. 인터넷 연결을 확인한 뒤 다시 받아 주세요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't download it. Check your internet connection, then try again."
+          }
+        }
+      }
+    },
+    "회의 정리는 설정 → AI에서 모델을 받으면 돼요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download a model in Settings → AI to get meeting notes"
+          }
+        }
+      }
+    },
+    "이 Mac의 회의 정리 모델이 응답하지 않아요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The meeting notes model on this Mac isn't responding"
           }
         }
       }

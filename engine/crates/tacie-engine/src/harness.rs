@@ -173,6 +173,24 @@ pub async fn run(engine: &Engine, meeting_dir: &Path, req: &Request, mut emit: i
     // 회의 페이지에서 고치기 대신 되물으면("바꿔도 될지 알려 주세요") 그 턴을 버리고 도구를 꼭 부르게 한 번 다시 보내요.
     let mut nudged = false;
     let mut nudge = false;
+    // 이 Mac의 작은 모델(이슈 #54): 엔진이 근거를 먼저 읽어 넣고(`given_tools`), 모델은 도구 없이 한 번에 답해요.
+    // 쓰기 도구(고치기)는 쓰지 않아요.
+    if !engine.iphone && engine.services.panel.small_model() {
+        limit = 0;
+        nudged = true;
+        for (i, (name, args)) in given_tools(req).into_iter().enumerate() {
+            let id = format!("given{i}");
+            turns.push(json!({"role": "assistant", "content": null, "tool_calls": [{
+                "id": id, "type": "function", "function": {"name": name, "arguments": args.to_string()}}]}));
+            emit(json!({"step": {"tool": name, "args": shown_args(&args)}}));
+            let (result, count) = run.tool(name, &args).await;
+            emit(json!({"step": {"tool": name, "done": true, "count": count}}));
+            used.push(name.to_string());
+            let wrapped = format!("<결과>\n{}\n</결과>", crate::openrouter::defuse(&result, "결과"));
+            turns.push(json!({"role": "tool", "tool_call_id": id,
+                              "content": wrapped.chars().take(RESULT_CHARS).collect::<String>()}));
+        }
+    }
     loop {
         if round == ROUNDS && limit == ROUNDS && used.iter().any(|t| t == "find_words") && run.proposals.is_empty() {
             limit += 1;
@@ -241,6 +259,30 @@ pub async fn run(engine: &Engine, meeting_dir: &Path, req: &Request, mut emit: i
         out["answer"] = json!(format!("{}.", crate::pipeline::NO_ANSWER));
     }
     out
+}
+
+/// 작은 모델에게 엔진이 먼저 읽어 주는 도구들이에요: 회의 페이지면 그 회의의 정리와 대화 줄, 아니면 질문으로 한 번 찾은
+/// 결과와 최근 장부예요.
+pub fn given_tools(req: &Request) -> Vec<(&'static str, Value)> {
+    match req.meeting_ids.first() {
+        Some(id) => {
+            let mut out = vec![("meeting_notes", json!({"meeting_id": id}))];
+            // 짧은 회의는 대화 기록 전체(가운데 줄 앞뒤 20줄), 긴 회의는 질문 낱말이 나온 곳의 앞뒤예요.
+            if let Some(lines) = req.transcripts.get(id).filter(|l| !l.is_empty()) {
+                let args = if lines.len() <= 2 * WINDOW_AROUND_MAX + 1 {
+                    json!({"meeting_id": id, "key": lines[lines.len() / 2]["key"], "around": WINDOW_AROUND_MAX})
+                } else {
+                    json!({"meeting_id": id, "find": req.text, "around": 6})
+                };
+                out.push(("transcript_window", args));
+            }
+            out
+        }
+        // 모든 회의: 질문으로 찾은 결과와 최근 장부(결정·할 일, 담당·기한 포함)예요. 검색 결과의 회의 조각은 요약뿐이라
+        // "누가 언제까지"를 놓쳤어요(2026-11-26).
+        None => vec![("search", json!({"query": req.text.chars().take(QUERY_CHARS).collect::<String>()})),
+                     ("filter_ledger", json!({}))],
+    }
 }
 
 /// 앱에 넘긴 질문의 `done`이에요: 답 글 없이 `handoff: {meeting_id}`만 있어요. 앱이 그 회의의 대화 기록을 붙여 같은

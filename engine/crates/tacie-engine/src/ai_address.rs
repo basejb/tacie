@@ -76,6 +76,13 @@ impl AiAddress {
         rest.split(['/', ':']).next().unwrap_or(rest).to_string()
     }
 
+    /// 이 Mac 안의 주소예요(127.x, localhost, ::1): Ollama, LM Studio, Tacie 번들 서버 같은 작은 모델이에요.
+    pub fn is_local(&self) -> bool {
+        let rest = self.url.split("://").nth(1).unwrap_or(&self.url);
+        let host = if let Some(v6) = rest.strip_prefix('[') { v6.split(']').next().unwrap_or("") } else { rest.split(['/', ':']).next().unwrap_or("") };
+        host == "localhost" || host == "::1" || host.starts_with("127.")
+    }
+
     /// 오류 글에서 이 키를 가려요(앞뒤 4자만 남겨요). 서버가 키를 되돌려주는 일이 있어요(OpenAI 401).
     pub fn mask(&self, text: &str) -> String {
         match &self.key {
