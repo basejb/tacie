@@ -35,8 +35,8 @@ targets:
       properties:
         CFBundleDisplayName: Tacie
         CFBundleDevelopmentRegion: ko
-        CFBundleShortVersionString: "0.1.48"
-        CFBundleVersion: "49"
+        CFBundleShortVersionString: "0.1.49"
+        CFBundleVersion: "50"
         LSUIElement: true
         LSMinimumSystemVersion: "14.0"
         NSMicrophoneUsageDescription: 회의 중 질문을 알아듣고 근거 파일을 찾기 위해 마이크를 써요.
