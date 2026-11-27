@@ -151,6 +151,16 @@
         }
       }
     },
+    "OpenRouter 키 하나로 음성 인식, 회의 정리, 답 카드를 모두 써요. 쓴 만큼 OpenRouter에 요금을 내요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One OpenRouter key covers speech recognition, meeting notes and answer cards. You pay OpenRouter for what you use."
+          }
+        }
+      }
+    },
     "OpenRouter 키를 확인해 주세요" : {
       "localizations" : {
         "en" : {
@@ -719,6 +729,66 @@
         }
       }
     },
+    "로그아웃하면 이 계정의 회의, 연결, 검색 데이터는 다시 로그인할 때까지 보이지 않아요. 지워지지는 않아요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This account's meetings, connections and search data stay hidden until you sign in again. Nothing is deleted."
+          }
+        }
+      }
+    },
+    "로그인하거나 다른 AI를 골라 주세요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in or choose another AI"
+          }
+        }
+      }
+    },
+    "로그인하면 Tacie AI로 음성 인식, 회의 정리, 답 카드가 켜져요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to turn on speech recognition, meeting notes and answer cards with Tacie AI."
+          }
+        }
+      }
+    },
+    "로그인하면 iPhone에서 기록한 회의의 정리가 이 Mac에 보여요(대화 기록과 녹음은 iPhone에 남아요). 노션, Linear, Jira·Confluence, Asana도 버튼 하나로 연결해요. 로그인해도 선택한 AI는 바뀌지 않아요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to see notes from meetings recorded on your iPhone here (transcripts and recordings stay on the iPhone), and to connect Notion, Linear, Jira · Confluence and Asana in one click. Signing in doesn't change the AI you chose."
+          }
+        }
+      }
+    },
+    "로그인하면 켜져요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On after you sign in"
+          }
+        }
+      }
+    },
+    "로그인하면 키 없이 바로 써요. 무료이고, 매달 사용 한도가 있어요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in and use it with no key. Free, with a monthly usage limit."
+          }
+        }
+      }
+    },
     "말을 문장째 빠뜨릴 때가 있어요" : {
       "localizations" : {
         "en" : {
@@ -1011,26 +1081,6 @@
         }
       }
     },
-    "오픈소스 버전에는 Tacie가 %@에 등록한 앱이 없어서, 연결하려면 토큰을 직접 만들어야 해요. 자료는 %@에서 이 Mac으로 바로 와요." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The open-source edition doesn't include an app Tacie registered with %1$@, so you need to make a token to connect. Your data comes straight from %2$@ to this Mac."
-          }
-        }
-      }
-    },
-    "오픈소스 버전은 사용 통계를 보내지 않아요." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The open-source edition sends no usage statistics."
-          }
-        }
-      }
-    },
     "원격 · 12:04" : {
       "localizations" : {
         "en" : {
@@ -1121,6 +1171,16 @@
         }
       }
     },
+    "이 계정의 회의는 로그인하면 다시 보여요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to see this account's meetings again"
+          }
+        }
+      }
+    },
     "이 명령을 터미널에 붙여 넣으면 모델을 받아요. 받은 뒤 이 화면을 다시 열면 찾아요." : {
       "localizations" : {
         "en" : {
@@ -1197,6 +1257,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Point at a row to see where it shows up in a meeting."
+          }
+        }
+      }
+    },
+    "지금은 로그인하지 않은 상태예요. 로그인하지 않고 한 회의는 여기에 보여요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're signed out. Meetings you have while signed out show here."
           }
         }
       }
@@ -1411,6 +1481,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sends meeting audio to a speech recognition server. On-device needs a Mac with 16 GB of memory or more."
+          }
+        }
+      }
+    },
+    "회의 소리와 대화 기록을 Mac 밖으로 보내지 않고, 정리도 이 Mac에서 해요. 답 카드는 키가 필요해서 쓸 수 없어요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meeting audio and transcripts never leave your Mac, and notes are written on it too. Answer cards need a key, so they're off."
+          }
+        }
+      }
+    },
+    "회의 소리와 대화 기록을 Tacie AI로 보내 음성 인식, 회의 정리, 답 카드를 해요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meeting audio and transcripts go to Tacie AI for speech recognition, meeting notes and answer cards."
           }
         }
       }
@@ -1707,6 +1797,16 @@
         }
       }
     },
+    "회의를 받아쓰고 정리할 AI를 골라요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the AI that transcribes your meetings and writes the notes."
+          }
+        }
+      }
+    },
     "회의를 시작하면 지금 열리는 일정의 제목과 초대된 사람을 채워요" : {
       "localizations" : {
         "en" : {
@@ -1937,6 +2037,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "What if we raise retries to five?"
+          }
+        }
+      }
+    },
+    "예전에 쓰던 Tacie의 회의를 가져왔어요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your meetings from before are here"
           }
         }
       }
@@ -2195,6 +2305,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ · %2$lldMB / %3$lldMB · 다 받기 전까지는 서버에서 음성 인식을 해요."
+          }
+        }
+      }
+    },
+    "%@ · %lldMB / %lldMB · 다 받은 뒤부터 이 Mac에서 음성 인식을 해요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · %lld MB / %lld MB · Once it finishes, speech recognition runs on this Mac."
           }
         }
       }
@@ -2811,6 +2931,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "API keys"
+          }
+        }
+      }
+    },
+    "API 키를 설정 → AI에서 다시 붙여 넣어 주세요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste your API key again in Settings → AI."
           }
         }
       }
@@ -3662,6 +3792,16 @@
     },
     "Tacie" : {},
     "Tacie %@" : {},
+    "Tacie AI는 로그인하면 써요. 지금은 AI로 보내는 정보가 없어요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tacie AI works once you sign in. Nothing is sent to an AI now."
+          }
+        }
+      }
+    },
     "Tacie AI를 쓸 수 없는 계정이에요" : {
       "localizations" : {
         "en" : {
@@ -5560,6 +5700,16 @@
         }
       }
     },
+    "새 Tacie를 받으면 예전 회의와 설정을 가져와요. API 키는 다시 붙여 넣어 주세요. 이 앱의 업데이트는 여기서 끝나요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The new Tacie brings over meetings and settings from your old app. Paste your API key again in Settings → AI. This is the last update for this app."
+          }
+        }
+      }
+    },
     "새 기능 소식 메일" : {
       "localizations" : {
         "en" : {
@@ -6794,6 +6944,16 @@
         }
       }
     },
+    "답을 찾을 곳을 연결해요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect where Tacie looks for answers"
+          }
+        }
+      }
+    },
     "답을 찾지 못했어요" : {
       "localizations" : {
         "en" : {
@@ -7450,6 +7610,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign-in was declined."
+          }
+        }
+      }
+    },
+    "로그인하지 않으면 사용 통계와 피드백을 보내지 않아요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed out, Tacie sends no usage statistics or feedback."
+          }
+        }
+      }
+    },
+    "로그인하지 않은 상태에서는 토큰을 직접 만들어 연결해요. 로그인하면 버튼 하나로 연결할 수 있어요. 자료는 %@에서 이 Mac으로 바로 와요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed out, you connect with a token you make. Sign in to connect in one click. Content comes straight from %@ to this Mac."
           }
         }
       }
@@ -8588,6 +8768,16 @@
         }
       }
     },
+    "사용 통계와 피드백을 보내지 않아요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tacie sends no usage statistics or feedback."
+          }
+        }
+      }
+    },
     "사용량 %lld%% 남음" : {
       "localizations" : {
         "en" : {
@@ -8844,6 +9034,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search settings"
+          }
+        }
+      }
+    },
+    "설정 열기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
           }
         }
       }
@@ -9250,16 +9450,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Which repository do you want Tacie to search?"
-          }
-        }
-      }
-    },
-    "어디에서 답을 찾을까요?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Where should Tacie look for answers?"
           }
         }
       }
@@ -10072,6 +10262,16 @@
         }
       }
     },
+    "모델을 다 받으면 음성 인식을 시작해요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech recognition starts once the model is downloaded"
+          }
+        }
+      }
+    },
     "음성 인식 모델을 받으려면 %@가 더 필요해요. 공간을 비운 뒤 다시 켜 주세요." : {
       "localizations" : {
         "en" : {
@@ -10118,6 +10318,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete the speech recognition model?"
+          }
+        }
+      }
+    },
+    "음성 인식, 회의 정리, 답 카드를 맡을 AI예요. 설정 → AI에서 언제든 바꿀 수 있어요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It handles speech recognition, meeting notes and answer cards. You can change it anytime in Settings → AI."
           }
         }
       }
@@ -10624,6 +10834,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continue meeting"
+          }
+        }
+      }
+    },
+    "이제 Tacie는 앱 하나예요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tacie is one app now"
           }
         }
       }
@@ -11458,6 +11678,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Asked Tacie"
+          }
+        }
+      }
+    },
+    "직접 빌드한 Tacie에는 %@에 등록한 앱이 없어서, 토큰을 직접 만들어 연결해요. 자료는 %@에서 이 Mac으로 바로 와요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Tacie you build yourself has no app registered with %@, so you connect with a token you make. Content comes straight from %@ to this Mac."
           }
         }
       }
@@ -13374,6 +13604,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tacie keeps listening. A question or a quiet moment won't end the meeting."
+          }
+        }
+      }
+    },
+    "회의를 정리할 AI를 골라요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the AI for your meetings"
           }
         }
       }
@@ -15452,6 +15692,16 @@
         }
       }
     },
+    "온디바이스 처리는 회의 소리와 대화 기록을 Mac 밖으로 보내지 않아요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On-device processing doesn't send meeting audio or transcripts off this Mac."
+          }
+        }
+      }
+    },
     "온보딩 개선안" : {
       "localizations" : {
         "en" : {
@@ -15870,16 +16120,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose"
-          }
-        }
-      }
-    },
-    "어떻게 쓸까요?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How do you want to run Tacie?"
           }
         }
       }

@@ -29,15 +29,15 @@ enum SettingsPane: String, CaseIterable, Identifiable {
     /// The panes in the sidebar; 개발자 comes last and only in a development build. AI shows only while the app uses its
     /// own API keys (a development build that is not signed in): with Tacie AI there is nothing to choose there, and a
     /// problem shows on 계정.
-    @MainActor static var main: [SettingsPane] { panes(relay: Relay.on, open: Build.isOpen) }
+    @MainActor static var main: [SettingsPane] { panes(hasAccount: Build.hasAccount) }
     /// The pane actually shown: ⌘, and the settings buttons ask for 계정, which the open edition does not have.
     static func resolve(_ pane: SettingsPane, open: Bool = Build.isOpen) -> SettingsPane {
         open && pane == .account ? .general : pane
     }
-    /// The open edition has no 계정 (no Tacie sign-in); its AI keys are on AI (docs/41 0절 14번).
-    static func panes(relay: Bool, open: Bool) -> [SettingsPane] {
-        let all: [SettingsPane] = relay ? [.account, .general, .meeting, .connections, .privacy] : [.account, .general, .meeting, .ai, .connections, .privacy]
-        return open ? all.filter { $0 != .account } : all
+    /// AI is always there: it is where Tacie AI, a key or this Mac is chosen (#56). A source build has no 계정.
+    static func panes(hasAccount: Bool) -> [SettingsPane] {
+        let all: [SettingsPane] = [.account, .general, .meeting, .ai, .connections, .privacy]
+        return hasAccount ? all : all.filter { $0 != .account }
     }
 }
 

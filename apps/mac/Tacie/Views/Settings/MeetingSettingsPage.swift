@@ -109,8 +109,8 @@ struct MeetingSettingsPage: View {
             }
         }
         SettingsSection(title: String(localized: "회의 중"), step: 2, lit: lit(2)) {
-            // the open edition chooses this in AI ("어떻게 쓸까요?", 2-D)
-            if LocalSTT.offered && !Build.isOpen {
+            // the open edition chooses this in AI ("회의를 정리할 AI를 골라요", 2-D)
+            if LocalSTT.offered && !AIMode.ownAI {
                 LocalSTTRow(stt: context.localSTT).sceneFocus(.stt, $focus)
             }
             SettingsRow(title: String(localized: "녹음 알림"), desc: String(localized: "원격 회의 녹음을 시작하면 참석자에게 알릴 문구를 화면 위 Tacie에 잠깐 보여 줘요.")) {
@@ -143,7 +143,7 @@ struct MeetingSettingsPage: View {
                                               (true, String(localized: "translation.on", defaultValue: "켜기"))],
                                     value: $meetingTranslation)
                     }
-                } else if !Build.isOpen {  // the open edition has no relay to translate through: no promise either
+                } else if !AIMode.ownAI {  // the open edition has no relay to translate through: no promise either
                     SettingsRow(title: String(localized: "번역"),
                                 desc: String(localized: "다른 언어로 한 회의도 대화 기록에서 원문 바로 아래 번역으로 읽을 수 있게 돼요. 번역할 언어는 앱 언어를 따라가요.")) {
                         SoonTag()

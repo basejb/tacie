@@ -113,7 +113,7 @@ struct SettingsView: View {
                 .onChange(of: selection.settingsRow, initial: true) {
                     guard let title = selection.settingsRow else { return }
                     selection.settingsRow = nil
-                    if title == "업체 직접 선택", Build.isOpen { detail = .aiCustom; return }  // the open edition's AI detail (2-D)
+                    if title == "업체 직접 선택" { detail = .aiCustom; return }  // the open edition's AI detail (2-D)
                     if let e = SettingsSearch.entries.first(where: { $0.title == title }) { pick(e) }
                 }
                 // a picked result: once its page is in, scroll to the row and mark it
@@ -286,7 +286,7 @@ struct SettingsView: View {
         switch pane {
         case .account: AccountPage(context: context)
         case .general: GeneralPage(context: context) { detail = .licenses }
-        case .ai: if Build.isOpen { OpenAIPage(context: context) { detail = .aiCustom } } else { AIPage(context: context) }
+        case .ai: OpenAIPage(context: context) { detail = .aiCustom }
         case .connections: ConnectionsPage(context: context, open: { detail = $0 }, focus: $connectionsFocus)
         case .meeting: MeetingSettingsPage(context: context, focus: $meetingFocus)
         case .privacy: PrivacyPage(context: context, showDelete: { detail = .deleteMeetings }, showForgetPeople: { detail = .forgetPeople },

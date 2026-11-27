@@ -483,9 +483,9 @@ final class MeetingModel {
         sampleMeeting = practice && sample
         sttNoticeOnce.reset()
         sttNotice = nil
-        if Build.isOpen, !practice, AIMode.saved() == .local { Task { await warnNoNotesModel() } }
+        if !practice, AIMode.saved() == .local { Task { await warnNoNotesModel() } }
         // the onboarding practice is there to show an answer card
-        recordOnly = CardsGate.startsRecordOnly(practice: practice, setting: Self.recordOnlyDefault, open: Build.isOpen,
+        recordOnly = CardsGate.startsRecordOnly(practice: practice, setting: Self.recordOnlyDefault, open: AIMode.ownAI,
                                                 jev: jevAvailable(), cardsOff: OpenAIMeeting.cardsOffNow)
         // decided now: turning the setting on or off mid-meeting changes the next meeting, not this one
         let recordThis = Self.recordingWanted(setting: Self.recordMeetings, practice: practice, sample: sampleMeeting)
@@ -867,7 +867,7 @@ final class MeetingModel {
     /// Turned back on, only what is said from now on is looked up; earlier lines are not searched again.
     func toggleRecordOnly() {
         guard isRunning else { return }
-        if recordOnly, !CardsGate.canTurnCardsOn(open: Build.isOpen, jev: jevAvailable(), cardsOff: OpenAIMeeting.cardsOffNow) {
+        if recordOnly, !CardsGate.canTurnCardsOn(open: AIMode.ownAI, jev: jevAvailable(), cardsOff: OpenAIMeeting.cardsOffNow) {
             flash(CardsGate.needsKey)
             return
         }
@@ -1535,7 +1535,7 @@ final class MeetingModel {
     private func chosenSttPath() -> SttPath {
         ShadowWiring.path(isDev: Build.isDev, choice: UserDefaults.standard.string(forKey: DevSettings.sttPath),
                           practice: practicing, sample: sampleMeeting, localStt: LocalSTT.switchedOn,
-                          localReady: localSttReady(), provider: SttProviderChoice.pathProvider, open: Build.isOpen)
+                          localReady: localSttReady(), provider: SttProviderChoice.pathProvider, open: AIMode.ownAI)
     }
 
     /// Settings → AI changed mid-meeting (`AIChoice.changed`): close a Soniox connection the new choice would not open,
@@ -1620,12 +1620,12 @@ final class MeetingModel {
     /// Words for a failure kind (engine/crates/tacie-engine/src/errors.rs), short enough for the pill.
     /// The meeting's warning line: in the open edition with nothing chosen, what to do (2-D); otherwise `say`.
     static func troubleSay(_ kind: String) -> String {
-        OpenAIMeeting.troubleLine(kind: kind, open: Build.isOpen, mode: AIMode.saved()) ?? say(kind)
+        OpenAIMeeting.troubleLine(kind: kind, open: AIMode.ownAI, mode: AIMode.saved()) ?? say(kind)
     }
 
     /// `troubleSay` for a typed question: in the open edition a missing key there is about the answer, not the audio.
     static func askTroubleSay(_ kind: String) -> String {
-        OpenAIMeeting.askTroubleLine(kind: kind, open: Build.isOpen, mode: AIMode.saved()) ?? troubleSay(kind)
+        OpenAIMeeting.askTroubleLine(kind: kind, open: AIMode.ownAI, mode: AIMode.saved()) ?? troubleSay(kind)
     }
 
     /// The warning line asks to choose how to run AI: the pill shows 고르기 (2-D).
@@ -1643,7 +1643,7 @@ final class MeetingModel {
             if kind == "credit" { return String(localized: "이번 달 AI 사용량을 다 썼어요") }
         }
         let mode = AIMode.saved()
-        if let line = OpenAIMeeting.failureLine(kind: kind, open: Build.isOpen, mode: mode,
+        if let line = OpenAIMeeting.failureLine(kind: kind, open: AIMode.ownAI, mode: mode,
                                                 keySaved: mode != .key || AIKeys.exists(.openrouter)) { return line }
         return FailureWords.say(kind)
     }
@@ -2276,7 +2276,7 @@ final class MeetingModel {
     /// fail as a key error). 정리 다시 쓰기 goes through here too.
     private func notesCanGo(_ id: String) async -> Bool {
         // a saved model that is gone (removed or swapped in Ollama) is looked for again too, not only a missing one
-        if Build.isOpen, AIMode.saved() == .local {
+        if AIMode.saved() == .local {
             let saved = LocalServer.saved()
             let still = if let saved { await AIChecks.serves(saved) } else { false }
             if !still, let found = await AIChecks.findLocalServer(), found != saved {
@@ -2284,7 +2284,7 @@ final class MeetingModel {
                 await pushAIKeys()
             }
         }
-        guard OpenAIMeeting.notesGo(open: Build.isOpen, mode: AIMode.saved(), server: LocalServer.saved()) else {
+        guard OpenAIMeeting.notesGo(open: AIMode.ownAI, mode: AIMode.saved(), server: LocalServer.saved()) else {
             library.update(id) { $0.notes = .failed; $0.notesProblem = OpenAIMeeting.noServerNotes; $0.notesLimit = nil }
             return false
         }

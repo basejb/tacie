@@ -12,22 +12,18 @@ final class OpenEditionTests: XCTestCase {
     }
 
     func testRelayOffInOpenEdition() {
-        XCTAssertTrue(Relay.on(signedIn: false, dev: false, open: false))
-        XCTAssertFalse(Relay.on(signedIn: false, dev: true, open: false))
-        XCTAssertTrue(Relay.on(signedIn: true, dev: true, open: false))
-        XCTAssertFalse(Relay.on(signedIn: false, dev: false, open: true))
-        XCTAssertFalse(Relay.on(signedIn: true, dev: true, open: true))
+        // the relay rule moved to RelayRuleTests (#56)
+        XCTAssertFalse(Relay.on(mode: .key, signedIn: true))
     }
 
     func testSettingsPanes() {
-        XCTAssertEqual(SettingsPane.panes(relay: true, open: false), [.account, .general, .meeting, .connections, .privacy])
-        XCTAssertEqual(SettingsPane.panes(relay: false, open: false), [.account, .general, .meeting, .ai, .connections, .privacy])
-        XCTAssertEqual(SettingsPane.panes(relay: false, open: true), [.general, .meeting, .ai, .connections, .privacy])
+        XCTAssertEqual(SettingsPane.panes(hasAccount: true), [.account, .general, .meeting, .ai, .connections, .privacy])
+        XCTAssertEqual(SettingsPane.panes(hasAccount: false), [.general, .meeting, .ai, .connections, .privacy])
     }
 
     func testServerFeaturesFollowTheEdition() {
-        XCTAssertEqual(TacieAccount.offered, !Build.isOpen)
-        XCTAssertEqual(WhatsNew.offered, !Build.isOpen)
+        XCTAssertEqual(TacieAccount.offered, Build.hasAccount)
+        XCTAssertEqual(WhatsNew.offered, Build.hasAccount)
         XCTAssertEqual(MeetingTranslation.offered, Build.isDev && !Build.isOpen)
     }
 }

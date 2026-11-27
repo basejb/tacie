@@ -8,8 +8,9 @@ enum Build {
         false
         #endif
     }()
-    /// The open edition (docs/41 0절): MIT, no Tacie sign-in, the user's own keys. Set by apps/mac/Build.xcconfig and
-    /// taken away by Official.xcconfig, so a target that reads neither (the iPhone app) is always the official one.
+    /// A source build (docs/41 0절, #56): no official values, so no Tacie sign-in; its data lives in `Tacie Open`. Set by
+    /// apps/mac/Build.xcconfig and taken away by Official.xcconfig, so a target that reads neither (the iPhone app) is
+    /// never one. Behaviour follows the AI choice (`AIMode`) and sign-in, not this flag.
     static let isOpen: Bool = {
         #if TACIE_OPEN
         true
@@ -30,6 +31,11 @@ enum Build {
         }
     }
     static let current = names(dev: isDev, open: isOpen)
+    /// Tacie sign-in exists: a build with the official values (the account server), never a source build.
+    static func hasAccount(open: Bool, accountServer: URL?) -> Bool { !open && accountServer != nil }
+    /// The compile flag decides it: Official.xcconfig both clears `TACIE_OPEN` and sets the account server, and the test
+    /// bundle cannot read the app's Info.plist values.
+    static let hasAccount = !isOpen
     static let keychainSuffix = current.keychainSuffix
     static let logFolder = current.logFolder
     static let supportFolder = current.supportFolder

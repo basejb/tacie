@@ -15,6 +15,8 @@ final class AIChoiceModel {
     /// The card that is open: the chosen mode, or 키 하나로 쓰기 before anything is chosen. `.custom` (직접 고르기 in use)
     /// opens neither card, so picking either one switches back to it.
     var open: AIMode
+    /// The person clicked Tacie AI while signed out: the sign-in that follows makes it the choice (`signedInNow`).
+    private var waitingForSignIn = false
     var keyDraft = ""
     /// Set only here and by the render tests.
     var keyState: KeyState
@@ -40,7 +42,13 @@ final class AIChoiceModel {
     func refresh() {
         guard keyState != .checking, search != .searching else { return }
         let mode = AIMode.saved()
-        open = mode == .local ? .local : (mode == .custom ? .custom : .key)
+        switch mode {
+        case .local: open = .local
+        case .custom: open = .custom
+        case .tacie: open = .tacie
+        case .key: open = .key
+        case nil: open = Build.hasAccount ? .tacie : .key
+        }
         keyState = mode == .key && AIKeys.exists(.openrouter) ? .saved : .empty
         search = mode == .local ? (LocalServer.saved().map { .found($0) } ?? .none) : .idle
     }
@@ -49,6 +57,14 @@ final class AIChoiceModel {
     /// The 키 card's key works, is saved, or is being checked: the AI page's scene draws the path to OpenRouter.
     var keyOn: Bool { [.checking, .ok, .saved, .unknown].contains(keyState) }
     var localSupported: Bool { localSTT.phase != .unsupported }
+
+    /// The sign-in from the Tacie AI card finished: that card is the choice now (#56). Signing in anywhere else never
+    /// changes the choice.
+    func signedInNow() {
+        guard open == .tacie, waitingForSignIn, TacieAccount.shared.signedIn, AIMode.saved() != .tacie else { return }
+        waitingForSignIn = false
+        Task { await apply(.tacie, nil) }
+    }
 
     /// 키 지우기: the OpenRouter key leaves the Keychain and the engine; the 키 card waits for a new one.
     func forgetKey() {
@@ -68,7 +84,11 @@ final class AIChoiceModel {
         if keyState == .checking { keyState = .empty }
         if search == .searching { search = .idle }
         open = card
+        // only a Tacie AI card the person clicked waits for the sign-in; one opened by default never chooses itself
+        waitingForSignIn = card == .tacie && !TacieAccount.shared.signedIn
         if card == .local { chooseLocal() }
+        // Tacie AI: chosen at once with a session; otherwise the card shows the sign-in and `signedInNow` chooses it
+        if card == .tacie, TacieAccount.shared.signedIn { Task { if open == .tacie { await apply(.tacie, nil) } } }
         // a key saved earlier: back to it at once, nothing to paste again
         if card == .key, AIKeys.exists(.openrouter) {
             keyState = .saved
@@ -161,19 +181,27 @@ struct AIChoiceCards: View {
     /// 설정: the active card says "쓰고 있어요"; 온보딩: the 키 card carries the 추천 tag.
     var inSettings = false
 
+    @State private var account = TacieAccount.shared
+
     var body: some View {
         cards.onAppear { model.refresh(); model.lookAgain() }
+            .onChange(of: account.signedIn) { model.signedInNow() }
     }
 
     private var cards: some View {
         VStack(spacing: 10) {
+            if Build.hasAccount {
+                card(.tacie, symbol: "sparkles", title: "Tacie AI",
+                     desc: String(localized: "로그인하면 키 없이 바로 써요. 무료이고, 매달 사용 한도가 있어요."), tag: nil) { tacieBody }
+            }
             card(.key, symbol: "key", title: String(localized: "aiCard.key", defaultValue: "API 키"),
                  desc: inSettings ? String(localized: "OpenRouter 키 하나로 음성 인식, 회의 정리, 답 카드가 모두 돼요.")
-                    : String(localized: "OpenRouter 키를 붙여 넣으면 음성 인식, 회의 정리, 답 카드가 모두 돼요."),
-                 tag: inSettings ? nil : String(localized: "추천")) { keyBody }
+                    : String(localized: "OpenRouter 키 하나로 음성 인식, 회의 정리, 답 카드를 모두 써요. 쓴 만큼 OpenRouter에 요금을 내요."),
+                 tag: inSettings || Build.hasAccount ? nil : String(localized: "추천")) { keyBody }
             card(.local, symbol: "lock", title: String(localized: "온디바이스 처리"),
-                 desc: model.localSupported ? String(localized: "키가 필요 없어요. 회의 소리와 대화 기록을 Mac 밖으로 보내지 않아요. 답 카드는 키가 필요해서 이 방법에서는 쓸 수 없어요.")
-                    : String(localized: "이 Mac은 메모리가 16GB보다 작아서 쓸 수 없어요."),
+                 desc: !model.localSupported ? String(localized: "이 Mac은 메모리가 16GB보다 작아서 쓸 수 없어요.")
+                    : inSettings ? String(localized: "키가 필요 없어요. 회의 소리와 대화 기록을 Mac 밖으로 보내지 않아요. 답 카드는 키가 필요해서 이 방법에서는 쓸 수 없어요.")
+                    : String(localized: "회의 소리와 대화 기록을 Mac 밖으로 보내지 않고, 정리도 이 Mac에서 해요. 답 카드는 키가 필요해서 쓸 수 없어요."),
                  tag: nil) { localBody }
                 .opacity(model.localSupported ? 1 : 0.5)
         }
@@ -208,6 +236,22 @@ struct AIChoiceCards: View {
         .onTapGesture { model.pick(kind) }
         .accessibilityElement(children: .contain)
         .accessibilityAddTraits(on ? [.isSelected] : [])
+    }
+
+    // MARK: Tacie AI
+
+    /// Signed in: the choice is made. Signed out: the sign-in, and the line that it never changes the AI elsewhere.
+    @ViewBuilder private var tacieBody: some View {
+        if account.signedIn {
+            status(String(localized: "쓰고 있어요"))
+        } else {
+            VStack(alignment: .leading, spacing: 10) {
+                if case .failed(let why) = account.phase {
+                    Text(why).uiFont(12).foregroundStyle(Theme.warn).fixedSize(horizontal: false, vertical: true)
+                }
+                SignInButtons()
+            }
+        }
     }
 
     // MARK: 키 하나로 쓰기

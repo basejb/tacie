@@ -77,7 +77,7 @@ final class AccountSpaceTests: XCTestCase {
         try keychain.store("ai.tacie.github", "token").save("g")
         defaults.set(true, forKey: GitHubCredentials.disconnectedKey)
 
-        adoption.adopt(into: "abc")
+        adoption.merge(into: "abc")
 
         for path in ["meetings/20261101-100000.json", "meetings/20261101-100000.caf", "people/people.json", "index/meta.json",
                      "data/sources/repos.json"] {
@@ -95,21 +95,60 @@ final class AccountSpaceTests: XCTestCase {
     func testAnotherAccountSignedInLaterGetsNothingOfTheFirst() throws {
         try write("meetings/a.json")
         try keychain.store("ai.tacie.linear", "connection").save("a")
-        adoption.adopt(into: "aaa")
-        adoption.adopt(into: "bbb")
+        adoption.merge(into: "aaa")
+        adoption.merge(into: "bbb")
         XCTAssertTrue(exists("accounts/aaa/meetings/a.json"))
         XCTAssertFalse(exists("accounts/bbb/meetings/a.json"))
         XCTAssertTrue(exists("accounts/bbb"))
         XCTAssertEqual(keychain.items, ["ai.tacie.linear/connection@aaa": "a"])
     }
 
-    /// Signing in again to an account this Mac has a space for: what the signed-out space holds stays there.
-    func testAnAccountWithASpaceTakesNothing() throws {
-        try FileManager.default.createDirectory(at: base.appendingPathComponent("accounts/aaa/meetings"), withIntermediateDirectories: true)
-        try write("meetings/later.json")
-        adoption.adopt(into: "aaa")
-        XCTAssertTrue(exists("meetings/later.json"))
-        XCTAssertFalse(exists("accounts/aaa/meetings/later.json"))
+    /// Signing in again to an account this Mac has a space for: meetings made while signed out join it (#56).
+    func testMergeIntoExistingSpaceKeepsBoth() throws {
+        try write("accounts/aaa/meetings/a.json", "account")
+        try write("meetings/a.json", "signed out")
+        try write("meetings/b.json")
+        let moved = adoption.merge(into: "aaa")
+        XCTAssertTrue(moved)
+        XCTAssertEqual(try String(contentsOf: base.appendingPathComponent("accounts/aaa/meetings/a.json"), encoding: .utf8), "account")
+        XCTAssertTrue(exists("accounts/aaa/meetings/b.json"))
+        XCTAssertTrue(exists("meetings/a.json"), "a clash leaves the signed-out file where it was")
+        XCTAssertFalse(exists("meetings/b.json"))
+        XCTAssertNil(defaults.string(forKey: SpaceAdoption.pendingKey), "a clash is not a failed move")
+    }
+
+    /// The account's search data wins; the signed-out copy is dropped instead of being mixed in.
+    func testMergeDropsSignedOutIndexWhenAccountHasOne() throws {
+        try write("accounts/aaa/index/meta.json", "account")
+        try write("index/meta.json", "signed out")
+        try write("index.new/meta.json", "signed out")
+        try write("data/sources/repos.json")
+        adoption.merge(into: "aaa")
+        XCTAssertEqual(try String(contentsOf: base.appendingPathComponent("accounts/aaa/index/meta.json"), encoding: .utf8), "account")
+        XCTAssertFalse(exists("accounts/aaa/index.new"), "never the signed-out swap place into the account's index")
+        XCTAssertFalse(exists("index"))
+        XCTAssertFalse(exists("index.new"))
+        XCTAssertTrue(exists("accounts/aaa/data/sources/repos.json"), "the account had no data: it moves")
+    }
+
+    /// The account's own connection stays; the signed-out one stays signed out.
+    func testMergeKeepsAccountConnection() throws {
+        try write("accounts/aaa/meetings/x.json")
+        try keychain.store("ai.tacie.notion", "connection").save("old")
+        try keychain.store("ai.tacie.notion", "connection@aaa").save("mine")
+        try keychain.store("ai.tacie.linear", "connection").save("lin")
+        defaults.set(true, forKey: "githubDisconnected@aaa")
+        defaults.set(false, forKey: GitHubCredentials.disconnectedKey)
+        adoption.merge(into: "aaa")
+        XCTAssertEqual(keychain.items, ["ai.tacie.notion/connection@aaa": "mine", "ai.tacie.notion/connection": "old",
+                                        "ai.tacie.linear/connection@aaa": "lin"])
+        XCTAssertTrue(defaults.bool(forKey: "githubDisconnected@aaa"))
+        XCTAssertEqual(defaults.object(forKey: GitHubCredentials.disconnectedKey) as? Bool, false)
+    }
+
+    func testMergeWithNothingSignedOutMovesNothing() throws {
+        try write("accounts/aaa/meetings/x.json")
+        XCTAssertFalse(adoption.merge(into: "aaa"))
     }
 
     /// The app quit half way: the next try moves the rest into the folder already there.
@@ -118,7 +157,7 @@ final class AccountSpaceTests: XCTestCase {
         try write("meetings/second.json")
         try write("people/people.json")
         defaults.set("aaa", forKey: SpaceAdoption.pendingKey)
-        adoption.adopt(into: "aaa")
+        adoption.merge(into: "aaa")
         XCTAssertTrue(exists("accounts/aaa/meetings/first.json"))
         XCTAssertTrue(exists("accounts/aaa/meetings/second.json"))
         XCTAssertTrue(exists("accounts/aaa/people/people.json"))
@@ -126,14 +165,14 @@ final class AccountSpaceTests: XCTestCase {
         XCTAssertNil(defaults.string(forKey: SpaceAdoption.pendingKey))
     }
 
-    /// A connection the account already has is kept; the signed-out one goes.
+    /// A connection the account already has is kept; the signed-out one stays signed out.
     func testTheAccountsOwnConnectionWins() throws {
         try FileManager.default.createDirectory(at: base.appendingPathComponent("accounts/aaa"), withIntermediateDirectories: true)
         defaults.set("aaa", forKey: SpaceAdoption.pendingKey)
         try keychain.store("ai.tacie.notion", "connection").save("old")
         try keychain.store("ai.tacie.notion", "connection@aaa").save("mine")
-        adoption.adopt(into: "aaa")
-        XCTAssertEqual(keychain.items, ["ai.tacie.notion/connection@aaa": "mine"])
+        adoption.merge(into: "aaa")
+        XCTAssertEqual(keychain.items, ["ai.tacie.notion/connection@aaa": "mine", "ai.tacie.notion/connection": "old"])
     }
 
     func testTheProductEngineRunsInTheAccountsSpace() {
@@ -148,21 +187,19 @@ final class AccountSpaceTests: XCTestCase {
                        home.appendingPathComponent("Repositories/tacie"))
     }
 
-    /// A move to A that could not finish: what is left is A's, so a new account C takes none of it; A's next sign-in does.
-    func testLeftoversOfAnUnfinishedMoveWaitForTheirAccount() throws {
+    /// A merge into A that could not finish: what is left stays signed out and goes to the next sign-in, whoever it is
+    /// (one locked keychain item must not hold every later meeting back for A).
+    func testLeftoversOfAnUnfinishedMergeGoToTheNextSignIn() throws {
         try keychain.store("ai.tacie.notion", "connection").save("a")
         try write("meetings/a.json")
         keychain.locked = true
-        adoption.adopt(into: "aaa")
+        adoption.merge(into: "aaa")
         XCTAssertEqual(defaults.string(forKey: SpaceAdoption.pendingKey), "aaa", "a locked keychain is not an empty one")
         keychain.locked = false
         try write("meetings/later.json")
-        adoption.adopt(into: "ccc")
-        XCTAssertFalse(exists("accounts/ccc"))
-        XCTAssertEqual(keychain.items, ["ai.tacie.notion/connection": "a"])
-        adoption.adopt(into: "aaa")
-        XCTAssertEqual(keychain.items, ["ai.tacie.notion/connection@aaa": "a"])
-        XCTAssertTrue(exists("accounts/aaa/meetings/later.json"))
+        adoption.merge(into: "ccc")
+        XCTAssertTrue(exists("accounts/ccc/meetings/later.json"))
+        XCTAssertEqual(keychain.items, ["ai.tacie.notion/connection@ccc": "a"])
         XCTAssertNil(defaults.string(forKey: SpaceAdoption.pendingKey))
     }
 

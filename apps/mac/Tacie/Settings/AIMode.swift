@@ -6,7 +6,19 @@ import Foundation
 /// mode does not clear the saved Choose providers values; it only overrides what is passed to the engine and the
 /// transcription path (`effective`). The official app does not read the mode. One per Mac (like `AIAddress`).
 enum AIMode: String {
+    /// Tacie AI (#56): the relay, with a session. Today's official app.
+    case tacie
     case key, local, custom
+
+    /// The choice an existing signed-in person gets on the first launch of the one app: Tacie AI, as before. A saved
+    /// choice always wins, and signing in later never sets it.
+    static func firstLaunch(signedIn: Bool, saved: AIMode?, usedBefore: Bool = false) -> AIMode? {
+        saved ?? (signedIn || usedBefore ? .tacie : nil)
+    }
+
+    /// Set once the one-app update chose for someone who used the app before it (`firstLaunch`); later launches and
+    /// new installs never choose for anyone.
+    static let oneAppMigratedKey = "ai.mode.oneApp"
 
     static let defaultsKey = "ai.mode"
 
@@ -32,7 +44,7 @@ enum AIMode: String {
     }
 
     /// `local` hands no key at all, so nothing can leave the Mac even when keys are still saved for `custom`.
-    static func effective(mode: AIMode?, open: Bool, relay: Bool, keys: [AIKeys.Name: String?], address: AIAddress?,
+    static func effective(mode: AIMode?, relay: Bool, keys: [AIKeys.Name: String?], address: AIAddress?,
                           addressKey: String?, provider: SttProviderChoice?, providerKey: String?, localSwitch: Bool,
                           server: LocalServer?, cards: CardsChoice) -> EngineValues {
         let today = EngineValues(
@@ -40,8 +52,12 @@ enum AIMode: String {
             stt: SttProviderChoice.payload(choice: provider, key: providerKey, relay: relay),
             sttPath: SttProviderChoice.pathProvider(choice: provider, key: providerKey, relay: relay),
             localStt: localSwitch)
-        guard open, !relay, let mode else { return today }
+        guard !relay, let mode else { return today }
         switch mode {
+        case .tacie:
+            // signed out: nothing to call with until the person signs in or picks another way
+            return EngineValues(keys: [.openrouter: nil, .typesafe: nil], chat: NSNull(), stt: NSNull(), sttPath: nil,
+                                localStt: localSwitch)
         case .key:
             return EngineValues(keys: [.openrouter: keys[.openrouter] ?? nil, .typesafe: nil], chat: NSNull(),
                                 stt: NSNull(), sttPath: nil, localStt: false)
@@ -57,9 +73,14 @@ enum AIMode: String {
         }
     }
 
+    /// Whether the person's own AI runs (a key, this Mac, chosen providers, or nothing yet): everything but Tacie AI
+    /// with a session (#56). What used to follow the open edition follows this now.
+    static func ownAI(mode: AIMode?, signedIn: Bool) -> Bool { !Relay.on(mode: mode, signedIn: signedIn) }
+    @MainActor static var ownAI: Bool { !Relay.on }
+
     @MainActor static var current: EngineValues {
         let provider = SttProviderChoice.saved()
-        return effective(mode: saved(), open: Build.isOpen, relay: Relay.on, keys: AIKeys.saved(),
+        return effective(mode: saved(), relay: Relay.on, keys: AIKeys.saved(),
                          address: AIAddress.saved(), addressKey: AIAddress.keyStore.read(), provider: provider,
                          providerKey: provider.flatMap { SttProviderChoice.keyStore(for: $0.name).read() },
                          localSwitch: UserDefaults.standard.bool(forKey: LocalSTT.key), server: LocalServer.saved(),
@@ -69,8 +90,9 @@ enum AIMode: String {
     /// Whether on-device recognition is on, without reading any key (`LocalSTT.switchedOn`).
     @MainActor static var localSttOn: Bool {
         let on = UserDefaults.standard.bool(forKey: LocalSTT.key)
-        guard Build.isOpen, !Relay.on, let mode = saved() else { return on }
+        guard !Relay.on, let mode = saved() else { return on }
         switch mode {
+        case .tacie: return on
         case .key: return false
         case .local: return true
         case .custom: return on
@@ -79,9 +101,10 @@ enum AIMode: String {
 
     /// Whether the engine is talking to an address of the person's own (it waits longer, 2-A). UserDefaults only: it is
     /// asked on every engine request, off the main thread.
-    static func addressSet(_ d: UserDefaults = .standard, open: Bool = Build.isOpen) -> Bool {
-        guard open, let mode = saved(d) else { return AIAddress.saved(d) != nil }
+    static func addressSet(_ d: UserDefaults = .standard) -> Bool {
+        guard let mode = saved(d) else { return AIAddress.saved(d) != nil }
         switch mode {
+        case .tacie: return AIAddress.saved(d) != nil
         case .key: return false
         case .local: return LocalServer.saved(d) != nil
         case .custom: return AIAddress.saved(d) != nil

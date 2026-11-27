@@ -21,7 +21,7 @@ struct OnboardingView: View {
             Group {
                 switch model.step {
                 case .welcome: WelcomeStep(next: model.next)
-                case .account: if Build.isOpen { AIChoiceStep(model: model, choice: AIChoiceModel(context: settings)) } else { AccountStep(model: model) }
+                case .account: AIChoiceStep(model: model, choice: AIChoiceModel(context: settings))  // #56: one AI step
                 case .sources: SourcesStep(model: model, settings: settings)
                 case .listen: ListenStep(model: model, stt: settings.localSTT, copyNotice: actions.copyNotice)
                 case .ask: PracticeStep(model: model, step: .ask)
@@ -114,20 +114,30 @@ private struct WelcomeStep: View {
 // MARK: - 0-1 account
 
 /// 로그인 (docs/14): Tacie AI works once the account is in. Waiting for approval still moves on; the island says so.
-/// 오픈소스판 2-D: 로그인 자리의 "어떻게 쓸까요?". 고르지 않고 넘어가도 돼요(남은 일에 "AI 고르기"가 남아요).
+/// 오픈소스판 2-D: 로그인 자리의 AI 고르기 단계. 고르지 않고 넘어가도 돼요(남은 일에 "AI 고르기"가 남아요).
 private struct AIChoiceStep: View {
     @Bindable var model: OnboardingModel
     @State var choice: AIChoiceModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            StepTitle(mood: .listening, title: String(localized: "어떻게 쓸까요?"),
-                      sub: String(localized: "나중에 설정에서 언제든 바꿀 수 있어요."))
+            StepTitle(mood: .listening, title: String(localized: "회의를 정리할 AI를 골라요"),
+                      sub: String(localized: "음성 인식, 회의 정리, 답 카드를 맡을 AI예요. 설정 → AI에서 언제든 바꿀 수 있어요."))
                 .padding(.bottom, 16)
-            // the same scene as 설정 → AI: where the meeting's sound and text go with the card in view
-            AIPathScene(local: choice.open == .local, keyOn: choice.keyOn, short: true).padding(.bottom, 12)
-            AIChoiceCards(model: choice)
-            Spacer(minLength: 0)
+            // the cards scroll, so an open card (sign-in buttons, key field) never pushes the bar or 계속 out of the
+            // 620-point window. Three cards leave no room for the scene (the approved mock has none); a source build's
+            // two cards keep the same scene as 설정 → AI.
+            ScrollView(.vertical) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if !Build.hasAccount {
+                        AIPathScene(local: choice.open == .local, keyOn: choice.keyOn, short: true).padding(.bottom, 12)
+                    }
+                    AIChoiceCards(model: choice)
+                }
+                .padding(.bottom, 12)
+            }
+            .scrollIndicators(.automatic)
+            .frame(maxHeight: .infinity)
             HStack {
                 if choice.mode == nil {
                     Button("나중에 할게요") { model.next() }.buttonStyle(.plain).font(Theme.button).foregroundStyle(Theme.ink3)
@@ -279,7 +289,7 @@ private struct SourcesStep: View {
         // a repository picked and syncing counts: the user did their part, the rest runs in the background
         let connected = model.facts.hasSource || model.keeper.firstSync != nil
         return VStack(alignment: .leading, spacing: 0) {
-            StepTitle(mood: connected ? .happy : .listening, title: String(localized: "어디에서 답을 찾을까요?"),
+            StepTitle(mood: connected ? .happy : .listening, title: String(localized: "답을 찾을 곳을 연결해요"),
                       sub: String(localized: "팀 코드와 문서, 내 노트를 연결하면 거기서 답을 찾아요."))
                 .padding(.bottom, 22)
             // nine tiles are taller than the 620-point window: the tiles scroll, the title and 계속 stay put, and the
@@ -449,8 +459,8 @@ private struct ListenStep: View {
             }
             .padding(.horizontal, 16)
             .background(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(Theme.ink.opacity(0.1)))
-            // the open edition chose how to transcribe one step earlier ("어떻게 쓸까요?", 2-D)
-            if stt.phase != .unsupported && !Build.isOpen { OnboardingSTTRow(stt: stt) }
+            // the open edition chose how to transcribe one step earlier ("회의를 정리할 AI를 골라요", 2-D)
+            if stt.phase != .unsupported && !AIMode.ownAI { OnboardingSTTRow(stt: stt) }
             micNote
             callNote
             if stuck { StuckBox(model: model).padding(.top, 12) }

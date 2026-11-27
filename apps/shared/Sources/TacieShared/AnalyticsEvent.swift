@@ -8,6 +8,9 @@ import Foundation
 /// anywhere.
 @MainActor
 enum Analytics {
+    /// One app (#56): usage numbers only with a Tacie session. Signed out, Tacie sends nothing but model downloads.
+    nonisolated static func allowed(signedIn: Bool, hasToken: Bool) -> Bool { signedIn && hasToken }
+
     static var sink: ((AnalyticsEvent) -> Void)?
     static func capture(_ e: AnalyticsEvent) { sink?(e) }
 }

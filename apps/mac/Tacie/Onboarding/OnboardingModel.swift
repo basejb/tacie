@@ -262,15 +262,16 @@ final class OnboardingModel {
 
     var facts: OnboardingFacts {
         let source = connectedSource
-        return OnboardingFacts(hasSource: source, accountStep: Self.accountStep, signedIn: TacieAccount.shared.signedIn,
+        // one app (#56): the AI step ("회의를 정리할 AI를 골라요", with Tacie AI's sign-in in its card) replaces the sign-in step
+        return OnboardingFacts(hasSource: source, accountStep: false, signedIn: TacieAccount.shared.signedIn,
                                notionConnected: keeper.notion.connected, linearConnected: keeper.linear.connected,
                                gdriveConnected: keeper.gdrive.connected,
                                atlassianConnected: keeper.atlassian.connected, asanaConnected: keeper.asana.connected,
                                dropboxConnected: keeper.dropbox.connected, notesOn: keeper.notesOn,
                                micGranted: mic == .authorized,
                                micConnected: micConnected, callAudio: callAudio, practiceReady: source || sampleReady,
-                               open: Build.isOpen, aiChosen: AIMode.saved() != nil,
-                               answerCards: OnboardingFlow.answerCards(open: Build.isOpen, mode: AIMode.saved(),
+                               open: true, aiChosen: OnboardingFlow.aiChosen(mode: AIMode.saved(), signedIn: TacieAccount.shared.signedIn),
+                               answerCards: OnboardingFlow.answerCards(open: AIMode.ownAI, mode: AIMode.saved(),
                                                                        cardsOff: OpenAIMeeting.cardsOffNow))
     }
 

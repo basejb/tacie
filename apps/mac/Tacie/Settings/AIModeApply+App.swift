@@ -8,7 +8,14 @@ extension AIModeApply {
         let before = AIMode.saved()
         AIMode.save(mode)
         if mode == .local { LocalServer.save(server) }
-        if needsRestart(from: before, to: mode, dev: Build.isDev, open: Build.isOpen) {
+        // the relay is fixed when the engine starts: Tacie AI on or off needs a new engine too (#56), once no meeting
+        // runs (AppDelegate.followMeetingEnd restarts it at the meeting's end)
+        let restart = needsRestart(from: before, to: mode, dev: Build.isDev, open: true)
+            || context.engine.launchedWithRelay != Relay.on
+        if restart && context.meeting.isRunning {
+            context.engine.restartAfterMeeting = true
+            await context.keeper.pushAIKeys()
+        } else if restart {
             context.engine.restart()
         } else {
             await context.keeper.pushAIKeys()
@@ -16,7 +23,7 @@ extension AIModeApply {
         switch mode {
         case .local: context.localSTT.turnOn(consented: true, afterSearchModel: true)
         case .key: if context.localSTT.enabled { context.localSTT.turnOff() }
-        case .custom: break
+        case .custom, .tacie: break  // Tacie AI keeps its own on-device recognition switch (설정 → 회의)
         }
     }
 }

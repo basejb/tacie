@@ -65,7 +65,7 @@ final class AIPageRenderTests: XCTestCase {
             let page = Page(model: m)
             for dark in [false, true] { await png(page, name, dark: dark, to: out) { m.keyState = state } }
         }
-        // the onboarding's "어떻게 쓸까요?" (540-wide window, 32 on each side): scene and cards as OnboardingView lays them out
+        // the onboarding's AI step (540-wide window, 32 on each side): scene and cards as OnboardingView lays them out
         for (name, open) in [("08-onboarding-key", AIMode.key), ("09-onboarding-local", .local)] {
             let m = AIChoiceModel(localSTT: stt()) { _, _ in }
             let page = Page(model: m, inSettings: false)
@@ -99,6 +99,13 @@ final class AIPageRenderTests: XCTestCase {
                 await png(page, name, dark: dark, to: out, width: 524) { m.open = .local; m.search = search; m.pull = pull }
             }
         }
+        // one app (#56): Tacie AI on top, signed out (the sign-in in its card), in settings and onboarding
+        for (name, inSettings, width) in [("20-tacie-settings", true, CGFloat(640)), ("21-tacie-onboarding", false, CGFloat(524))] {
+            let m = AIChoiceModel(localSTT: stt()) { _, _ in }
+            let page = Page(model: m, inSettings: inSettings)
+            for dark in [false, true] { await png(page, name, dark: dark, to: out, width: width) { m.open = .tacie } }
+        }
+        for dark in [false, true] { await png(SignedOutNotice {}, "22-signed-out-notice", dark: dark, to: out) {} }
         for (name, custom) in [("06-custom", AIPathScene.Custom(stt: .soniox, chat: .openai, cards: .openrouter)),
                                ("07-custom-home", AIPathScene.Custom(stt: .device, chat: .device, cards: .off))] {
             let m = AIChoiceModel(localSTT: stt()) { _, _ in }
@@ -116,7 +123,7 @@ private struct Page: View {
     var inSettings = true
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            AIPathScene(local: model.open == .local, keyOn: model.keyOn, custom: custom, short: !inSettings)
+            AIPathScene(local: model.open == .local, keyOn: model.keyOn, custom: custom, tacie: model.open == .tacie ? TacieAccount.shared.signedIn : nil, short: !inSettings)
                 .padding(.bottom, inSettings ? 14 : 12)
             AIChoiceCards(model: model, inSettings: inSettings)
         }

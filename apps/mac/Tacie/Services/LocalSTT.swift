@@ -129,7 +129,7 @@ final class LocalSTT {
 
     /// What a meeting says while the switch is on and the model is not ready (nil: nothing to say).
     var meetingState: STTMeetingState? {
-        guard enabled, let line = LocalSTTCopy.meetingLine(phase) else { return nil }
+        guard enabled, let line = LocalSTTCopy.meetingLine(phase, serverFallback: LocalSTTCopy.serverFallback) else { return nil }
         return STTMeetingState(line: line, starts: downloadStarts)
     }
 

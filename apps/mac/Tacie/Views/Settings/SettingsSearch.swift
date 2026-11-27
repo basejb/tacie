@@ -80,7 +80,7 @@ enum SettingsSearch {
             all.append(.init(pane: .general, section: update, title: String(localized: "자동 업데이트"), words: ["업데이트", "update", "버전", "version"]))
             all.append(.init(pane: .general, section: links, title: String(localized: "업데이트 확인"), anchor: .footer, words: ["update", "버전", "version"]))
         }
-        if MeetingTranslation.offered || !Build.isOpen {
+        if MeetingTranslation.offered || !AIMode.ownAI {
             all.append(.init(pane: .meeting, section: during, title: String(localized: "번역"), words: ["translation", "영어"]))
         }
         if MCPAccess.offered {
@@ -94,7 +94,7 @@ enum SettingsSearch {
             all.append(.init(pane: .account, title: String(localized: "로그아웃"), words: ["sign out", "logout"]))
             all.append(.init(pane: .account, title: String(localized: "계정 삭제"), words: ["delete", "탈퇴"]))
         }
-        if Build.isOpen { all += openAI }
+        all += openAI  // the AI page is in every build now (#56)
         return shown(all, panes: SettingsPane.main, sources: ConnectionsScene.Source.available)
     }
 

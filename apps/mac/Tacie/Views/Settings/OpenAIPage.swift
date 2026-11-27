@@ -21,11 +21,12 @@ struct OpenAIPage: View {
     }
 
     var body: some View {
-        PageHeader(title: "AI", desc: String(localized: "Tacie가 회의를 받아쓰고 정리하는 방법이에요."))
+        PageHeader(title: "AI", desc: String(localized: "회의를 받아쓰고 정리할 AI를 골라요."))
         // 업체 직접 선택 in use: the scene names the picked providers; neither card is on, and a line says so
         AIPathScene(local: choice.open == .local, keyOn: choice.keyOn,
                     custom: choice.open == .custom ? AIPathScene.Custom(stt: AICustomPicks.stt(), chat: AICustomPicks.chat(),
-                                                                         cards: AICustomPicks.cards(typesafeKey: AIKeys.exists(.typesafe))) : nil)
+                                                                         cards: AICustomPicks.cards(typesafeKey: AIKeys.exists(.typesafe))) : nil,
+                    tacie: choice.open == .tacie ? TacieAccount.shared.signedIn : nil)
             .padding(.bottom, 14)
         if choice.open == .custom {
             Text("지금은 업체를 직접 골라 쓰고 있어요. 카드를 누르면 그 카드의 방법으로 바뀌어요.")

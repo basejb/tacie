@@ -9,20 +9,22 @@ final class AIModeTests: XCTestCase {
     private let ollama = LocalServer(name: "Ollama", url: "http://127.0.0.1:11434/v1", model: "gemma4:e4b")
     private let keys: [AIKeys.Name: String?] = [.openrouter: "or-fake", .typesafe: "ts-fake"]
 
-    private func values(_ mode: AIMode?, open: Bool = true, relay: Bool = false, server: LocalServer? = nil,
+    private func values(_ mode: AIMode?, relay: Bool = false, server: LocalServer? = nil,
                         cards: CardsChoice = .auto, localSwitch: Bool = false) -> AIMode.EngineValues {
-        AIMode.effective(mode: mode, open: open, relay: relay, keys: keys, address: address, addressKey: "oa-fake",
+        AIMode.effective(mode: mode, relay: relay, keys: keys, address: address, addressKey: "oa-fake",
                          provider: soniox, providerKey: "sx-fake", localSwitch: localSwitch, server: server, cards: cards)
     }
 
-    func testOfficialIgnoresMode() {
-        let official = values(.local, open: false, server: ollama, localSwitch: true)
-        let none = values(nil, open: false, localSwitch: true)
-        XCTAssertEqual(official.keys, none.keys)
-        XCTAssertEqual(official.chat as? [String: String], none.chat as? [String: String])
-        XCTAssertEqual(official.stt as? [String: String], none.stt as? [String: String])
-        XCTAssertEqual(official.sttPath, none.sttPath)
+    /// Tacie AI with a session is today's official payload, the same as nothing chosen (#56).
+    func testTacieRelayIsTodaysPayload() {
+        let official = values(.tacie, relay: true, server: ollama, localSwitch: true)
+        let relayNone = values(nil, relay: true, localSwitch: true)
+        XCTAssertEqual(official.keys, relayNone.keys)
+        XCTAssertEqual(official.chat as? [String: String], relayNone.chat as? [String: String])
+        XCTAssertEqual(official.stt as? [String: String], relayNone.stt as? [String: String])
+        XCTAssertEqual(official.sttPath, relayNone.sttPath)
         XCTAssertEqual(official.localStt, true)
+        let none = values(nil, localSwitch: true)
         // and nil is today's payload
         XCTAssertEqual(none.keys, keys)
         XCTAssertEqual(none.chat as? [String: String], ["url": "https://api.openai.com/v1", "model": "gpt-5-mini", "key": "oa-fake"])
@@ -137,16 +139,17 @@ final class AIModeTests: XCTestCase {
     // final review: the engine-wait hook reads UserDefaults only (it runs on every engine request, off the main thread)
     func testAddressSetFromDefaults() {
         let d = UserDefaults(suiteName: "AIModeTests-\(UUID())")!
-        XCTAssertFalse(AIMode.addressSet(d, open: true))
+        XCTAssertFalse(AIMode.addressSet(d))
         LocalServer.save(ollamaServer, d)
         AIMode.save(.local, d)
-        XCTAssertTrue(AIMode.addressSet(d, open: true))
+        XCTAssertTrue(AIMode.addressSet(d))
         AIMode.save(.key, d)
         d.set("https://x/v1", forKey: AIAddress.urlKey); d.set("m", forKey: AIAddress.modelKey)
-        XCTAssertFalse(AIMode.addressSet(d, open: true))
-        XCTAssertTrue(AIMode.addressSet(d, open: false))  // official: today's `AIAddress.isSet`
+        XCTAssertFalse(AIMode.addressSet(d))
+        AIMode.save(.tacie, d)
+        XCTAssertTrue(AIMode.addressSet(d))  // Tacie AI: today's `AIAddress.isSet`
         AIMode.save(.custom, d)
-        XCTAssertTrue(AIMode.addressSet(d, open: true))
+        XCTAssertTrue(AIMode.addressSet(d))
     }
 
     private var ollamaServer: LocalServer { LocalServer(name: "Ollama", url: "http://127.0.0.1:11434/v1", model: "gemma4:e4b") }

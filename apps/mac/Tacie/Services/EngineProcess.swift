@@ -97,7 +97,7 @@ final class EngineProcess {
         env["TACIE_GITHUB_MODE"] = Build.usesTacieLogin ? "none" : "gh"
         // AI keys come from the keychain over HTTP once the engine is up; only a dev build lets it read ~/.config key files
         // …and never in the open edition's "Mac 안에서만" (2-D)
-        if AIModeApply.keyFiles(dev: Build.isDev, mode: AIMode.saved(), open: Build.isOpen) { env["TACIE_KEY_FILES"] = "1" } else { env["TACIE_KEY_FILES"] = nil }
+        if AIModeApply.keyFiles(dev: Build.isDev, mode: AIMode.saved(), open: AIMode.ownAI) { env["TACIE_KEY_FILES"] = "1" } else { env["TACIE_KEY_FILES"] = nil }
         // Tacie AI (docs/14): the AI calls go to our relay with the session in place of a key
         launchedWithRelay = Relay.on
         if launchedWithRelay {
@@ -151,9 +151,12 @@ final class EngineProcess {
 
     /// The engine was started with its AI addresses at the Tacie AI relay (a sign-in or out changes that: restart).
     private(set) var launchedWithRelay = false
+    /// A change that needs a new engine came during a meeting (Settings → AI): AppDelegate restarts it at the end.
+    var restartAfterMeeting = false
 
     /// The developer tab's "적용하고 엔진 다시 띄우기": a clean start with today's settings, not counted as a crash.
     func restart() {
+        restartAfterMeeting = false
         stop()
         client = nil
         restarts = []

@@ -154,9 +154,13 @@ struct SentInfoPage: View {
     var body: some View {
         DetailHeader(back: String(localized: "개인정보"), action: back)
         PageHeader(title: String(localized: "보내는 정보"), desc: String(localized: "회의 기록과 검색 데이터는 이 Mac에 두고, 아래 정보만 밖으로 보내요."))
+        // nothing goes to any AI with Tacie AI while signed out, or with 온디바이스 처리 (#56): no list of what would go
+        if let nothing = Self.nothingSent(mode: AIMode.saved(), relay: Relay.on) {
+            SettingsSection(title: String(localized: "AI로 보내는 정보"), desc: nothing) { EmptyView() }
+        } else {
         SettingsSection(title: String(localized: "AI로 보내는 정보"),
                         desc: Relay.on ? String(localized: "Tacie 서버를 거쳐 가는 정보는 전달만 하고 저장하지 않아요.")
-                            : Build.isOpen ? String(localized: "고른 업체로만 보내고, Tacie 서버는 거치지 않아요.")
+                            : AIMode.ownAI ? String(localized: "고른 업체로만 보내고, Tacie 서버는 거치지 않아요.")
                             : String(localized: "개발 빌드는 Tacie 서버를 거치지 않고 바로 보내요.")) {
             SettingsRow(title: String(localized: "회의 소리"), desc: localSTT.phase == .ready ? LocalSTTCopy.sentLocal : LocalSTTCopy.sentServer) { EmptyView() }
             SettingsRow(title: String(localized: "질문과 후보 내용 일부"), desc: String(localized: "질문인지 알아보고 후보 순서를 정할 때, 후보마다 900자까지 보내요.")) { EmptyView() }
@@ -177,16 +181,32 @@ struct SentInfoPage: View {
                 .buttonStyle(.plain)
             }
         }
-        // usage numbers (docs/16): on from the start, no switch; this says what goes and what never does. The open edition
-        // has no analytics token and no feedback card, so it sends none of this.
-        if Build.isOpen {
-            SettingsSection(title: String(localized: "사용 통계"), desc: String(localized: "오픈소스 버전은 사용 통계를 보내지 않아요.")) { EmptyView() }
+        }
+        // usage numbers (docs/16): sent only while signed in (#56), whatever AI is chosen; this says what goes and what
+        // never does. Signed out, and in a source build, none of it is sent.
+        if !(Build.hasAccount && TacieAccount.shared.signedIn) {
+            SettingsSection(title: String(localized: "사용 통계"), desc: Build.hasAccount
+                ? String(localized: "로그인하지 않으면 사용 통계와 피드백을 보내지 않아요.")
+                : String(localized: "사용 통계와 피드백을 보내지 않아요.")) { EmptyView() }
         } else {
         SettingsSection(title: String(localized: "사용 통계"), desc: String(localized: "Tacie를 더 낫게 만들려고 쓰는 횟수와 시간만 보내요.")) {
             SettingsRow(title: String(localized: "보내는 것"), desc: String(localized: "회의 수와 길이, 카드가 뜬 수와 연 수, 앱·macOS 버전")) { EmptyView() }
             SettingsRow(title: String(localized: "보내지 않는 것"), desc: String(localized: "소리, 대화 기록, 질문과 답, 카드 내용, 저장소·채널 이름, 이메일")) { EmptyView() }
             SettingsRow(title: String(localized: "피드백 카드"), desc: String(localized: "보내기를 누를 때만 고른 항목과 직접 쓴 글을 Tacie 서버로 보내요.")) { EmptyView() }
         }
+        }
+    }
+}
+
+extension SentInfoPage {
+    /// The AI section's line when nothing goes to any AI (#56): Tacie AI chosen but signed out, or 온디바이스 처리.
+    /// nil: something goes, and the rows say what.
+    static func nothingSent(mode: AIMode?, relay: Bool) -> String? {
+        if relay { return nil }
+        switch mode {
+        case .tacie: return String(localized: "Tacie AI는 로그인하면 써요. 지금은 AI로 보내는 정보가 없어요.")
+        case .local: return String(localized: "온디바이스 처리는 회의 소리와 대화 기록을 Mac 밖으로 보내지 않아요.")
+        case .key, .custom, nil: return nil
         }
     }
 }

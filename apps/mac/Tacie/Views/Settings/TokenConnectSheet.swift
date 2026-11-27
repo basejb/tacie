@@ -31,7 +31,7 @@ extension TokenCopy {
     /// "연결" and "다시 연결" on a card: the token window in the open edition, the sign-in otherwise.
     @MainActor
     static func start(_ s: ConnectionsScene.Source, keeper: IndexKeeper, paste: Binding<Bool>) {
-        if PastedTokens.offered {
+        if PastedTokens.pasted(s) {
             paste.wrappedValue = true
             return
         }
@@ -47,7 +47,7 @@ extension TokenCopy {
     /// 노션 "페이지 고르기": a pasted integration picks its pages on Notion's integrations page (Content access).
     @MainActor
     static func pickNotionPages(keeper: IndexKeeper) {
-        if PastedTokens.offered { NSWorkspace.shared.open(PastedTokens.makeURL(.notion)) } else { keeper.notion.connect() }
+        if PastedTokens.pasted(.notion) { NSWorkspace.shared.open(PastedTokens.makeURL(.notion)) } else { keeper.notion.connect() }
     }
 
     /// Saves what the check found and hands it to the engine. GitHub's token goes to the keychain only: its page

@@ -535,7 +535,7 @@ struct MeetingPage: View {
     private var emptyNotes: some View {
         VStack(alignment: .leading, spacing: 0) {
             DocHeading(title: String(localized: "요약"))
-            Text(EmptyNotes.line(transcribed: !meeting.transcript.isEmpty, open: Build.isOpen, mode: AIMode.saved()))
+            Text(EmptyNotes.line(transcribed: !meeting.transcript.isEmpty, open: AIMode.ownAI, mode: AIMode.saved()))
                 .uiFont(14).foregroundStyle(Theme.ink3).fixedSize(horizontal: false, vertical: true)
             if !meeting.transcript.isEmpty && IPhoneMeetingUI.allows(.rewrite, for: meeting) {
                 Button { actions.rewriteNotes(meeting.id) } label: { OutlineButton(label: String(localized: "meetingPage.tryAgain", defaultValue: "다시 쓰기"), icon: "arrow.clockwise") }

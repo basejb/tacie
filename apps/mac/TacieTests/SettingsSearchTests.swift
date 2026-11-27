@@ -47,17 +47,17 @@ final class SettingsSearchTests: XCTestCase {
             .init(pane: .connections, title: "Linear", anchor: .top, source: .linear),
             .init(pane: .connections, title: "지금 동기화", anchor: .top),
         ] + SettingsSearch.openAI
-        let open = SettingsSearch.shown(all, panes: SettingsPane.panes(relay: false, open: true),
+        let open = SettingsSearch.shown(all, panes: SettingsPane.panes(hasAccount: false),
                                         sources: ConnectionsScene.Source.available(open: true, dev: false))
         XCTAssertEqual(SettingsSearch.matches("드라이브", in: open), [])
         XCTAssertEqual(SettingsSearch.matches("Linear", in: open).map(\.title), ["Linear"])
         XCTAssertEqual(SettingsSearch.matches("지금 동기화", in: open).count, 1)
         XCTAssertEqual(SettingsSearch.matches("Soniox", in: open).first?.pane, .ai)
         XCTAssertEqual(SettingsSearch.matches("Ollama", in: open).first?.pane, .ai)
-        let official = SettingsSearch.shown(all, panes: SettingsPane.panes(relay: true, open: false),
+        let official = SettingsSearch.shown(all, panes: SettingsPane.panes(hasAccount: true),
                                             sources: ConnectionsScene.Source.available(open: false, dev: false))
         XCTAssertEqual(SettingsSearch.matches("드라이브", in: official).map(\.title), ["Google Drive"])
-        XCTAssertEqual(SettingsSearch.matches("Soniox", in: official), [])  // the official app with the relay has no AI pane
+        XCTAssertEqual(SettingsSearch.matches("Soniox", in: official).first?.pane, .ai)  // one app: AI is always a pane (#56)
     }
 
     func testBlankFindsNothing() {

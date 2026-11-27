@@ -16,8 +16,8 @@ enum LocalSTTCopy {
     /// 개인정보 → 보내는 정보, the 회의 소리 line.
     static let sentLocal = String(localized: "이 Mac에서 음성 인식을 해요. 회의 소리는 Mac 밖으로 보내지 않아요.")
     /// The official app's speech vendor does not keep or train on it; in the open edition the person picks the vendor.
-    static let sentServer = Build.isOpen ? String(localized: "회의 중에 고른 음성 인식 업체로 보내요. 저장하거나 학습에 쓰는지는 그 업체의 약관을 따라요.")
-        : String(localized: "회의 중에 음성 인식 업체로 보내요. 업체는 저장하거나 학습에 쓰지 않아요.")
+    @MainActor static var sentServer: String { AIMode.ownAI ? String(localized: "회의 중에 고른 음성 인식 업체로 보내요. 저장하거나 학습에 쓰는지는 그 업체의 약관을 따라요.")
+        : String(localized: "회의 중에 음성 인식 업체로 보내요. 업체는 저장하거나 학습에 쓰지 않아요.") }
 
     static let consentTitle = String(localized: "음성 인식 모델을 받을까요?")
     static let consentBody = String(localized: "온디바이스 음성 인식에는 0.6GB 모델이 필요해요. 다 받기 전에 시작한 회의는 지금처럼 서버에서 음성 인식을 해요.")
@@ -44,6 +44,12 @@ enum LocalSTTCopy {
     static var unknownFailure: String { String(localized: "받지 못했어요") }
 
     static let meetingTitle = String(localized: "이번 회의는 서버에서 음성 인식을 해요")
+    /// 온디바이스 처리 (#56): nothing to fall back to (no key, no relay), so nothing is transcribed until the model is in.
+    static let meetingTitleNoServer = String(localized: "모델을 다 받으면 음성 인식을 시작해요")
+
+    /// Whether speech recognition falls back to a server while the model downloads: not with 온디바이스 처리, which
+    /// has no key and no relay to fall back to.
+    @MainActor static var serverFallback: Bool { !(AIMode.ownAI && AIMode.saved() == .local) }
     static let paused = String(localized: "음성 인식이 잠시 멈췄어요")
 
     /// 온보딩 2단계: two cards, the server one picked by default (2026-11-18). Numbers measured on 186 talk-show clips
@@ -86,7 +92,7 @@ enum LocalSTTCopy {
     }
 
     /// The settings row's second line.
-    static func detail(_ phase: LocalSTT.Phase) -> String {
+    static func detail(_ phase: LocalSTT.Phase, serverFallback: Bool = true) -> String {
         switch phase {
         case .off, .needsSpace: offDetail
         case .unsupported: unsupportedDetail
@@ -94,7 +100,9 @@ enum LocalSTTCopy {
         case .waiting: waitingDetail
         case .failed: failedDetail
         case .downloading(let done, let total):
-            String(localized: "\(downloadingTitle) · \(mb(done))MB / \(mb(total))MB · 다 받기 전까지는 서버에서 음성 인식을 해요.")
+            serverFallback
+                ? String(localized: "\(downloadingTitle) · \(mb(done))MB / \(mb(total))MB · 다 받기 전까지는 서버에서 음성 인식을 해요.")
+                : String(localized: "\(downloadingTitle) · \(mb(done))MB / \(mb(total))MB · 다 받은 뒤부터 이 Mac에서 음성 인식을 해요.")
         }
     }
 
@@ -118,21 +126,28 @@ enum LocalSTTCopy {
     }
 
     /// The line under 화면 위 Tacie when a meeting starts or goes on while the model is not ready.
-    static func meetingLine(_ phase: LocalSTT.Phase) -> String? {
+    static func meetingLine(_ phase: LocalSTT.Phase, serverFallback: Bool = true) -> String? {
+        if !serverFallback {
+            switch phase {
+            case .downloading(let done, let total): return String(localized: "\(meetingTitleNoServer) · \(percent(done: done, total: total))%")
+            case .waiting, .failed: return meetingTitleNoServer
+            case .off, .unsupported, .needsSpace, .ready: return nil
+            }
+        }
         switch phase {
-        case .downloading(let done, let total): String(localized: "\(meetingTitle) · 음성 인식 모델 \(percent(done: done, total: total))%")
-        case .waiting: String(localized: "\(meetingTitle) · 음성 인식 모델 받기 대기 중")
-        case .failed: "\(meetingTitle) · \(failedTitle)"
-        case .off, .unsupported, .needsSpace, .ready: nil
+        case .downloading(let done, let total): return String(localized: "\(meetingTitle) · 음성 인식 모델 \(percent(done: done, total: total))%")
+        case .waiting: return String(localized: "\(meetingTitle) · 음성 인식 모델 받기 대기 중")
+        case .failed: return "\(meetingTitle) · \(failedTitle)"
+        case .off, .unsupported, .needsSpace, .ready: return nil
         }
     }
 
     /// Everything above that a test must keep free of the words the product does not use.
-    static var allStatic: [String] {
+    @MainActor static var allStatic: [String] {
         [title, rowTitle, serverChoice, deviceChoice, serverDetail, readyDetail, unsupportedDetail, waitingDetail, failedDetail,
          sentLocal, sentServer,
          consentTitle, consentBody, consentButton, spaceTitle, spaceButton, spaceBody(more: 400_000_000),
-         deleteRow, deleteDesc, deleteTitle, deleteBody, deleteButton, downloadingTitle, waitingTitle, failedTitle,
+         deleteRow, deleteDesc, deleteTitle, deleteBody, deleteButton, downloadingTitle, waitingTitle, failedTitle, meetingTitleNoServer,
          doneText, retry, meetingTitle, paused, onboardingSection, onboardingSectionSub, defaultTag, serverName, serverLine,
          deviceLine, onboardingFoot, sceneServer, sceneDevice] + serverPros + serverCons + deviceCons
     }

@@ -63,7 +63,7 @@ struct LocalSTTRow: View {
     var body: some View {
         let phase = stt.phase
         let fraction: Double? = if case .downloading(let done, let total) = phase, total > 0 { min(1, Double(done) / Double(total)) } else { nil }
-        SettingsRow(title: LocalSTTCopy.rowTitle, desc: LocalSTTCopy.detail(phase), bar: fraction) {
+        SettingsRow(title: LocalSTTCopy.rowTitle, desc: LocalSTTCopy.detail(phase, serverFallback: LocalSTTCopy.serverFallback), bar: fraction) {
             ChoiceStrip(choices: [(false, LocalSTTCopy.serverChoice), (true, LocalSTTCopy.deviceChoice)], value: on)
                 .disabled(phase == .unsupported)
                 .opacity(phase == .unsupported ? 0.4 : 1)

@@ -1,17 +1,11 @@
 #!/bin/zsh
-# Builds llama.cpp's server at a pinned release into Contents/MacOS/tacie-llm: the open edition's on-device meeting
-# notes run on it, with no Ollama to install (issue #54, docs/41 0절). The app starts it only in on-device mode with the
+# Builds llama.cpp's server at a pinned release into Contents/MacOS/tacie-llm: on-device meeting notes run on it, with
+# no Ollama to install (issue #54, docs/41 0절; every build since #56). The app starts it only in on-device mode with the
 # notes model downloaded (BundledLLM); it listens on 127.0.0.1 and unloads the model when idle.
 # The source comes from the release's tarball (hash-checked) and builds once per release under build.noindex/llama.cpp;
 # later builds only copy the binary. TACIE_SKIP_ENGINE=1 (CI's app tests) leaves it out, as it does the engine.
 set -e
 setopt pipefail
-# Only the open edition has "Mac 안에서만" (Build.isOpen); the official app does not carry the server until it offers
-# on-device notes too.
-if [[ "${TACIE_EDITION:-official}" != open ]]; then
-  rm -f "${TARGET_BUILD_DIR:?}/${EXECUTABLE_FOLDER_PATH:?}/tacie-llm"
-  exit 0
-fi
 if [[ -n "${TACIE_SKIP_ENGINE:-}" ]]; then
   echo "llama.cpp server build skipped (TACIE_SKIP_ENGINE)"
   exit 0

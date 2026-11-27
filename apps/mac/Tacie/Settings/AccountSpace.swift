@@ -6,8 +6,8 @@ import Foundation
 ///
 /// Signed in: `Application Support/Tacie/accounts/<id>/` (`id` is the account's `analytics_id` from GET /me: the same
 /// on every Mac, not the Google, GitHub or Apple id). Signed out: `Application Support/Tacie/` itself, the layout from
-/// before accounts had their own space. What was made there (everything from before this change, or a development build
-/// used without a sign-in) goes to the next account signed in whose space does not exist yet (`adopt`).
+/// before accounts had their own space. What was made there (everything from before this change, or meetings made
+/// without a sign-in) joins the next account signed in (`SpaceAdoption.merge`).
 ///
 /// The downloaded models (`Tacie/models`) and the settings of this Mac stay shared.
 struct AccountSpace: Equatable, Sendable {
@@ -42,6 +42,13 @@ struct AccountSpace: Equatable, Sendable {
     func key(_ name: String) -> String {
         guard let id else { return name }
         return "\(name)@\(id)"
+    }
+
+    /// Some account has its own space on this Mac (signed out now, its meetings wait for the next sign-in).
+    static func anyAccount(base: URL = AccountSpace.base) -> Bool {
+        let accounts = base.appendingPathComponent("accounts", isDirectory: true)
+        let names = (try? FileManager.default.contentsOfDirectory(atPath: accounts.path)) ?? []
+        return names.contains { valid($0) != nil }
     }
 
     /// Only plain ids become folder names (the server sends 32 hex characters).
@@ -81,18 +88,21 @@ struct SpaceAdoption {
     var defaults: UserDefaults = .standard
     var store: (_ service: String, _ account: String) -> any TokenStore = { s, a in KeychainTokenStore(service: s, account: a) }
 
-    /// Whether the account's space takes what the signed-out space holds: only a space that never existed (its first
-    /// sign-in on this Mac), or the one a stopped move was going to. While a move to another account is unfinished,
-    /// what is left belongs to that account: nobody else takes it.
-    func shouldAdopt(_ id: String) -> Bool {
-        if let pending = defaults.string(forKey: Self.pendingKey) { return pending == id }
-        return !fm.fileExists(atPath: AccountSpace(id: id).folder(base: base).path)
-    }
+    /// The engine's search data: an account that has any of it keeps its own, and the signed-out copy is dropped (a
+    /// signed-out `index.new` must never be swapped into the account's index).
+    static let searchData = [["index", "index.old", "index.new"], ["data"]]
 
-    /// Moves the signed-out space's data, connections and settings into the account's space. Each item moves on its
-    /// own (a rename on the same disk); one that cannot move stays and is logged, and the next switch tries again.
-    func adopt(into id: String) {
-        guard AccountSpace.valid(id) != nil, shouldAdopt(id) else { return }
+
+    /// Moves what the signed-out space holds into the account's space, on every sign-in (#56: meetings made without an
+    /// account join the next account signed in). A name the account already has stays where it was: meetings and
+    /// people file by file, connections and settings by key. Search data the account has wins (`searchData`). Each
+    /// item moves on its own (a rename on the same disk); one that cannot move stays, is logged, and the next sign-in
+    /// tries again. Returns whether any meeting moved.
+    @discardableResult
+    func merge(into id: String) -> Bool {
+        // what an unfinished merge left in the signed-out space goes to whoever signs in next, like anything made
+        // there since: the pending marker only says a retry is due
+        guard AccountSpace.valid(id) != nil else { return false }
         let from = AccountSpace.signedOut.folder(base: base)
         let to = AccountSpace(id: id).folder(base: base)
         defaults.set(id, forKey: Self.pendingKey)
@@ -101,9 +111,23 @@ struct SpaceAdoption {
             try fm.createDirectory(at: to, withIntermediateDirectories: true)
         } catch {
             Log.info("account space not made: \(error.localizedDescription)")
-            return
+            defaults.removeObject(forKey: Self.pendingKey)
+            return false
         }
-        for name in Self.items where fm.fileExists(atPath: from.appendingPathComponent(name).path) {
+        let meetingsBefore = count(from.appendingPathComponent("meetings"))
+        for group in Self.searchData {
+            let accountHas = group.contains { fm.fileExists(atPath: to.appendingPathComponent($0).path) }
+            for name in group where fm.fileExists(atPath: from.appendingPathComponent(name).path) {
+                let src = from.appendingPathComponent(name)
+                if accountHas {
+                    do { try fm.removeItem(at: src) } catch { left += 1 }
+                } else if !move(src, to: to.appendingPathComponent(name)) {
+                    left += 1
+                }
+            }
+        }
+        let searchNames = Set(Self.searchData.joined())
+        for name in Self.items where !searchNames.contains(name) && fm.fileExists(atPath: from.appendingPathComponent(name).path) {
             if !move(from.appendingPathComponent(name), to: to.appendingPathComponent(name)) { left += 1 }
         }
         for (service, account) in Self.keychain {
@@ -111,7 +135,9 @@ struct SpaceAdoption {
             let new = store(service, AccountSpace(id: id).key(account))
             do {
                 guard let secret = try old.readChecked() else { continue }
-                if try new.readChecked() == nil { try new.save(secret) }
+                // the account's own connection wins; the signed-out one stays signed out
+                guard try new.readChecked() == nil else { continue }
+                try new.save(secret)
                 try old.delete()
             } catch {
                 left += 1  // a locked or refusing keychain: the move stays pending and is tried again
@@ -120,11 +146,19 @@ struct SpaceAdoption {
         for key in Self.defaultsKeys {
             guard let value = defaults.object(forKey: key) else { continue }
             let newKey = AccountSpace(id: id).key(key)
-            if defaults.object(forKey: newKey) == nil { defaults.set(value, forKey: newKey) }
+            guard defaults.object(forKey: newKey) == nil else { continue }
+            defaults.set(value, forKey: newKey)
             defaults.removeObject(forKey: key)
         }
         if left == 0 { defaults.removeObject(forKey: Self.pendingKey) }
-        Log.info(left == 0 ? "signed-out data moved to the account's space" : "signed-out data moved, \(left) left for the next try")
+        let moved = meetingsBefore - count(from.appendingPathComponent("meetings"))
+        Log.info(left == 0 ? "signed-out data merged into the account's space (\(moved) meeting files)"
+                           : "signed-out data merged, \(left) left for the next try")
+        return moved > 0
+    }
+
+    private func count(_ folder: URL) -> Int {
+        (try? fm.contentsOfDirectory(atPath: folder.path).count) ?? 0
     }
 
     /// The deleted accounts whose space is still to be erased (kept so a quit in between does not leave it).
@@ -170,8 +204,8 @@ struct SpaceAdoption {
         return ok
     }
 
-    /// A folder whose name is free at the destination moves whole. One that is there already (a move that stopped half
-    /// way) moves its entries one by one, and a name taken on both sides stays where it was.
+    /// A folder whose name is free at the destination moves whole. One that is there already moves its entries one by
+    /// one. A file whose name is taken at the destination stays where it was: that is a kept clash, not a failure.
     private func move(_ src: URL, to dst: URL) -> Bool {
         if !fm.fileExists(atPath: dst.path) {
             do { try fm.moveItem(at: src, to: dst); return true } catch {
@@ -179,13 +213,14 @@ struct SpaceAdoption {
                 return false
             }
         }
-        var isDir: ObjCBool = false
-        guard fm.fileExists(atPath: src.path, isDirectory: &isDir), isDir.boolValue else { return false }
+        var srcDir: ObjCBool = false, dstDir: ObjCBool = false
+        guard fm.fileExists(atPath: src.path, isDirectory: &srcDir), srcDir.boolValue,
+              fm.fileExists(atPath: dst.path, isDirectory: &dstDir), dstDir.boolValue else { return true }
         var ok = true
         for name in (try? fm.contentsOfDirectory(atPath: src.path)) ?? [] {
             ok = move(src.appendingPathComponent(name), to: dst.appendingPathComponent(name)) && ok
         }
-        if ok { try? fm.removeItem(at: src) }
+        if ok, ((try? fm.contentsOfDirectory(atPath: src.path)) ?? []).isEmpty { try? fm.removeItem(at: src) }
         return ok
     }
 }

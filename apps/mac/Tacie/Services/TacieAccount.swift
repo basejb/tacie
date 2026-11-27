@@ -188,8 +188,9 @@ final class TacieAccount: NSObject {
         }
     }
 
-    /// Tacie sign-in, the account and everything Tacie's server does for it: not in the open edition (docs/41 0절 7번).
-    nonisolated static let offered = !Build.isOpen
+    /// Tacie sign-in, the account and everything Tacie's server does for it: only in a build with the official values
+    /// (#56). A source build has none.
+    nonisolated static let offered = Build.hasAccount
     var signedIn: Bool { token != nil }
     /// This month's Tacie AI is used up. Only a used-up answer from the last GET /me is asked again (the limit may have
     /// changed, or the month turned); an unknown one counts as not used up, and the relay still says no.
@@ -395,12 +396,15 @@ extension TacieAccount: ASWebAuthenticationPresentationContextProviding {
     }
 }
 
-/// Whether the engine talks to the Tacie AI relay: always in a product build (it carries no keys), and in a
-/// development build once signed in. A development build with no session keeps its own keys and providers.
+/// Whether the engine talks to the Tacie AI relay (#56): only when the AI choice is Tacie AI and there is a session.
+/// Nothing chosen yet with a session is today's official app (`AIMode.firstLaunch` saves `.tacie` for it). Signed out,
+/// or with any other choice, the engine uses the person's own keys or this Mac. A source build never has a session.
 enum Relay {
-    @MainActor static var on: Bool { on(signedIn: TacieAccount.shared.signedIn, dev: Build.isDev, open: Build.isOpen) }
-    /// The open edition never goes through the relay: it has no Tacie sign-in and uses the person's own keys.
-    static func on(signedIn: Bool, dev: Bool, open: Bool) -> Bool { !open && (signedIn || !dev) }
+    @MainActor static var on: Bool { on(mode: AIMode.saved(), signedIn: TacieAccount.shared.signedIn) }
+    static func on(mode: AIMode?, signedIn: Bool) -> Bool {
+        guard signedIn else { return false }
+        return mode == .tacie  // nil (nothing chosen) never relays: signing in does not choose Tacie AI (#56)
+    }
 }
 
 /// Which copy of the AI relay this Mac's engine talks to: Seoul or the US (relay only). It follows the Soniox region (`SonioxRegion`): Korea, the rest of

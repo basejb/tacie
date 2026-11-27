@@ -202,7 +202,7 @@ struct LinearSettingsCard: View {
             Button("취소", role: .cancel) {}
         } message: {
             // a pasted key is not revoked by Tacie: it lives on until the person deletes it in Linear
-            Text(PastedTokens.offered ? String(localized: "받아 둔 Linear 자료를 이 Mac에서 지워요. 키는 Linear의 Settings → Security & access → Personal API keys에서 지우면 연결이 끊겨요.")
+            Text(PastedTokens.pasted(.linear) ? String(localized: "받아 둔 Linear 자료를 이 Mac에서 지워요. 키는 Linear의 Settings → Security & access → Personal API keys에서 지우면 연결이 끊겨요.")
                  : String(localized: "받아 둔 Linear 자료를 이 Mac에서 지우고, Linear 쪽 연결도 끊어요."))
         }
         .sheet(isPresented: $pickTeams) { LinearTeamsSheet(keeper: keeper) }

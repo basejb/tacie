@@ -41,21 +41,10 @@ if [[ -z "$cmake" ]]; then
 fi
 vars=("PATH=${cargo:h}:$HOME/.cargo/bin:${cmake:h}:/usr/bin:/bin:/usr/sbin:/sbin")
 for k in $keep; do [[ -n "${(P)k}" ]] && vars+=("$k=${(P)k}"); done
-# The shipped app's engine carries no prompt text: it names the prompt and the Tacie AI relay fills the text in
-# (engine/crates/tacie-engine/src/prompts.rs). A dev build keeps the text, to call the providers with key files.
-# Switching between the two rebuilds only the tacie-engine crate. The open edition (TACIE_EDITION=open, Build.xcconfig)
-# keeps the text in every build: it calls the person's own AI with it (docs/41 0절).
-features=()
-shipped=0
-[[ "${CONFIGURATION:-}" == Release && "${TACIE_EDITION:-official}" != open ]] && shipped=1
-(( shipped )) && features=(-p tacie-engine --no-default-features -p tacie-mcp)
+# Every engine keeps the prompt text (#56, one app): the Tacie AI relay is called by prompt name and fills the text in
+# itself, and the person's own AI (API key, on-device) is called with the text from here (prompts.rs by_name).
 (cd "$engine" && env -i "${vars[@]}" "$cargo" build --release --manifest-path "$engine/Cargo.toml" \
-  --target-dir "$engine/target" "${features[@]}")
-# a line of the answer prompt (openrouter.rs ANSWER_PROMPT): a Release engine that has it would ship the prompts
-if (( shipped )) && LC_ALL=C grep -aqF "자료만 근거로 답해요" "$engine/target/release/tacie-engine"; then
-  echo "error: the Release engine carries the prompt text; it must be built with --no-default-features" >&2
-  exit 1
-fi
+  --target-dir "$engine/target")
 mkdir -p "$dest"
 release="$engine/target/release"
 # The app runs on macOS 14 and on every Apple chip (M1 included). Two ways an engine build breaks that silently, so

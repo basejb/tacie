@@ -35,8 +35,8 @@ targets:
       properties:
         CFBundleDisplayName: Tacie
         CFBundleDevelopmentRegion: ko
-        CFBundleShortVersionString: "0.1.49"
-        CFBundleVersion: "50"
+        CFBundleShortVersionString: "0.1.50"
+        CFBundleVersion: "51"
         LSUIElement: true
         LSMinimumSystemVersion: "14.0"
         NSMicrophoneUsageDescription: 회의 중 질문을 알아듣고 근거 파일을 찾기 위해 마이크를 써요.
@@ -196,6 +196,9 @@ targets:
       - path: Tacie/Views/Settings/STTPathScene.swift
       - path: Tacie/Views/Settings/AIPathScene.swift
       - path: Tacie/Views/Settings/AIChoiceCards.swift
+      - path: Tacie/Views/SignIn.swift
+      - path: Tacie/Views/Main/SignedOutNotice.swift
+      - path: Tacie/Settings/OpenEditionImport.swift
       - path: Tacie/Views/Settings/ConnectionsScene.swift
       - path: Tacie/Views/Settings/LocalSTTRow.swift
       - path: Tacie/Views/Main/MainParts.swift

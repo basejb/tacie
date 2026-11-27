@@ -84,7 +84,7 @@ enum OnboardingLeftover: Equatable {
     case connectDrive  // asked to hear about Google Drive, which is open now (docs/19 11절)
     case connectAtlassian  // asked to hear about Jira · Confluence, which is open now (docs/31)
     case signIn  // Tacie AI waits for a sign-in (docs/14)
-    case chooseAI  // the open edition waits for "어떻게 쓸까요?" (2-D)
+    case chooseAI  // the open edition waits for the AI step (2-D)
     case callAudio
     case notify([String])
 
@@ -109,6 +109,12 @@ enum OnboardingLeftover: Equatable {
 enum OnboardingFlow {
     /// Tacie AI goes through a sign-in in a product build; a development build shows the step with `--account-step`.
     /// The open edition has no Tacie sign-in (docs/41 0절 7번).
+    /// the AI step ("회의를 정리할 AI를 골라요") is answered (#56): Tacie AI counts only with a session.
+    static func aiChosen(mode: AIMode?, signedIn: Bool) -> Bool {
+        guard let mode else { return false }
+        return mode != .tacie || signedIn
+    }
+
     static func accountStep(dev: Bool, open: Bool, args: [String]) -> Bool {
         !open && (!dev || args.contains("--account-step"))
     }

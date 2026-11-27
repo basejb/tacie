@@ -15,6 +15,14 @@ final class BuildTests: XCTestCase {
         }
     }
 
+    /// One app (#56): sign-in exists only in a build with the official values; a source build has none.
+    func testSourceBuildHasNoAccount() {
+        let server = URL(string: "https://auth.example")
+        XCTAssertFalse(Build.hasAccount(open: true, accountServer: server))
+        XCTAssertFalse(Build.hasAccount(open: false, accountServer: nil))
+        XCTAssertTrue(Build.hasAccount(open: false, accountServer: server))
+    }
+
     func testEmptyAndUnresolvedValuesAreNil() {
         XCTAssertNil(BuildValues.value("K", in: ["K": ""]))
         XCTAssertNil(BuildValues.value("K", in: ["K": "$(TACIE_X)"]))

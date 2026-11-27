@@ -425,7 +425,7 @@ struct MainView: View {
     }
 
     private var surveyAllowed: Bool {
-        FeedbackSurvey.offered && !connectUp && !connectAllowed && FeedbackSurvey.shouldShow(record: survey, notes: FeedbackSurvey.notesCount(library.meetings), page: surveyPage,
+        FeedbackSurvey.offered(signedIn: TacieAccount.shared.signedIn) && !connectUp && !connectAllowed && FeedbackSurvey.shouldShow(record: survey, notes: FeedbackSurvey.notesCount(library.meetings), page: surveyPage,
                                   running: meeting.isRunning, covered: cardCovered)
     }
 

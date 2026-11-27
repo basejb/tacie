@@ -25,7 +25,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         AccountSpace.inUse = AccountSpace(id: TacieAccount.shared.spaceID)
         // a deleted account's space left by a quit goes first (nothing is open yet), even if that account is back
         SpaceAdoption().eraseRequested(keeping: .signedOut)
-        if let id = AccountSpace.inUse.id { SpaceAdoption().adopt(into: id) }
+        // an earlier open-source build's meetings and settings come over once (#56), before the account takes them
+        if !Build.isOpen, !Build.isDev {
+            OpenEditionImport.run(base: AccountSpace.signedOut.folder(), from: OpenEditionImport.openFolder, defaults: .standard,
+                                  openDefaults: UserDefaults(suiteName: OpenEditionImport.openSuite),
+                                  signedIn: TacieAccount.shared.signedIn)
+        }
+        if let id = AccountSpace.inUse.id { SpaceAdoption().merge(into: id) }
         super.init()
     }
 
@@ -142,6 +148,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     /// The account changed. The engine's AI addresses are fixed when it starts, so a relay that should now be on (or
     /// off) needs a new engine; that waits for the meeting to end. Otherwise the keys alone change.
     private func accountChanged() async {
+        Analytics.start()  // usage numbers follow the session (#56)
         // another account's space (or none): a new engine comes with it, so the relay is right then too
         if wantedSpace != AccountSpace.inUse {
             followSpace()
@@ -182,7 +189,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     /// Closes everything of the current space and opens `target`'s: the island's answers, the connections, the engine
     /// (stopped and waited for, so nothing writes into the folder), the meetings and the remembered people. The first
-    /// sign-in of an account on this Mac takes what the signed-out space held (SpaceAdoption).
+    /// sign-in merges what the signed-out space holds into the account (SpaceAdoption.merge); the engine then gets the full meeting list (IndexKeeper.pushCredentials).
     private func switchSpace(to target: AccountSpace) async {
         let from = AccountSpace.inUse
         Log.info("account space: \(from.id == nil ? "signed out" : "account") -> \(target.id == nil ? "signed out" : "account")")
@@ -196,7 +203,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         // a deleted account's space goes now that nothing uses it (before opening: an account signed up again with the
         // same id starts empty)
         SpaceAdoption().eraseRequested(keeping: .signedOut)
-        if let id = target.id { SpaceAdoption().adopt(into: id) }
+        if let id = target.id { SpaceAdoption().merge(into: id) }
         AccountSpace.inUse = target
         if !Self.fixedFolders {
             vault.reopen(root: VoiceVault.standardRoot)
@@ -308,6 +315,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // one app (#56): someone who used the app before this update had Tacie AI (the only AI then), so it is saved for
+        // them once. A new install chooses in the onboarding; signing in later never chooses Tacie AI for anyone.
+        if Build.hasAccount, !UserDefaults.standard.bool(forKey: AIMode.oneAppMigratedKey) {
+            if AIMode.saved() == nil, let first = AIMode.firstLaunch(signedIn: TacieAccount.shared.signedIn, saved: nil,
+                                                                      usedBefore: OnboardingStore().load() != nil) {
+                AIMode.save(first)
+            }
+            UserDefaults.standard.set(true, forKey: AIMode.oneAppMigratedKey)
+        }
         main.islandFrame = { [weak self] in self?.island.frame }
         EngineClient.addressSet = { AIMode.addressSet() }  // the app waits longer on the person's own AI server (2-A)
         let loginItem = Self.launchedAsLoginItem  // read first: the event is the one being handled right now
@@ -1136,6 +1152,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         case "update": AppUpdate.shared.show(version: rest.isEmpty ? nil : rest)  // `update 0.1.12` (captures)
         case "sign-in": TacieAccount.shared.signIn()  // 설정 → 계정의 로그인 (where its window comes up)
         case "sign-in-cancel": TacieAccount.shared.cancelSignIn()
+        case "sign-out": Task { await TacieAccount.shared.signOut() }  // 설정 → 계정의 로그아웃, past its confirm (E2E)
         case "sign-in-sheet": main.selection.signIn = .card; main.show(focus: true)  // the main window's sign-in modal (captures)
         case "rebuild":  // `rebuild owner/name [branch]`: the repo picker's 동기화 (captures of a first sync)
             let r = rest.split(separator: " ").map(String.init)
@@ -1225,11 +1242,29 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
 
+    /// The new engine a meeting held back (search model, AI change) waits for the meeting's notes too: the old engine
+    /// is writing them (two minutes at most, like a space switch). A meeting started meanwhile holds it back again.
+    private func restartAfterNotes() {
+        Task { [weak self] in
+            var waited = 0
+            while let self, waited < 120, self.library.meetings.contains(where: { $0.notes == .waiting }) {
+                waited += 1
+                try? await Task.sleep(for: .seconds(1))
+            }
+            guard let self, !self.meeting.isRunning else { return }
+            guard self.restartForModel || self.engine.restartAfterMeeting || self.engine.launchedWithRelay != Relay.on else { return }
+            self.restartWithModel()
+        }
+    }
+
     /// A sync that waited for the meeting (the rules say no while one is on) starts when it ends.
     private func followMeetingEnd() {
         let running = meeting.isRunning
         defer { wasRunning = running }
-        if wasRunning && !running && restartForModel { restartWithModel() }
+        // a relay change made during the meeting (Settings → AI) waits for its end too
+        if wasRunning && !running && (restartForModel || engine.restartAfterMeeting || engine.launchedWithRelay != Relay.on) {
+            restartAfterNotes()
+        }
         if wasRunning && !running { Task { await keeper.check(auto: true) } }
     }
 

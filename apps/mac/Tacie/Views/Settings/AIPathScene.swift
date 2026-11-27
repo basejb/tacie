@@ -10,6 +10,8 @@ struct AIPathScene: View {
     /// 업체 직접 선택 in use: the right box names the providers that were picked (2026-11-24; the scene was hidden there
     /// before, and the page lost its picture).
     var custom: Custom? = nil
+    /// The Tacie AI card is open (#56): the path runs to Tacie AI once signed in. nil: another card.
+    var tacie: Bool? = nil
     /// The onboarding's shorter scene: its cards right below already say what the caption would.
     var short = false
 
@@ -63,6 +65,10 @@ struct AIPathScene: View {
 
     private var caption: String {
         if let custom { return custom.caption }
+        if let tacie {
+            return tacie ? String(localized: "회의 소리와 대화 기록을 Tacie AI로 보내 음성 인식, 회의 정리, 답 카드를 해요.")
+                : String(localized: "로그인하면 Tacie AI로 음성 인식, 회의 정리, 답 카드가 켜져요.")
+        }
         if local { return String(localized: "회의 소리와 대화 기록을 Mac 밖으로 보내지 않아요. 답 카드는 키가 필요해서 쓸 수 없어요.") }
         if !keyOn { return String(localized: "OpenRouter 키를 넣으면 음성 인식, 회의 정리, 답 카드가 켜져요.") }
         return String(localized: "회의 소리와 대화 기록을 OpenRouter로 보내 음성 인식, 회의 정리, 답 카드를 해요.")
@@ -76,6 +82,13 @@ struct AIPathScene: View {
                                         note: custom.note, symbol: "slider.horizontal.3"),
                              showsSaid: true)
                     .id(custom.caption)
+                    .transition(.opacity)
+            } else if let tacie {
+                STTPathScene(onDevice: !tacie,
+                             far: .init(title: "Tacie AI", note: String(localized: "음성 인식 · 회의 정리 · 답 카드"), symbol: "sparkles",
+                                        offNote: String(localized: "로그인하면 켜져요")),
+                             showsSaid: tacie)
+                    .id("tacie\(tacie)")
                     .transition(.opacity)
             } else {
             STTPathScene(onDevice: local || !keyOn,

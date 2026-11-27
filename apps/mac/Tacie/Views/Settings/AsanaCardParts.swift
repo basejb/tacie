@@ -407,10 +407,10 @@ struct AsanaDisconnectBody: View {
                 .uiFont(12.5).foregroundStyle(Theme.ink2).fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 6)
             VStack(alignment: .leading, spacing: 8) {
-                Text(PastedTokens.offered ? String(localized: "Asana에서도 끊으려면 Asana의 My apps → Personal access tokens에서 이 토큰을 지워요.")
+                Text(PastedTokens.pasted(.asana) ? String(localized: "Asana에서도 끊으려면 Asana의 My apps → Personal access tokens에서 이 토큰을 지워요.")
                      : String(localized: "Asana에서도 끊으려면 Asana → 설정 → 연동 → 권한이 부여된 연동에서 Tacie의 '권한 부여 취소'를 눌러요."))
                     .uiFont(12.5).foregroundStyle(Theme.ink2).fixedSize(horizontal: false, vertical: true)
-                Button { NSWorkspace.shared.open(PastedTokens.offered ? PastedTokens.makeURL(.asana) : AsanaStatus.asanaHome) } label: {
+                Button { NSWorkspace.shared.open(PastedTokens.pasted(.asana) ? PastedTokens.makeURL(.asana) : AsanaStatus.asanaHome) } label: {
                     HStack(spacing: 4) {
                         Text("Asana 열기").uiFont(12.5, weight: .semibold)
                         Image(systemName: "arrow.up.right").uiFont(10, weight: .semibold)

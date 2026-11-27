@@ -279,9 +279,13 @@ enum TokenCopy {
     /// The service the app would be registered with: Jira and Confluence share one Atlassian app.
     static func vendor(_ s: ConnectionsScene.Source) -> String { s == .atlassian ? "Atlassian" : s.name }
 
-    static func why(_ s: ConnectionsScene.Source) -> String {
+    /// Why a token is pasted here: a source build has no app registered with the service; a build with the official
+    /// values has one, but its connect needs a Tacie sign-in (#56).
+    static func why(_ s: ConnectionsScene.Source, hasAccount: Bool = Build.hasAccount) -> String {
         let v = vendor(s)
-        return String(localized: "오픈소스 버전에는 Tacie가 \(v)에 등록한 앱이 없어서, 연결하려면 토큰을 직접 만들어야 해요. 자료는 \(v)에서 이 Mac으로 바로 와요.")
+        return hasAccount
+            ? String(localized: "로그인하지 않은 상태에서는 토큰을 직접 만들어 연결해요. 로그인하면 버튼 하나로 연결할 수 있어요. 자료는 \(v)에서 이 Mac으로 바로 와요.")
+            : String(localized: "직접 빌드한 Tacie에는 \(v)에 등록한 앱이 없어서, 토큰을 직접 만들어 연결해요. 자료는 \(v)에서 이 Mac으로 바로 와요.")
     }
 
     static func after(_ s: ConnectionsScene.Source) -> String? {

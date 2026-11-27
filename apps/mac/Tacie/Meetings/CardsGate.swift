@@ -22,6 +22,8 @@ enum CardsGate {
 /// 오픈소스판 2-D의 회의 중 동작(AI를 고른 방법에 따라). 공식 앱은 모두 지금 그대로예요.
 enum OpenAIMeeting {
     static let chooseLine = String(localized: "받아쓸 방법을 골라 주세요")
+    /// Tacie AI is chosen but there is no session (#56): no popup, this line only.
+    static let signInLine = String(localized: "로그인하거나 다른 AI를 골라 주세요")
     static let noServerNotes = String(localized: "회의 정리는 설정 → AI에서 모델을 받으면 돼요")
     static let localWaitLine = String(localized: "음성 인식 모델을 받으면 받아써요")
 
@@ -32,6 +34,7 @@ enum OpenAIMeeting {
         guard open, kind == "key" else { return nil }
         switch mode {
         case nil: return chooseLine
+        case .tacie: return signInLine
         case .local: return localWaitLine
         default: return nil
         }
@@ -74,7 +77,7 @@ enum OpenAIMeeting {
         open && mode == .custom && cards == .off
     }
 
-    static var cardsOffNow: Bool { cardsOff(open: Build.isOpen, mode: AIMode.saved(), cards: CardsChoice.saved()) }
+    @MainActor static var cardsOffNow: Bool { cardsOff(open: AIMode.ownAI, mode: AIMode.saved(), cards: CardsChoice.saved()) }
 }
 
 /// The line under 정리 when the notes came back empty (`MeetingPage.emptyNotes`).

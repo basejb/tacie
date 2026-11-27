@@ -66,8 +66,8 @@ enum WhatsNew {
     }
 
     /// The entry due on this Mac now, if any.
-    /// The open edition shows no "새로 생긴 기능" sheet (docs/41 0절 17번).
-    static let offered = !Build.isOpen
+    /// A source build shows no "새로 생긴 기능" sheet: it has no update feed (docs/41 0절 17번, #56).
+    static let offered = Build.hasAccount
 
     static var due: WhatsNewEntry? {
         guard offered else { return nil }

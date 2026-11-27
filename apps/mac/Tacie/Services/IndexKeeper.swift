@@ -275,7 +275,7 @@ final class IndexKeeper {
         NotificationCenter.default.post(name: AIChoice.changed, object: nil)
         // Tacie's own notes server (issue #54) runs from here on: it loads the model, unloads it when idle and loads it
         // again on the next request, so the engine can reach it whenever notes or the main window's AI ask
-        if Build.isOpen, AIMode.saved() == .local, let saved = LocalServer.saved(), saved.name == BundledLLM.name,
+        if AIMode.saved() == .local, let saved = LocalServer.saved(), saved.name == BundledLLM.name,
            let running = await BundledLLM.shared.server(), running != saved {
             LocalServer.save(running)
         }

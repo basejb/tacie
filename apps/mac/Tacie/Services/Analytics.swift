@@ -8,11 +8,17 @@ extension Analytics {
     private static var started = false
     static let lastVersionKey = "analytics.lastVersion"
 
-    static func start() {
+    /// Starts PostHog once signed in (launch, and again after each sign-in); signed out it stops sending.
+    @MainActor static func start() {
         let token = BuildValues.postHogToken ?? ""
         let host = BuildValues.postHogHost ?? ""
+        let signedIn = TacieAccount.shared.signedIn
+        if started {
+            if signedIn { PostHogSDK.shared.optIn() } else { PostHogSDK.shared.optOut() }
+            return
+        }
         // a test run (even one with an app host) never reports
-        guard !started, !token.isEmpty, !host.isEmpty,
+        guard allowed(signedIn: signedIn, hasToken: !token.isEmpty && !host.isEmpty),
               ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else { return }
         let config = PostHogConfig(projectToken: token, host: host)
         config.captureApplicationLifecycleEvents = false  // app_opened is ours
@@ -28,6 +34,8 @@ extension Analytics {
             return event
         }
         PostHogSDK.shared.setup(config)
+        // the SDK keeps an opt-out from a sign-out on disk; a sign-in now must undo it
+        PostHogSDK.shared.optIn()
         started = true
         sink = { e in PostHogSDK.shared.capture(e.name, properties: e.properties.mapValues(\.json)) }
         // `account` stays as the last run left it until /me answers (AccountAnalytics.refreshed)

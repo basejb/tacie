@@ -17,8 +17,8 @@ enum FeedbackSurvey {
     static let textMax = 300
     /// Dev builds launched with `--feedback-now`: the card comes up over any finished notes page after a second, whatever
     /// was remembered, so it can be looked at.
-    /// The card sends to Tacie's server: the open edition has none (it asks on GitHub instead).
-    static let offered = !Build.isOpen
+    /// The card sends to Tacie's server: only with a session (#56). A source build has none (it asks on GitHub instead).
+    static func offered(signedIn: Bool) -> Bool { signedIn && Build.hasAccount }
     static var demo: Bool { Build.isDev && ProcessInfo.processInfo.arguments.contains("--feedback-now") }
 
     /// What the person may wish for (`AWish`, shared with the usage numbers).

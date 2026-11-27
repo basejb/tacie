@@ -33,6 +33,13 @@ struct HomePage: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.top, 8)
 
+                if SignedOutNotice.shows(signedIn: TacieAccount.shared.signedIn, hasAccount: Build.hasAccount,
+                                         accountsHere: AccountSpace.anyAccount()) {
+                    SignedOutNotice { selection.settings = .account }.padding(.top, 18)
+                }
+                OpenImportNotice { selection.settings = .ai }
+                OneAppNotice()
+
                 section(String(localized: "최근 회의"), more: { selection.view = .meetings }) {
                     ForEach(Array(meetings.prefix(3))) { m in
                         MeetingCard(meeting: m, live: m.id == live, now: now) {

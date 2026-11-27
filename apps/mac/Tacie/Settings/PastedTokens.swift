@@ -9,8 +9,21 @@ enum GitHubConnectOffer {
 }
 
 enum PastedTokens {
-    /// The open edition connects by pasted tokens; the official app keeps its "연결" (OAuth) buttons.
+    /// A source build connects by pasted tokens; a build with the official values keeps its "연결" (OAuth) buttons.
     static let offered = Build.isOpen
+
+    /// Whether this service connects by a pasted token (#56): always in a source build; Notion, Linear,
+    /// Jira·Confluence and Asana also without a Tacie session, because their one-click connect hands the code over on
+    /// Tacie's server with that session (apps/server notion.js, linear.js, atlassian.js, asana.js answer 401
+    /// signed_out). GitHub, Google Drive and Dropbox connect without it.
+    static let needsSession: Set<ConnectionsScene.Source> = [.notion, .linear, .atlassian, .asana]
+    static func pasted(_ s: ConnectionsScene.Source, signedIn: Bool, hasAccount: Bool) -> Bool {
+        guard hasAccount else { return true }
+        return needsSession.contains(s) && !signedIn
+    }
+    @MainActor static func pasted(_ s: ConnectionsScene.Source) -> Bool {
+        pasted(s, signedIn: TacieAccount.shared.signedIn, hasAccount: Build.hasAccount)
+    }
 
     struct Found: Equatable {
         var name: String?

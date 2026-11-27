@@ -11,28 +11,35 @@
 
 <p align="center">
   <a href="https://github.com/basejb/tacie/releases/latest/download/Tacie.dmg"><b>Download for Mac</b></a> ·
-  <a href="https://tacie.app/">Official app</a>
+  <a href="https://tacie.app/">tacie.app</a>
 </p>
 
 <p align="center">
   <img src=".github/assets/demo.gif" width="720" alt="A remote meeting in Tacie: the transcript fills in, and an answer card answers 'Who needs to sign off before we change the checkout copy?' with a citation to the checkout copy guide"><br>
-  <sub>Recorded in the official app, which streams the transcript live. With an API key or on-device processing, it is not streamed: it comes in a sentence at a time (see <a href="#4-choose-how-ai-runs">AI choices</a>).</sub>
+  <sub>Recorded with Tacie AI, which streams the transcript live. With an API key or on-device processing, it is not streamed: it comes in a sentence at a time (see <a href="#4-choose-how-ai-runs">AI choices</a>).</sub>
 </p>
 
 Someone asks, "Wait, why did we cut retries to three?" in the middle of a meeting. Tacie finds the answer in your
 team's code, issues, docs or past meetings and shows it as a card while the meeting is still going. After the meeting,
 it writes the notes: decisions, to-dos and what is still open.
 
-## Two ways to use it
+## One app
 
-- **Tacie (open source)** is this repository. [Download the app](https://github.com/basejb/tacie/releases/latest/download/Tacie.dmg)
-  (signed and notarized, it updates itself from this repository's releases) or build it yourself as below. It is free
-  and needs no Tacie account: you bring your own AI key or run it on your Mac, and connect tools with personal tokens.
-  The only thing it fetches from Tacie is the model files (see [Downloads](#downloads-and-disk-space)), and it sends no
-  usage statistics.
-- **The official app** is the hosted version: no keys or setup, free with a monthly usage limit. It adds an
-  [iPhone app](https://apps.apple.com/app/tacie/id6834710881) with sync and one-click connections. Get it at
-  [tacie.app](https://tacie.app/).
+The [download](https://github.com/basejb/tacie/releases/latest/download/Tacie.dmg) here and the one at
+[tacie.app](https://tacie.app/) are the same app. It is signed and notarized, and updates itself. On first launch you
+choose how AI runs, and you can change it later in **Settings → AI**:
+
+- **Tacie AI**: sign in, no key or setup. Free with a monthly usage limit.
+- **API key**: your own [OpenRouter](https://openrouter.ai) key. You pay OpenRouter for what you use.
+- **On-device processing**: speech recognition and meeting notes run on your Mac. No key or account.
+
+Signing in is separate from that choice and does not change it. It adds the
+[iPhone app](https://apps.apple.com/app/tacie/id6834710881), whose meeting notes show up on your Mac, and one-click
+Notion, Linear, Jira · Confluence and Asana connections. Signed out, Tacie sends nothing to Tacie's servers; it only checks for app updates and downloads models
+(see [Downloads](#downloads-and-disk-space)). Usage statistics are sent only while you are signed in.
+
+The download is built from this code with the values for sign-in and updates added. A build from source, as below, is
+the same app without sign-in, the iPhone app or updates.
 
 The steps below build the app from source. With the downloaded app, drag it to Applications, open it and start at
 [3. First launch](#3-first-launch). It needs a Mac with Apple silicon and macOS 14 or later.
@@ -70,28 +77,32 @@ To work on Tacie instead, see [Development](#development).
 
 A short setup walks you through these steps. You can skip any of them and change everything later in **Settings**.
 
-1. **How do you want to run Tacie?** Pick **API key** or **On-device processing** (next section). **Later** skips
-   it: meetings are then recorded but not transcribed or summarized.
-2. **Where should Tacie look for answers?** Connect GitHub, Notion, Linear, Jira · Confluence, Asana or an Obsidian
+1. **Choose the AI for your meetings.** Pick **Tacie AI** (downloaded app only), **API key** or **On-device
+   processing** (next section). **Later** skips it: meetings are then recorded but not transcribed or summarized.
+2. **Connect where Tacie looks for answers.** Connect GitHub, Notion, Linear, Jira · Confluence, Asana or an Obsidian
    vault (see [Connect your tools](#5-connect-your-tools)).
 3. **Set up meeting audio.** Allow the microphone for in-person meetings, and turn on meeting app audio to hear the
    other side of a call (Zoom, Meet, Teams).
-4. When answer cards can run (API key, or Choose providers with cards on), two practice steps follow on sample
+4. When answer cards can run (Tacie AI, API key, or Choose providers with cards on), two practice steps follow on sample
    material: asking Tacie a question, and a short practice meeting that shows an answer card.
 5. **You're all set.** The shortcuts: ⌃⌥⌘M starts and ends a meeting, ⌃⌥⌘A asks Tacie directly, ⌃⌥⌘T opens the
    main window.
 
 ## 4. Choose how AI runs
 
-**Settings → AI** offers two choices, plus **Choose providers** for picking a provider per job.
+**Settings → AI** offers three choices (two in a build from source), plus **Choose providers** for picking a provider
+per job.
 
-| | API key | On-device processing |
-|---|---|---|
-| Speech-to-text | OpenRouter | On your Mac (16 GB memory) |
-| Transcript | Not streamed: a sentence at a time | Not streamed: a sentence at a time |
-| Meeting notes, main window AI | OpenRouter | On your Mac (Gemma 4 E4B) |
-| Answer cards during meetings | Yes | No (they need a key) |
-| What you need | One [OpenRouter](https://openrouter.ai) key; you pay OpenRouter for what you use | About 5.6 GB of downloads |
+| | Tacie AI | API key | On-device processing |
+|---|---|---|---|
+| Speech-to-text | Hosted by Tacie | OpenRouter | On your Mac (16 GB memory) |
+| Transcript | Streamed live | Not streamed: a sentence at a time | Not streamed: a sentence at a time |
+| Meeting notes, main window AI | Hosted by Tacie | OpenRouter | On your Mac (Gemma 4 E4B) |
+| Answer cards during meetings | Yes | Yes | No (they need a key) |
+| What you need | A Tacie sign-in; free with a monthly usage limit | One [OpenRouter](https://openrouter.ai) key; you pay OpenRouter for what you use | About 5.6 GB of downloads |
+
+**Tacie AI.** Sign in with Google, Apple or GitHub. Choosing it does not need a key. Signing out turns it off until you
+sign in again; your choice stays.
 
 **API key.** Paste a key that starts with `sk-or-`. Tacie checks it with OpenRouter and keeps it in your Mac's
 keychain.
@@ -128,7 +139,11 @@ Answer cards find answers only in what you connect and in your past meetings.
 
 ## What leaves your Mac
 
-No meeting content goes to Tacie. Where it goes depends on **Settings → AI**:
+Where meeting content goes depends on **Settings → AI**:
+
+- **Tacie AI**: meeting audio streams to Soniox for speech-to-text, and transcripts, search passages and questions go
+  through Tacie's server to the AI models that write notes and answers. Tacie's server does not keep them: it logs only
+  the request path, status and time.
 
 - **API key**: meeting audio (for speech-to-text), transcripts (for notes), search passages (for answer cards) and
   team terms from your index (for their Korean spellings) go to OpenRouter and the models it routes to, under their
@@ -143,6 +158,7 @@ No meeting content goes to Tacie. Where it goes depends on **Settings → AI**:
   transcript lines and up to 50 search passages, to decide whether to answer and to rank the passages.
 - Connected tools are read with your own tokens, and an Obsidian vault or Markdown folder straight from disk. What
   Tacie reads is indexed on your Mac.
+- Usage statistics (counts and on/off values, never meeting content) are sent only while you are signed in.
 
 ## Downloads and disk space
 

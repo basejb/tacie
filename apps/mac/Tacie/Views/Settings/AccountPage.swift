@@ -23,7 +23,7 @@ struct AccountPage: View {
         .task { await tacie.refresh() }
 
         if !tacie.signedIn {
-            SettingsSection(title: String(localized: "로그인"), desc: String(localized: "로그인하면 Tacie AI로 회의를 듣고 답해요. 이름과 이메일만 받아요.")) {
+            SettingsSection(title: String(localized: "로그인"), desc: String(localized: "로그인하면 iPhone에서 기록한 회의의 정리가 이 Mac에 보여요(대화 기록과 녹음은 iPhone에 남아요). 노션, Linear, Jira·Confluence, Asana도 버튼 하나로 연결해요. 로그인해도 선택한 AI는 바뀌지 않아요.")) {
                 VStack(alignment: .leading, spacing: 10) {
                     if case .failed(let why) = tacie.phase {
                         Text(why).uiFont(12).foregroundStyle(Theme.warn).fixedSize(horizontal: false, vertical: true)
@@ -86,7 +86,7 @@ struct AccountPage: View {
                 Button("로그아웃", role: .destructive) { Task { await tacie.signOut() } }
                 Button("취소", role: .cancel) {}
             } message: {
-                Text("다시 로그인할 때까지 Tacie AI(받아쓰기, 판단, 답)를 쓸 수 없어요.")
+                Text("로그아웃하면 이 계정의 회의, 연결, 검색 데이터는 다시 로그인할 때까지 보이지 않아요. 지워지지는 않아요.")
             }
             .alert("계정을 삭제할까요?", isPresented: $askDelete) {
                 Button("삭제", role: .destructive) { Task { deleteFailed = !(await tacie.deleteAccount()) } }
